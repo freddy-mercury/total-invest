@@ -1,0 +1,225 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AI\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-05 13:20+0300\n"
+"PO-Revision-Date: 2010-05-05 13:20+0300\n"
+"Last-Translator: Cyril Kamar <cyril.kamaro@gmail.com>\n"
+"Language-Team: AI <cyril.kamaro@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: LUXEMBOURG\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: z:\\home\\invest.local\\r1\\includes\\library\n"
+"X-Poedit-SearchPath-1: z:\\home\\invest.local\\r1\\languages\n"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:23
+msgid "Account Summary"
+msgstr "帐户摘要"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:24
+msgid "Personal Information"
+msgstr "Персональная информация"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:25
+msgid "Settings"
+msgstr "Настройки"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:26
+msgid "Make deposit"
+msgstr "Вклад"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:27
+msgid "Request withdrawal"
+msgstr "Вывод средств"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:28
+msgid "Statistics"
+msgstr "Статистика"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:29
+msgid "Messages"
+msgstr "Сообщения"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:30
+msgid "Logout"
+msgstr "Выход"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:48
+msgid "SignUp"
+msgstr "Регистрация"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:50
+msgid "Member area"
+msgstr "Личный кабинет"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:53
+msgid "Contact Us"
+msgstr "Обратная связь"
+
+#: z:\home\invest.local\r1\languages/lang.php:2
+#, fuzzy
+msgid "Contact us"
+msgstr "Обратная связь"
+
+#: z:\home\invest.local\r1\languages/lang.php:3
+msgid "Email from"
+msgstr "От"
+
+#: z:\home\invest.local\r1\languages/lang.php:4
+msgid "Subject"
+msgstr "Тема"
+
+#: z:\home\invest.local\r1\languages/lang.php:5
+msgid "Message"
+msgstr "Сообщение"
+
+#: z:\home\invest.local\r1\languages/lang.php:6
+msgid "Send"
+msgstr "Отправить"
+
+#: z:\home\invest.local\r1\languages/lang.php:7
+msgid "Deposit transaction error"
+msgstr "Ошибка вклада"
+
+#: z:\home\invest.local\r1\languages/lang.php:8
+msgid "<strong>Alert:</strong> Your deposit transaction has been failed! Please try again later."
+msgstr "<strong>Внимание:</strong> Ваша попытка сделать вклад не удалась! Попробуйте повторить поже."
+
+#: z:\home\invest.local\r1\languages/lang.php:9
+msgid "Remember forgotten password"
+msgstr "Восстановление пароля"
+
+#: z:\home\invest.local\r1\languages/lang.php:10
+msgid "Your login"
+msgstr "Логин"
+
+#: z:\home\invest.local\r1\languages/lang.php:11
+msgid "Your e-mail"
+msgstr "Адрес электронной почты"
+
+#: z:\home\invest.local\r1\languages/lang.php:12
+msgid "Security question"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:13
+msgid "Mother's Maiden Name"
+msgstr "Девичья фамилия матери"
+
+#: z:\home\invest.local\r1\languages/lang.php:14
+msgid "City of Birth"
+msgstr "Город, в котором Вы родились"
+
+#: z:\home\invest.local\r1\languages/lang.php:15
+msgid "Highschool Name"
+msgstr "Название школы"
+
+#: z:\home\invest.local\r1\languages/lang.php:16
+msgid "Name of Your First Love"
+msgstr "Имя Вашей первой девушки/парня"
+
+#: z:\home\invest.local\r1\languages/lang.php:17
+msgid "Favorite Pet"
+msgstr "Любимое домашнее животное"
+
+#: z:\home\invest.local\r1\languages/lang.php:18
+msgid "Favorite Book"
+msgstr "Любимая книга"
+
+#: z:\home\invest.local\r1\languages/lang.php:19
+msgid "Favorite TV Show/Sitcom"
+msgstr "Любимая ТВ программа"
+
+#: z:\home\invest.local\r1\languages/lang.php:20
+msgid "Favorite Movie"
+msgstr "Любимый фильм"
+
+#: z:\home\invest.local\r1\languages/lang.php:21
+msgid "Favorite Flower"
+msgstr "Любимый цветок"
+
+#: z:\home\invest.local\r1\languages/lang.php:22
+msgid "Favorite Color"
+msgstr "Любимый цвет"
+
+#: z:\home\invest.local\r1\languages/lang.php:23
+msgid "Answer"
+msgstr "Ответ"
+
+#: z:\home\invest.local\r1\languages/lang.php:24
+#, fuzzy
+msgid "Remember me"
+msgstr "Личный кабинет"
+
+#: z:\home\invest.local\r1\languages/lang.php:25
+msgid "Login"
+msgstr "Логин"
+
+#: z:\home\invest.local\r1\languages/lang.php:26
+msgid "Password"
+msgstr "Пароль"
+
+#: z:\home\invest.local\r1\languages/lang.php:27
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: z:\home\invest.local\r1\languages/lang.php:28
+msgid "Login pin"
+msgstr "ПИН:"
+
+#: z:\home\invest.local\r1\languages/lang.php:29
+msgid "Enter"
+msgstr "Войти"
+
+#: z:\home\invest.local\r1\languages/lang.php:30
+msgid "Welcome"
+msgstr "Здравствуйте"
+
+#: z:\home\invest.local\r1\languages/lang.php:31
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: z:\home\invest.local\r1\languages/lang.php:32
+msgid "Fullname"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:33
+msgid "Your fullname (ex: John Smith)"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:34
+#, fuzzy
+msgid "Deposit transaction succeed"
+msgstr "Ошибка вклада"
+
+#: z:\home\invest.local\r1\languages/lang.php:35
+msgid "<strong>Success:</strong> You have successfully finished your deposit transaction."
+msgstr "<strong>Внимание:</strong> Ваш вклад был успешно зачислен."
+
+#~ msgid "Hello"
+#~ msgstr "Приветы, медведы!"
+
+#~ msgid "Home"
+#~ msgstr "Главная страница"
+
+#~ msgid "Name"
+#~ msgstr "Название"
+
+#~ msgid "Min"
+#~ msgstr "Мин"
+
+#~ msgid "Max"
+#~ msgstr "Макс"
+
+#~ msgid "Percents"
+#~ msgstr "Проценты"
+
+#~ msgid "Periodicy"
+#~ msgstr "Периодичность"
+
+#~ msgid "Term"
+#~ msgstr "Срок"

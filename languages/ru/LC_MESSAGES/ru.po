@@ -1,0 +1,654 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AI\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-05 15:23+0300\n"
+"PO-Revision-Date: 2010-05-05 15:24+0300\n"
+"Last-Translator: Cyril Kamar <cyril.kamaro@gmail.com>\n"
+"Language-Team: AI <cyril.kamaro@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: LUXEMBOURG\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: z:\\home\\invest.local\\r1\\includes\\library\n"
+"X-Poedit-SearchPath-1: z:\\home\\invest.local\\r1\\languages\n"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:23
+msgid "Account Summary"
+msgstr "Учетная запись"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:24
+msgid "Personal Information"
+msgstr "Персональная информация"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:25
+msgid "Settings"
+msgstr "Настройки"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:26
+msgid "Make deposit"
+msgstr "Вклад"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:27
+msgid "Request withdrawal"
+msgstr "Вывод средств"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:28
+msgid "Statistics"
+msgstr "Статистика"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:29
+msgid "Messages"
+msgstr "Сообщения"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:30
+msgid "Logout"
+msgstr "Выход"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:48
+msgid "SignUp"
+msgstr "Регистрация"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:50
+msgid "Member area"
+msgstr "Личный кабинет"
+
+#: z:\home\invest.local\r1\includes\library/smarty_functions.php:53
+msgid "Contact Us"
+msgstr "Обратная связь"
+
+#: z:\home\invest.local\r1\languages/lang.php:2
+msgid "Contact us"
+msgstr "Обратная связь"
+
+#: z:\home\invest.local\r1\languages/lang.php:3
+msgid "Email from"
+msgstr "От"
+
+#: z:\home\invest.local\r1\languages/lang.php:4
+#: z:\home\invest.local\r1\languages/lang.php:120
+msgid "Subject"
+msgstr "Тема"
+
+#: z:\home\invest.local\r1\languages/lang.php:5
+#: z:\home\invest.local\r1\languages/lang.php:118
+#: z:\home\invest.local\r1\languages/lang.php:121
+msgid "Message"
+msgstr "Сообщение"
+
+#: z:\home\invest.local\r1\languages/lang.php:6
+msgid "Send"
+msgstr "Отправить"
+
+#: z:\home\invest.local\r1\languages/lang.php:7
+msgid "Deposit transaction error"
+msgstr "Ошибка вклада"
+
+#: z:\home\invest.local\r1\languages/lang.php:8
+msgid "<strong>Alert:</strong> Your deposit transaction has been failed! Please try again later."
+msgstr "<strong>Внимание:</strong> Ваша попытка сделать вклад не удалась! Попробуйте повторить поже."
+
+#: z:\home\invest.local\r1\languages/lang.php:9
+msgid "Remember forgotten password"
+msgstr "Восстановление пароля"
+
+#: z:\home\invest.local\r1\languages/lang.php:10
+msgid "Your login"
+msgstr "Логин"
+
+#: z:\home\invest.local\r1\languages/lang.php:11
+msgid "Your e-mail"
+msgstr "Адрес электронной почты"
+
+#: z:\home\invest.local\r1\languages/lang.php:12
+#: z:\home\invest.local\r1\languages/lang.php:46
+msgid "Security question"
+msgstr "Секретный вопрос"
+
+#: z:\home\invest.local\r1\languages/lang.php:13
+#: z:\home\invest.local\r1\languages/lang.php:47
+msgid "Mother's Maiden Name"
+msgstr "Девичья фамилия матери"
+
+#: z:\home\invest.local\r1\languages/lang.php:14
+#: z:\home\invest.local\r1\languages/lang.php:48
+msgid "City of Birth"
+msgstr "Город, в котором Вы родились"
+
+#: z:\home\invest.local\r1\languages/lang.php:15
+#: z:\home\invest.local\r1\languages/lang.php:49
+msgid "Highschool Name"
+msgstr "Название школы"
+
+#: z:\home\invest.local\r1\languages/lang.php:16
+#: z:\home\invest.local\r1\languages/lang.php:50
+msgid "Name of Your First Love"
+msgstr "Имя Вашей первой девушки/парня"
+
+#: z:\home\invest.local\r1\languages/lang.php:17
+#: z:\home\invest.local\r1\languages/lang.php:51
+msgid "Favorite Pet"
+msgstr "Любимое домашнее животное"
+
+#: z:\home\invest.local\r1\languages/lang.php:18
+#: z:\home\invest.local\r1\languages/lang.php:52
+msgid "Favorite Book"
+msgstr "Любимая книга"
+
+#: z:\home\invest.local\r1\languages/lang.php:19
+#: z:\home\invest.local\r1\languages/lang.php:53
+msgid "Favorite TV Show/Sitcom"
+msgstr "Любимая ТВ программа"
+
+#: z:\home\invest.local\r1\languages/lang.php:20
+#: z:\home\invest.local\r1\languages/lang.php:54
+msgid "Favorite Movie"
+msgstr "Любимый фильм"
+
+#: z:\home\invest.local\r1\languages/lang.php:21
+#: z:\home\invest.local\r1\languages/lang.php:55
+msgid "Favorite Flower"
+msgstr "Любимый цветок"
+
+#: z:\home\invest.local\r1\languages/lang.php:22
+#: z:\home\invest.local\r1\languages/lang.php:56
+msgid "Favorite Color"
+msgstr "Любимый цвет"
+
+#: z:\home\invest.local\r1\languages/lang.php:23
+#: z:\home\invest.local\r1\languages/lang.php:58
+msgid "Answer"
+msgstr "Ответ"
+
+#: z:\home\invest.local\r1\languages/lang.php:24
+msgid "Remember me"
+msgstr "Напомнить"
+
+#: z:\home\invest.local\r1\languages/lang.php:25
+#: z:\home\invest.local\r1\languages/lang.php:36
+msgid "Login"
+msgstr "Логин"
+
+#: z:\home\invest.local\r1\languages/lang.php:26
+#: z:\home\invest.local\r1\languages/lang.php:38
+#: z:\home\invest.local\r1\languages/lang.php:131
+msgid "Password"
+msgstr "Пароль"
+
+#: z:\home\invest.local\r1\languages/lang.php:27
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: z:\home\invest.local\r1\languages/lang.php:28
+#: z:\home\invest.local\r1\languages/lang.php:42
+msgid "Login pin"
+msgstr "ПИН:"
+
+#: z:\home\invest.local\r1\languages/lang.php:29
+msgid "Enter"
+msgstr "Войти"
+
+#: z:\home\invest.local\r1\languages/lang.php:30
+msgid "Welcome"
+msgstr "Здравствуйте"
+
+#: z:\home\invest.local\r1\languages/lang.php:31
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: z:\home\invest.local\r1\languages/lang.php:32
+#: z:\home\invest.local\r1\languages/lang.php:69
+msgid "Signup"
+msgstr "Регистрация"
+
+#: z:\home\invest.local\r1\languages/lang.php:33
+msgid "Please fill out the form below to complete registration and create the investment account on the site. Before pressing the SIGN UP button, please make sure all the information and personal data entered correctly."
+msgstr "Пожалуйста, для завершения регистрации и создания инвестиционного счета, заполните данную форму. Перед тем как нажать кнопку ЗАРЕГИСТРИРОВАТЬСЯ, пожалуйста, проверьте, что введеная информация корректна."
+
+#: z:\home\invest.local\r1\languages/lang.php:34
+#: z:\home\invest.local\r1\languages/lang.php:77
+#: z:\home\invest.local\r1\languages/lang.php:138
+msgid "Fullname"
+msgstr "Полное имя"
+
+#: z:\home\invest.local\r1\languages/lang.php:35
+msgid "Your fullname (ex: John Smith)"
+msgstr "Ваше полное имя (например: Петров Петр Петрович)"
+
+#: z:\home\invest.local\r1\languages/lang.php:37
+msgid "Login must be at least 3 symbols of letters and digits only"
+msgstr "Имя пользователя должно быть не менее 3 символов (буквы и цифры)"
+
+#: z:\home\invest.local\r1\languages/lang.php:39
+msgid "Password must be at least 6 symbols of letters and digits"
+msgstr "Пароль должен быть не менее 6 символов (буквы и цифры)"
+
+#: z:\home\invest.local\r1\languages/lang.php:40
+msgid "Confirm password"
+msgstr "Подтверждение пароля"
+
+#: z:\home\invest.local\r1\languages/lang.php:41
+msgid "Confirm the password"
+msgstr "Подтверждение пароля"
+
+#: z:\home\invest.local\r1\languages/lang.php:43
+#: z:\home\invest.local\r1\languages/lang.php:45
+msgid "digits"
+msgstr "цифр"
+
+#: z:\home\invest.local\r1\languages/lang.php:44
+#: z:\home\invest.local\r1\languages/lang.php:116
+#: z:\home\invest.local\r1\languages/lang.php:134
+#: z:\home\invest.local\r1\languages/lang.php:146
+#: z:\home\invest.local\r1\languages/lang.php:151
+#: z:\home\invest.local\r1\languages/lang.php:161
+#: z:\home\invest.local\r1\languages/lang.php:187
+msgid "Master pin"
+msgstr "Мастер ПИН"
+
+#: z:\home\invest.local\r1\languages/lang.php:57
+msgid "Security question will help you to remember your password if you forget it"
+msgstr "Секретный вопрос поможет Вам восстановить пароль при его утере"
+
+#: z:\home\invest.local\r1\languages/lang.php:59
+msgid "Answer on your selected security question"
+msgstr "Ответьте на выбранный Вами секретный вопрос"
+
+#: z:\home\invest.local\r1\languages/lang.php:60
+msgid "E-mail"
+msgstr "Электронная почта"
+
+#: z:\home\invest.local\r1\languages/lang.php:61
+#: z:\home\invest.local\r1\languages/lang.php:145
+msgid "Your valid e-mail address"
+msgstr "Ваш действующий адрес электронной почты"
+
+#: z:\home\invest.local\r1\languages/lang.php:62
+#: z:\home\invest.local\r1\languages/lang.php:139
+msgid "Payment system"
+msgstr "Платежная система"
+
+#: z:\home\invest.local\r1\languages/lang.php:63
+#: z:\home\invest.local\r1\languages/lang.php:140
+msgid "Member ID"
+msgstr "Member ID"
+
+#: z:\home\invest.local\r1\languages/lang.php:64
+#: z:\home\invest.local\r1\languages/lang.php:141
+msgid "Your Perfect Money member ID"
+msgstr "Ваш идентификационной номер в Perfect Money"
+
+#: z:\home\invest.local\r1\languages/lang.php:65
+#: z:\home\invest.local\r1\languages/lang.php:142
+msgid "Account number"
+msgstr "Номер счета"
+
+#: z:\home\invest.local\r1\languages/lang.php:66
+#: z:\home\invest.local\r1\languages/lang.php:143
+msgid "Your account number"
+msgstr "Номер Вашего счета"
+
+#: z:\home\invest.local\r1\languages/lang.php:67
+msgid "Upline"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:68
+msgid "Your upline account name"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:70
+msgid "Reset"
+msgstr "Сбросить"
+
+#: z:\home\invest.local\r1\languages/lang.php:71
+msgid "Signup complete"
+msgstr "Регистрация завершена"
+
+#: z:\home\invest.local\r1\languages/lang.php:72
+msgid "You have successfuly created an account.<br>Now you can access your member area to make investments"
+msgstr "Вы успешно создали инвестиционный счет. <br>Теперь вы можете войти в личный кабинет"
+
+#: z:\home\invest.local\r1\languages/lang.php:73
+msgid "Log into Member area"
+msgstr "Войти в Личный кабинет"
+
+#: z:\home\invest.local\r1\languages/lang.php:74
+msgid "Deposit transaction succeed"
+msgstr "Вклад был успешно совершен"
+
+#: z:\home\invest.local\r1\languages/lang.php:75
+msgid "<strong>Success:</strong> You have successfully finished your deposit transaction."
+msgstr "<strong>Внимание:</strong> Ваш вклад был успешно зачислен."
+
+#: z:\home\invest.local\r1\languages/lang.php:76
+msgid "Account information"
+msgstr "Персональная информация"
+
+#: z:\home\invest.local\r1\languages/lang.php:78
+msgid "PM member ID"
+msgstr "PM member ID"
+
+#: z:\home\invest.local\r1\languages/lang.php:79
+msgid "LR account number"
+msgstr "LR номер счета"
+
+#: z:\home\invest.local\r1\languages/lang.php:80
+msgid "PM account number"
+msgstr "PM номер счета"
+
+#: z:\home\invest.local\r1\languages/lang.php:81
+msgid "Reg. date"
+msgstr "Дата регистрации"
+
+#: z:\home\invest.local\r1\languages/lang.php:82
+msgid "Referral link"
+msgstr "Партнерская ссылка"
+
+#: z:\home\invest.local\r1\languages/lang.php:83
+#: z:\home\invest.local\r1\languages/lang.php:184
+msgid "Available balace"
+msgstr "Доступный баланс"
+
+#: z:\home\invest.local\r1\languages/lang.php:84
+msgid "Deposited"
+msgstr "Депозитов"
+
+#: z:\home\invest.local\r1\languages/lang.php:85
+msgid "Earned"
+msgstr "Заработано"
+
+#: z:\home\invest.local\r1\languages/lang.php:86
+#: z:\home\invest.local\r1\languages/lang.php:167
+msgid "Withdrawn"
+msgstr "Выплачено"
+
+#: z:\home\invest.local\r1\languages/lang.php:87
+#: z:\home\invest.local\r1\languages/lang.php:88
+msgid "Code"
+msgstr "код"
+
+#: z:\home\invest.local\r1\languages/lang.php:90
+msgid "Min"
+msgstr "Мин"
+
+#: z:\home\invest.local\r1\languages/lang.php:91
+msgid "Max"
+msgstr "Макс"
+
+#: z:\home\invest.local\r1\languages/lang.php:92
+msgid "Percents"
+msgstr "Проценты"
+
+#: z:\home\invest.local\r1\languages/lang.php:93
+msgid "Periodicity"
+msgstr "Периодичность"
+
+#: z:\home\invest.local\r1\languages/lang.php:94
+msgid "hour(s)"
+msgstr "час(ов)"
+
+#: z:\home\invest.local\r1\languages/lang.php:95
+msgid "day(s)"
+msgstr "день(ей)"
+
+#: z:\home\invest.local\r1\languages/lang.php:96
+msgid "week(s)"
+msgstr "неделя(ль)"
+
+#: z:\home\invest.local\r1\languages/lang.php:97
+msgid "month(s)"
+msgstr "месяц(ев)"
+
+#: z:\home\invest.local\r1\languages/lang.php:98
+msgid "Term"
+msgstr "Срок"
+
+#: z:\home\invest.local\r1\languages/lang.php:99
+msgid "Days of week"
+msgstr "Дни недели"
+
+#: z:\home\invest.local\r1\languages/lang.php:100
+msgid "Mon-Fri"
+msgstr "Пн-Пт"
+
+#: z:\home\invest.local\r1\languages/lang.php:101
+msgid "Mon-Sun"
+msgstr "Пн-Вс"
+
+#: z:\home\invest.local\r1\languages/lang.php:102
+msgid "Can deposit"
+msgstr "Кол-во депозитов"
+
+#: z:\home\invest.local\r1\languages/lang.php:103
+msgid "Forever"
+msgstr "Бесконечно"
+
+#: z:\home\invest.local\r1\languages/lang.php:104
+msgid "time(s)"
+msgstr "раз"
+
+#: z:\home\invest.local\r1\languages/lang.php:105
+#: z:\home\invest.local\r1\languages/lang.php:110
+#: z:\home\invest.local\r1\languages/lang.php:172
+msgid "Amount"
+msgstr "Сумма"
+
+#: z:\home\invest.local\r1\languages/lang.php:107
+msgid "Deposit confirmation"
+msgstr "Подтверждение депозита"
+
+#: z:\home\invest.local\r1\languages/lang.php:108
+msgid "User"
+msgstr "Пользователь"
+
+#: z:\home\invest.local\r1\languages/lang.php:109
+#: z:\home\invest.local\r1\languages/lang.php:171
+msgid "Plan"
+msgstr "План"
+
+#: z:\home\invest.local\r1\languages/lang.php:111
+msgid "Source"
+msgstr "Источник"
+
+#: z:\home\invest.local\r1\languages/lang.php:112
+msgid "Account balance"
+msgstr "Баланс"
+
+#: z:\home\invest.local\r1\languages/lang.php:114
+msgid "Masterpin"
+msgstr "Мастер ПИН"
+
+#: z:\home\invest.local\r1\languages/lang.php:115
+msgid "New Master pin"
+msgstr "Новый Мастер ПИН"
+
+#: z:\home\invest.local\r1\languages/lang.php:117
+#: z:\home\invest.local\r1\languages/lang.php:135
+#: z:\home\invest.local\r1\languages/lang.php:147
+#: z:\home\invest.local\r1\languages/lang.php:152
+#: z:\home\invest.local\r1\languages/lang.php:162
+msgid "Save"
+msgstr "Сохранить"
+
+#: z:\home\invest.local\r1\languages/lang.php:119
+#: z:\home\invest.local\r1\languages/lang.php:124
+msgid "From"
+msgstr "От"
+
+#: z:\home\invest.local\r1\languages/lang.php:122
+msgid "Back to Messages"
+msgstr "Назад к списку сообщений"
+
+#: z:\home\invest.local\r1\languages/lang.php:125
+msgid "Title"
+msgstr "Заголовок"
+
+#: z:\home\invest.local\r1\languages/lang.php:126
+#: z:\home\invest.local\r1\languages/lang.php:173
+msgid "Date"
+msgstr "Дата"
+
+#: z:\home\invest.local\r1\languages/lang.php:127
+msgid "Action"
+msgstr "Действие"
+
+#: z:\home\invest.local\r1\languages/lang.php:128
+msgid "Support"
+msgstr "Тех. поддержка"
+
+#: z:\home\invest.local\r1\languages/lang.php:129
+msgid "Read"
+msgstr "Прочесть"
+
+#: z:\home\invest.local\r1\languages/lang.php:130
+msgid "Delete"
+msgstr "Удалить"
+
+#: z:\home\invest.local\r1\languages/lang.php:132
+msgid "Old Password"
+msgstr "Старый пароль"
+
+#: z:\home\invest.local\r1\languages/lang.php:133
+msgid "New Password"
+msgstr "Новый пароль"
+
+#: z:\home\invest.local\r1\languages/lang.php:136
+msgid "Personal information"
+msgstr "Персональная информация"
+
+#: z:\home\invest.local\r1\languages/lang.php:137
+msgid "Please make sure all the information and personal data entered correctly"
+msgstr ""
+
+#: z:\home\invest.local\r1\languages/lang.php:144
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: z:\home\invest.local\r1\languages/lang.php:148
+msgid "Secpin"
+msgstr "ПИН"
+
+#: z:\home\invest.local\r1\languages/lang.php:149
+msgid "Old Login pin"
+msgstr "Старый ПИН:"
+
+#: z:\home\invest.local\r1\languages/lang.php:150
+msgid "New Login pin"
+msgstr "Новый ПИН:"
+
+#: z:\home\invest.local\r1\languages/lang.php:154
+msgid "Change <b>Password</b>"
+msgstr "Изменить <b>Пароль</b>"
+
+#: z:\home\invest.local\r1\languages/lang.php:155
+msgid "Change <b>Login PIN</b>"
+msgstr "Изменить <b>ПИН</b>"
+
+#: z:\home\invest.local\r1\languages/lang.php:156
+msgid "Change <b>Master PIN</b>"
+msgstr "Изменить <b>Мастер ПИН</b>"
+
+#: z:\home\invest.local\r1\languages/lang.php:157
+msgid "Notify me by e-mail about Account log in"
+msgstr "Уведомлять по почте о входе в учетную запись"
+
+#: z:\home\invest.local\r1\languages/lang.php:158
+msgid "Notify me by e-mail about Account changes"
+msgstr "Уведомлять по почте о изменениях в учетной записи"
+
+#: z:\home\invest.local\r1\languages/lang.php:159
+msgid "Notify me by e-mail about Deposits details"
+msgstr "Уведомлять по почте о сделанных вкладах"
+
+#: z:\home\invest.local\r1\languages/lang.php:160
+msgid "Notify me by e-mail about Withdrawal details"
+msgstr "Уведомлять по почте о заказанных выплатах"
+
+#: z:\home\invest.local\r1\languages/lang.php:164
+msgid "Show"
+msgstr "Показать"
+
+#: z:\home\invest.local\r1\languages/lang.php:165
+msgid "All"
+msgstr "Все"
+
+#: z:\home\invest.local\r1\languages/lang.php:166
+msgid "Deposits"
+msgstr "Депозиты"
+
+#: z:\home\invest.local\r1\languages/lang.php:168
+msgid "Earnings"
+msgstr "Начисления"
+
+#: z:\home\invest.local\r1\languages/lang.php:169
+msgid "Referral bonuses"
+msgstr "Партнерские бонусы"
+
+#: z:\home\invest.local\r1\languages/lang.php:170
+msgid "Type"
+msgstr "Тип"
+
+#: z:\home\invest.local\r1\languages/lang.php:174
+msgid "Comment"
+msgstr "Комментарий"
+
+#: z:\home\invest.local\r1\languages/lang.php:175
+msgid "Deposit"
+msgstr "Депозит"
+
+#: z:\home\invest.local\r1\languages/lang.php:176
+msgid "Withdrawal"
+msgstr "Вывод средств"
+
+#: z:\home\invest.local\r1\languages/lang.php:177
+msgid "Earning"
+msgstr "Начисление"
+
+#: z:\home\invest.local\r1\languages/lang.php:178
+msgid "Referral bonus"
+msgstr "Партнерский бонус"
+
+#: z:\home\invest.local\r1\languages/lang.php:179
+msgid "Bonus"
+msgstr "Бонус"
+
+#: z:\home\invest.local\r1\languages/lang.php:180
+msgid "Transaction"
+msgstr "Транзакция"
+
+#: z:\home\invest.local\r1\languages/lang.php:181
+msgid "Back"
+msgstr "Назад"
+
+#: z:\home\invest.local\r1\languages/lang.php:182
+msgid "Withdrawal request"
+msgstr "Запрос на вывод средств"
+
+#: z:\home\invest.local\r1\languages/lang.php:183
+msgid "account"
+msgstr "счет"
+
+#: z:\home\invest.local\r1\languages/lang.php:185
+msgid "Amount to withdraw"
+msgstr "Сумма для вывода средств"
+
+#: z:\home\invest.local\r1\languages/lang.php:186
+msgid "REINVEST"
+msgstr "РЕИНВЕСТИРОВАТЬ"
+
+#: z:\home\invest.local\r1\languages/lang.php:188
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#~ msgid "Hello"
+#~ msgstr "Приветы, медведы!"
+
+#~ msgid "Home"
+#~ msgstr "Главная страница"
+
+#~ msgid "Name"
+#~ msgstr "Название"

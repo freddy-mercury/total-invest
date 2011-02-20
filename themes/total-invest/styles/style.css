@@ -1,0 +1,376 @@
+/**************************** HTML Tag Styles ******************************/
+body, td {
+	color: black;
+	font-family: Arial;
+	margin: 0px;
+}
+input, select, textarea {
+	font-family: Arial;
+	color: #454743;
+	font-size: 1.0em;
+}
+ 
+input.button {
+	width: 110px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+input.checkbox, input.radio {
+	border: 0px;
+	width: auto;
+	background: none;
+}
+a:link {
+	color: #0066CC;
+}
+a:visited {
+	color: #0066CC;
+}
+a:hover {
+	color: #A58526;
+}
+a.blue, a.blue:visited {
+	color: #0066CC;
+	text-decoration: none;
+}
+td.menu2 {
+	background: #FFFFFF;
+}
+td.menu2 ul {
+	float: left;
+	margin: 5px;
+}
+td.menu2 ul li{
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+	font-size: 80%;
+	
+}
+div.slogan {
+	color: maroon;
+	font-size: 180%;
+	font-weight: bold;
+	padding: 10px;
+	text-align: left;
+	padding-left: 40px;
+	padding-top: 20px;
+}
+div#countdown {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 200px;
+	height: 20px;
+	font-size: 11px;
+	font-weight:bold;
+	text-align:right;
+}
+/* MENU */
+.menu ul {
+	float: left;
+	margin: 5px;
+}
+.menu ul li{
+	float: left;
+	list-style: none;
+	margin-right: 20px;
+	font-size: 90%;
+	color: #ffffff;
+}
+.menu ul li a {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+/********/
+.small {
+	font-size: 90%;
+}
+.message {
+	color: red;
+	margin: 10px;
+	text-align: center;
+	font-size: 10pt;
+	font-weight: normal;
+}
+table.login {
+	
+}
+td.login {
+	color: #000000;
+}
+td.login div {
+	
+}
+td.login a {
+	
+}
+td.login a:hover {
+	
+}
+table.login input {
+	width: 150px;
+}
+table.login input.button {
+	width: 70px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+td.content {
+	font-size: 0.8em;
+	background: white;
+	padding: 10px;
+}
+td.content td{
+	
+}
+.page_name {
+	font-size: 16px; 
+	color: #132345;
+	font-weight: bold;
+}
+.copyright {
+	text-align: left;
+	font-size: 90%;
+	line-height: 200%;
+	color: navy;
+	height: 50px;
+}
+div.footer {
+	text-align: center;
+}
+div.footer div {
+	font-size: 0.7em;
+}
+.plans {
+	float: left;
+	margin-right: 10px;
+}
+td.head {
+	background: rgb(219, 229, 238);
+	text-align: center;
+	font-weight: bold;
+	color: rgb(22, 64, 112);
+}
+th.head {
+	font-size: 12px;
+	background: rgb(219, 229, 238);
+	text-align: center;
+	font-weight: bold;
+	color: rgb(22, 64, 112);
+}
+td.list {
+	border-bottom: 1px dotted #000000;	
+	text-align: center;
+}
+td.list_b {
+	border-bottom: 1px dotted #000000;	
+	text-align: center;
+	font-weight: bold;
+}
+.hint, td.content .hint {
+	color:#755628;
+}
+p.message {
+	text-align: left;
+}
+div.warning {
+	color: red;
+	margin: 10px;
+	text-align: center;
+	font-size: 10pt;
+	text-shadow: rgb(102, 102, 102) 1px 1px 2px;
+	font-weight: bold;
+}
+td.side {
+	padding-top: 20px;
+}
+em {
+	font: normal;
+	color: red;
+}
+td.content em {
+	color: black;
+}
+th.login_header {
+	color: rgb(22, 64, 112);
+	font-size: 10pt;
+	text-shadow: rgb(102, 102, 102) 1px 1px 2px;
+	font-weight: normal;
+}
+div.wrapper {
+	
+	text-align: left;
+}
+table.right {
+	background: rgb(219, 229, 238);
+	margin-top: 20px;
+}
+table.right td {
+	font-size: 40%;
+}
+table.right th {
+	font-size: 60%;
+	color: rgb(22, 64, 112);
+	text-shadow: rgb(102, 102, 102) 1px 1px 2px;
+	font-weight: normal;
+}
+/**********/
+th.devinfo {
+	font-size:11px;
+	font-weight:bold;
+	background: #000000;
+	color: #ffffff;
+}
+td.devinfo {
+	font-size:11px;
+	font-weight:normal;
+	border-bottom:1px dotted #000000;
+}
+tr.c1, td.c1 {
+	background-color: #dddddd;
+}
+tr.c2, td.c2 {
+	background-color: #eeeeee;
+}
+
+/** MENU **/
+/* CSS Document */
+ul#cssmenu {
+        margin: 0;
+        border: 0 none;
+        padding-top: 4px;
+        list-style: none;
+        height: 20px;
+        font: normal 10px Arial;
+}
+
+ul#cssmenu li {
+        margin: 0;
+        border: 0 none;
+        padding-right: 20px;
+        float: left;
+        display: inline;
+        list-style: none;
+        position: relative;
+        height: 20px;
+        text-align: center;
+}
+
+ul#cssmenu ul {
+        margin: 0;
+        border: 0 none;
+        padding: 0;
+        width: 110px;
+        list-style: none;
+        display: none;
+        position: absolute;
+        top: 20px;
+        left: 0;
+}
+
+ul#cssmenu ul:after {
+        clear: both;
+        display: block;
+        font: 1px/0px serif;
+        content: ".";
+        height: 0;
+        visibility: hidden;
+}
+
+ul#cssmenu ul li {
+        width: 110px;
+        float: left;
+        display: block !important;
+        display: inline;
+        text-align: left;
+        text-indent: 5px;
+}
+
+/* Main Menu */
+ul#cssmenu a {
+        border: 0px;
+        padding: 0;
+        float: none !important;
+        float: left;
+        display: block;
+        color: #FFFFFF;
+        font: normal 10px Arial;
+        text-decoration: none;
+        height: auto !important;
+        height: 1%;
+}
+
+/* Main Menu Hover */
+ul#cssmenu a:hover,
+ul#cssmenu li:hover a,
+ul#cssmenu li.iehover a {
+        color:#FFFFFF;
+}
+
+/* Second Menu */
+ul#cssmenu li:hover li a,
+ul#cssmenu li.iehover li a {
+        border: 1px solid #FFFFFF;    
+        float: none;
+        background: #567A9C;
+        color: #FFFFFF;
+        padding-top: 3px;
+        padding-bottom: 3px;
+}
+
+/* Second Menu Hover */
+ul#cssmenu li:hover li a:hover,
+ul#cssmenu li:hover li:hover a,
+ul#cssmenu li.iehover li a:hover,
+ul#cssmenu li.iehover li.iehover a {
+        background: #FFFFFF;
+        color:#003366;
+		border: 1px solid #FFFFFF;        
+}
+
+ul#cssmenu ul ul {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 170px;
+}
+
+ul#cssmenu li:hover ul ul,
+ul#cssmenu li.iehover ul ul {
+        display: none;
+}
+
+ul#cssmenu li:hover ul,
+ul#cssmenu ul li:hover ul,
+ul#cssmenu li.iehover ul,
+ul#cssmenu ul li.iehover ul {
+        display: block;
+} 
+
+div.ui-state-error {
+	text-align: center;
+	width: 200px;
+}
+
+.imp {
+	color: red;
+}
+
+.lang_switcher {
+    float:right;
+}
+.lang_switcher .lang {
+    background-color: #000099;
+}
+.lang_switcher .cur_lang {
+    background-color: #990000;
+}
+.lang_switcher a{
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+table.tbl td {
+	background: #f8f8f8;
+}
