@@ -178,15 +178,17 @@ class Project {
     	$this->smarty = new Smarty();
 	}
 	private function processCache() {
-		require_once('Cache/Lite.php');
-		// Set a few options
-		$options = array(
-			'cacheDir' => '/tmp/'.$_SERVER['HTTP_HOST'].'/',
-			'lifeTime' => 3600
-		);
+		if (CACHE_ENABLED) {
+			require_once('Cache/Lite.php');
+			// Set a few options
+			$options = array(
+				'cacheDir' => '/tmp/'.$_SERVER['HTTP_HOST'].'/',
+				'lifeTime' => 3600
+			);
 
-		// Create a Cache_Lite object
-		$this->cache = new Cache_Lite($options);
+			// Create a Cache_Lite object
+			$this->cache = new Cache_Lite($options);
+		}
 	}
 	public function setupSmarty() {
 		/** SMARTY **/

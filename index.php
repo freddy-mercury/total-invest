@@ -52,9 +52,12 @@ Project::getInstance()->getSmarty()->assign('investment_plans', $investment_plan
 if (isset($_REQUEST['page'])) {
 	$page_tpl = 'page.tpl';
 	$cache_key = 'page_'.intval($_REQUEST['page']).'_'.$_COOKIE['lang'];
-	if (!$cur_page = Project::getInstance()->getCache()->get($cache_key)) {
+	if (CACHE_ENABLED && !$cur_page = Project::getInstance()->getCache()->get($cache_key)) {
 		$cur_page = sql_row('SELECT * FROM pages WHERE (id="'.intval($_REQUEST['page']).'") AND lang="'.$_COOKIE['lang'].'"');
 		Project::getInstance()->getCache()->save($cur_page, $cache_key);
+	}
+	else {
+		$cur_page = sql_row('SELECT * FROM pages WHERE (id="'.intval($_REQUEST['page']).'") AND lang="'.$_COOKIE['lang'].'"');
 	}
 	if ($cur_page) {
 		$cur_page = stripslashes_array($cur_page);

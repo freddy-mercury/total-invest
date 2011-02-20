@@ -31,6 +31,7 @@ DEFINE('DB_PASSWORD', 'total-invest');
 date_default_timezone_set('Europe/Luxembourg');
 
 /** SETTINGS **/
+DEFINE('CACHE_ENABLED', FALSE);
 DEFINE('SSL', 0);
 DEFINE('REFERRAL_ONCE', 1);
 DEFINE('CAPTCHA', 0);

@@ -29,7 +29,7 @@
 					</tr>
 				</table>
 			</form>
-			</div>
 		</td>
 	</tr>
 </table>
+</div>
