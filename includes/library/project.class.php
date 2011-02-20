@@ -191,12 +191,12 @@ class Project {
 	public function setupSmarty() {
 		/** SMARTY **/
 		$theme = get_setting('theme');
-		$theme = !empty($theme) && file_exists(DOC_ROOT.'/themes/'.$theme.'/') ? get_setting('theme') : 'default';
+		$theme = !empty($theme) && file_exists(BASE_ROOT.'/themes/'.$theme.'/') ? get_setting('theme') : 'default';
 		$this->settings[17]['value'] = $theme;
-		$this->smarty->template_dir = DOC_ROOT.'/themes/'.$theme.'/';
-		$this->smarty->compile_dir = DOC_ROOT.'/templates_c/';
-		$this->smarty->config_dir = DOC_ROOT.'/configs/';
-		$this->smarty->cache_dir = DOC_ROOT.'/cache/';
+		$this->smarty->template_dir = BASE_ROOT.'/themes/'.$theme.'/';
+		$this->smarty->compile_dir = BASE_ROOT.'/templates_c/';
+		$this->smarty->config_dir = BASE_ROOT.'/configs/';
+		$this->smarty->cache_dir = BASE_ROOT.'/cache/';
 		require_once(LIB_ROOT.'/functions/smarty-gettext.php');
 		$this->smarty->register_block('t', 'smarty_translate');
 		$this->smarty->assign('tpl_cfg', $GLOBALS['TPL_CFG']);
