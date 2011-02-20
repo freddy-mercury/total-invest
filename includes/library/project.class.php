@@ -183,7 +183,8 @@ class Project {
 			// Set a few options
 			$options = array(
 				'cacheDir' => '/tmp/'.$_SERVER['HTTP_HOST'].'/',
-				'lifeTime' => 3600
+				'lifeTime' => 3600,
+				'automaticSerialization' => TRUE,
 			);
 
 			// Create a Cache_Lite object
