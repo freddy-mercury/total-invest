@@ -10,7 +10,7 @@ if (isset($_REQUEST['id'])) {
 			Project::getInstance()->getSmarty()->assign('from', 'Support');
 			Project::getInstance()->getSmarty()->assign('title', $message->title);
 			Project::getInstance()->getSmarty()->assign('text', nl2br($message->message));
-			Project::getInstance()->getSmarty()->display('user/message.tpl');		
+			Project::getInstance()->showPage('user/message.tpl');
 			$message->readed = 1;
 			$message->save();
 		}
@@ -23,5 +23,5 @@ if (isset($_REQUEST['id'])) {
 else {
 	$user_messages_list = new UserMessageList(Project::getInstance()->getCurUser());
 	Project::getInstance()->getSmarty()->assign('messages', $user_messages_list->getList());
-	Project::getInstance()->getSmarty()->display('user/messages.tpl');		
+	Project::getInstance()->showPage('user/messages.tpl');
 }

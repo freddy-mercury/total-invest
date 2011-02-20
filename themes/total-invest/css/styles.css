@@ -1,0 +1,294 @@
+body,td,div {
+		margin:0;
+		padding:0;
+		font-family:Tahoma,Arial,Verdana,serif;
+		font-size:9pt;
+}
+
+h1,h2,h3 {
+		margin-top:2em;
+		color:#29496D;
+}
+h1 {font-size:160%;margin-top:1em;}
+h2 {font-size:130%;}
+h3 {font-size:115%;}
+
+p {
+		line-height:1.5em;
+		margin-top:0.5em;
+		margin-bottom:1em;
+}
+
+span.highlight {
+		color:#61A0D6;
+}
+
+span.highlight2 {
+		color:#c00;
+}
+
+span.highlight3 {
+		font-weight:bold;
+		color:#fff;
+}
+
+
+span.nobr, span.nowrap {
+		white-space:nowrap;
+}
+
+div.layout {
+		min-width:850px;
+}
+
+#catalogue dl {
+		height:8.5em;
+		float:left;	
+
+		margin-top:0;
+		margin-right:25px;
+		background-repeat: no-repeat;
+		background-position:0 1.8em;
+}
+#catalogue dl dt {
+		color:#69c;
+		font-size:11pt;
+}
+#catalogue dl dd {
+		margin-left:50px;
+}
+
+#menubar div.m {
+		width:100%;
+		margin-top:20px;
+		padding:0;
+		float:left;
+}
+
+#menubar div.m ul {
+		padding:0;
+		margin:0;
+}
+
+#menubar div.m ul li {
+		font-weight:bold;
+		display: inline;
+		list-style-type: none;
+		padding-right:3%;
+	
+}
+
+#menubar div.m ul li a{
+		text-decoration:none;
+}
+
+#menubar div.m ul li.menu_separator {
+		padding:0;
+		background-color:red;
+}
+
+#menubar div.m ul li.menuA a{
+		text-decoration:none;
+		color:#cc0000;
+}
+
+
+#specialblocks {
+		color:#fff;
+		min-width:850px;
+		width:100%;
+		height:200px;
+		background-color: #9CB0C1;
+		border-bottom:1px solid #A5B7C7;
+}
+
+#sb_right {
+		width:100%;
+		height:100%;
+		background-image: url("../img/sb_right.gif");
+        background-repeat: no-repeat;
+		background-position:right top;		
+}
+
+#sb_left {
+		width:100%;
+		height:100%;
+		background-image: url("../img/sb_left.gif");
+        background-repeat: no-repeat;
+		background-position:left top;		
+}
+
+#sb_separator {
+		width:100%;
+		height:100%;
+		background-image: url("../img/sb_inner.gif");
+        background-repeat: repeat-y;
+		background-position:46% top;
+}
+
+#sb_inner {
+		float:left;
+		width:45%;
+		height:100%;
+}
+
+#sb_inner div.m {
+		padding:20px 10px 20px 50px;
+}
+
+#sb_inner2 {
+		float:left;
+		width:45%;
+		height:100%;
+}
+
+#sb_inner2 div.m {
+		padding:20px 25px 20px 35px;
+}
+
+div.sb_header {
+		color:#fff;
+		font-weight:bold;
+		text-decoration:none;
+		padding-bottom:10px;
+}
+
+ul.sb {
+		padding:0;
+		margin:0;
+		color:#000;
+}
+
+ul.sb li {
+		padding:6px 0;
+		margin:0;
+}
+
+#contacts_block {
+		float:left;
+		width:23%;
+		background-color: #EDF5FE;
+		background-image: url("../img/contacts_corn.gif");
+        background-repeat: no-repeat;
+		background-position:left top;
+}
+
+#contacts_block div.m{
+		padding:16px 6px 16px 30px;
+}
+#contacts_block div.m p {
+		margin:0;
+}
+
+div.c_header {
+		color:#29496D;
+		font-weight:bold;
+		text-decoration:underline;
+		padding-bottom:10px;
+}
+
+div.c_header2 {
+		color:#5C9DD5;
+}
+span.c_tel {
+		color:#4F6A89;
+		font-weight:bold;
+		font-size:1.3em;
+}
+span.c_tel2 {
+		color:#7AAFDE;
+		font-weight:bold;
+		font-size:1.3em;
+}
+
+#content_block {
+		float:left;
+		width:76%;
+}
+#content_block div.m {
+		padding:16px 30px;
+}
+
+#footer_block {
+		clear:both;
+		width:100%;
+		height:67px;
+		background-color: #EDF5FE;
+		background-image: url("../img/footer_left.gif");
+        background-repeat: no-repeat;
+		background-position:left top;
+}
+
+#footer_block form {
+		margin:0;
+		padding:0;
+}
+
+#footer_block div.m{
+		padding:16px 30px;		
+}
+
+#footer_searchbar {
+		float:left;
+		border:0;
+		width:178px;
+		height:47px;
+		background-image: url("../img/footer_search.jpg");
+        background-repeat: no-repeat;
+}
+
+#footer_searchbar input {
+		margin:11px 2px 13px 35px;
+		padding:0;
+		background-color: #EDF5FE;
+		border:0;
+		font-size:10px;
+		width:142px;
+		height:12px;
+}
+
+#footer_searchbtn {
+		float:left;
+		margin:11px 2px 13px 10px;
+}
+
+#footer_slogan {
+		padding-right:24%;
+		width:252px;
+		height:25px;
+		float:right;
+		background-image: url("../img/footer_slogan.gif");
+        background-repeat: no-repeat;		
+}
+
+#footer_copyright {
+		float:right;
+		text-align:right;
+		width:22%;
+		font-size:8pt;
+		padding-right:10px;
+}
+#footer_copyright span.outer a {
+	color:#61A0D6;
+	text-decoration:none;
+}
+#footer_copyright span.outer b {
+	margin-right:0.5em;
+	font-weight:normal;
+}
+
+ol.search_result li {
+	margin-bottom:1.5em;
+}
+
+ol.search_result li div.info {
+	color:#666;
+}
+
+ol.search_result li span.fullmatch {
+	color:#F00;
+}
+
+.hid{
+	display:none;
+}

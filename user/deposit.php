@@ -27,15 +27,15 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='pre_deposit') {
 			SELECT count(*) FROM translines 
 			WHERE user_id="'.$user['id'].'" and plan_id="'.$plan['id'].'" and type="d" and status="2"
 		');
-		//если превышено кол-во вкладов в этот план
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if ($plan['attempts']!=0 && $user_attempts >= $plan['attempts']) {
 			location($_SERVER['PHP_SELF'], '<p class=imp><strong>Warning:</strong> You have already deposited '.$plan['attempts'].' times in this plan!</p>');
 		}
-		//если все ништяк, то просим подтвердить
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		elseif (isset($_POST['amount']) && floatval($_POST['amount']) >= $plan['min'] && floatval($_POST['amount']) <= $plan['max']) {
 			Project::getInstance()->getSmarty()->assign('plan', $plan);
 			Project::getInstance()->getSmarty()->assign('balance', $balance);
-			Project::getInstance()->getSmarty()->display('user/deposit_confirm.tpl');
+			Project::getInstance()->showPage('user/deposit_confirm.tpl');
 		}
 		else {
 			location($_SERVER['PHP_SELF'], '<p class=imp><strong>Warning:</strong> Incorrect amount has been defined!</p>');
@@ -52,7 +52,7 @@ elseif (isset($_REQUEST['action']) && $_REQUEST['action']=='deposit') {
 			SELECT count(*) FROM translines 
 			WHERE user_id="'.$user['id'].'" and plan_id="'.$plan['id'].'" and type="d" and status="2"
 		');
-		//если превышено кол-во вкладов в этот план
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if ($plan['attempts']!=0 && $user_attempts >= $plan['attempts']) {
 			location($_SERVER['PHP_SELF'], '<p class=imp><strong>Warning:</strong> You have already deposited '.$plan['attempts'].' times in this plan!</p>');
 		}
@@ -152,5 +152,5 @@ else {
 		$plans[] = $row;
 	}
 	Project::getInstance()->getSmarty()->assign('plans', stripslashes_array($plans));
-	Project::getInstance()->getSmarty()->display('user/deposit.tpl');
+	Project::getInstance()->showPage('user/deposit.tpl');
 }

@@ -51,7 +51,12 @@ $investment_plans.= '</tbody></table>';
 Project::getInstance()->getSmarty()->assign('investment_plans', $investment_plans);
 if (isset($_REQUEST['page'])) {
 	$page_tpl = 'page.tpl';
-	if ($cur_page = sql_row('SELECT * FROM pages WHERE (id="'.intval($_REQUEST['page']).'") AND lang="'.$_COOKIE['lang'].'"')) {
+	$cache_key = 'page_'.intval($_REQUEST['page']).'_'.$_COOKIE['lang'];
+	if (!$cur_page = Project::getInstance()->getCache()->get($cache_key)) {
+		$cur_page = sql_row('SELECT * FROM pages WHERE (id="'.intval($_REQUEST['page']).'") AND lang="'.$_COOKIE['lang'].'"');
+		Project::getInstance()->getCache()->save($cur_page, $cache_key);
+	}
+	if ($cur_page) {
 		$cur_page = stripslashes_array($cur_page);
 		if (Project::getInstance()->getCurUser()->isAdmin()) {
 			$cur_page['edit_link'] = '<div style="font-size:9px;color:blue;"><a href="/includes/inlines/admin/page.php?id='.$cur_page['id'].'" target="blank">(edit page)</a></div>';
@@ -118,4 +123,4 @@ else {
 		$page_tpl = 'main.tpl';
 	}
 }
-Project::getInstance()->getSmarty()->display($page_tpl);
+Project::getInstance()->showPage($page_tpl);

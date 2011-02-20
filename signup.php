@@ -107,4 +107,4 @@ else {
 	$page_tpl = 'signup.tpl';
 	Project::getInstance()->getSmarty()->assign('signup', array($_SESSION['referral']));
 }
-Project::getInstance()->getSmarty()->display($page_tpl);
+Project::getInstance()->showPage($page_tpl);

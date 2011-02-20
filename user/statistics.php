@@ -21,4 +21,4 @@ $stats = new Statistics(Project::getInstance()->getCurUser()->id);
 $stats->select = '*, translines.type as type';
 $lines = $stats->getLines($types, $status);
 Project::getInstance()->getSmarty()->assign('lines', $lines);
-Project::getInstance()->getSmarty()->display('user/statistics.tpl');
+Project::getInstance()->showPage('user/statistics.tpl');

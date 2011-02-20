@@ -25,7 +25,7 @@ class User {
 	public $monitor;
 	public $question;
 	public $question_answer;
-	public $lang;
+	public $lang = 'en';
 	public $ip_ctrl;
 	public $ips = array();
 	public $color = '#FFFFFF';

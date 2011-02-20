@@ -1,6 +1,15 @@
 <?php
 DEFINE('PRO_VERSION', true);
 /** PATHS **/
+/**
+ * Путь к public_html проекта
+ * Здесь будет конфиг, скин и временные директории
+ */
+define('BASE_ROOT', dirname(__FILE__));
+/**
+ * Путь к скрипту
+ * Он у нас в другом месте
+ */
 DEFINE('DOC_ROOT', dirname(__FILE__));
 DEFINE('LIB_ROOT', DOC_ROOT.'/includes/library');
 
@@ -14,9 +23,9 @@ require_once(DOC_ROOT.'/includes/constants.php');
 
 /** MYSQL **/
 DEFINE('DB_HOST', 'localhost');
-DEFINE('DB_NAME', 'hyip_delomare');
-DEFINE('DB_LOGIN', 'hyip_delomare');
-DEFINE('DB_PASSWORD', 'p7pJFChdAv9sxuG9');
+DEFINE('DB_NAME', 'total-invest');
+DEFINE('DB_LOGIN', 'total-invest');
+DEFINE('DB_PASSWORD', 'total-invest');
 
 /** TIMEZONE **/
 date_default_timezone_set('Europe/Luxembourg');
@@ -41,23 +50,7 @@ $GLOBALS['row'] = 0;
 $GLOBALS['queries'] = array();
 $GLOBALS['warnings'] = array();
 
-/*
-if (AuthController::getInstance()->isAuthorized()) {
-	$user = new User($_SESSION['CUR_USER']->id);
-	$e = $user->stats->getNextEarningTime();
-	if (!empty($e[0])) {
-		$smarty->assign('countdown', 'countdown(\'countdown\', '.$e[1].', '.$e[0].');');
-	}
-	else {
-		$smarty->assign('countdown', '');
-	}
-	include_once LIB_ROOT.'/Logger.php';
-	$logger = new Logger($user->id);
-}
-else {
-	$smarty->assign('countdown', '');
-}
-$notification = get_notification();*/
+
 if (isset($_REQUEST['referral'])) $_SESSION['referral'] = $_REQUEST['referral'];
 /** DEVINFO **/
 include_once(LIB_ROOT.'/devinfo.php');

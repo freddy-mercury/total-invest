@@ -56,7 +56,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->getSmarty()->display('user/secpin.tpl');
+				Project::getInstance()->showPage('user/secpin.tpl');
 			}
 		}
 		elseif ($_REQUEST['change'] == 'password') {
@@ -94,7 +94,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->getSmarty()->display('user/password.tpl');
+				Project::getInstance()->showPage('user/password.tpl');
 			}
 		}
 		elseif ($_REQUEST['change'] == 'masterpin') {
@@ -131,7 +131,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->getSmarty()->display('user/masterpin.tpl');
+				Project::getInstance()->showPage('user/masterpin.tpl');
 			}
 		}
 		Project::getInstance()->resetCurUser();
@@ -158,4 +158,4 @@ $_POST['change_notify'] = Project::getInstance()->getCurUser()->change_notify;
 $_POST['deposit_notify'] = Project::getInstance()->getCurUser()->deposit_notify;
 $_POST['withdrawal_notify'] = Project::getInstance()->getCurUser()->withdrawal_notify;
 Project::getInstance()->getSmarty()->assign('user', Project::getInstance()->getCurUser());
-Project::getInstance()->getSmarty()->display('user/settings.tpl');
+Project::getInstance()->showPage('user/settings.tpl');

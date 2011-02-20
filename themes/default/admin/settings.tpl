@@ -24,6 +24,7 @@
 						</tr>
 					</table>
 				</form>
+				<a name="set"></a>
 				<form action="" method="POST">
 				<input type="hidden" name="action" value="add">
 					<table>

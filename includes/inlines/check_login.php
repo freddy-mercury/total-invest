@@ -4,10 +4,10 @@ include_once(DOC_ROOT.'/includes/authorization.php');
 if (!empty($_REQUEST['login'])) {
 	include_once(LIB_ROOT.'/users/user.class.php');
 	if (User::loginExist($_REQUEST['login'])) {
-            echo '<span style="color:red;">This login is not free</span>';
+            echo '<br /><span style="color:red;"><small>This login is not free</small></span>';
 	}
         else {
-            echo '<span style="color:green;">This login is free</span>';
+            echo '<br /><span style="color:green;"><small>This login is free</small></span>';
         }
 }
 else {
@@ -15,6 +15,6 @@ else {
         echo '';
     }
     else {
-        echo '<span style="color:green;">This login is free</span>';
+        echo '<br /><span style="color:green;"><small>This login is free</small></span>';
     }
 }

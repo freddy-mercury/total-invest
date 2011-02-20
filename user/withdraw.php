@@ -166,5 +166,5 @@ else {
 		$balance = floatval($user['bonus'] + $user['reinvest'] > 0 ? $balance - ($user['bonus'] + $user['reinvest']) : ($balance));
 	}
 	Project::getInstance()->getSmarty()->assign('balance', $balance);
-	Project::getInstance()->getSmarty()->display('user/withdraw.tpl');			
+	Project::getInstance()->showPage('user/withdraw.tpl');
 }

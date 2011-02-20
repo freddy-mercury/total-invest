@@ -2,6 +2,11 @@
 include_once(LIB_ROOT.'/users/user.class.php');
 class Project {
 	/**
+	 *
+	 * @var Cache_Lite
+	 */
+	private $cache;
+	/**
 	 * Smarty instance
 	 *
 	 * @var Smarty
@@ -37,6 +42,7 @@ class Project {
         $this->processDbUpdates();
         //process Smarty
         $this->processSmarty();
+		$this->processCache();
         //process notification
         $this->processNotification();
         $this->cur_user = new User(0);
@@ -171,6 +177,17 @@ class Project {
 		include_once(LIB_ROOT.'/Smarty/Smarty.class.php');
     	$this->smarty = new Smarty();
 	}
+	private function processCache() {
+		require_once('Cache/Lite.php');
+		// Set a few options
+		$options = array(
+			'cacheDir' => '/tmp/'.$_SERVER['HTTP_HOST'].'/',
+			'lifeTime' => 3600
+		);
+
+		// Create a Cache_Lite object
+		$this->cache = new Cache_Lite($options);
+	}
 	public function setupSmarty() {
 		/** SMARTY **/
 		$theme = get_setting('theme');
@@ -215,4 +232,12 @@ class Project {
 		textdomain($_COOKIE['lang']);
 		bind_textdomain_codeset ($_COOKIE['lang'], 'utf-8');
     }
+	public function showPage($content = '') {
+		$this->getSmarty()->assign('CONTENT', Project::getInstance()->getSmarty()->fetch($content));
+		$this->getSmarty()->display('header.tpl');
+	}
+
+	public function getCache() {
+		return $this->cache;
+	}
 }

@@ -22,4 +22,4 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
 		location($_SERVER['PHP_SELF'], '<p  style="color:red; font-weight:bold;">Your message has been sent to the support!</p>');
 	}
 }
-Project::getInstance()->getSmarty()->display('contactus.tpl');
+Project::getInstance()->showPage('contactus.tpl');

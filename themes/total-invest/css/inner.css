@@ -1,0 +1,251 @@
+p.message_success {
+		color:#090;
+}
+p.message_error {
+		color:#c00;
+}
+
+
+
+#header {
+		position: relative; 
+		min-width:850px;
+		background-image: url("../img/head_bg-1.gif");
+        background-repeat: repeat-x;
+        margin:0;
+		padding:0;
+        height: 180px;
+}
+
+#header_left {
+		background-image: url("../img/head_left-1.jpg");
+        background-repeat: no-repeat;
+        margin:0;
+		padding:0;
+		position:absolute;
+		left:0;
+        width: 299px;
+        height: 188px;
+		z-index:3;	
+}
+
+#header_center {
+		background-image: url("../img/head_center-1.jpg");
+        background-repeat: no-repeat;
+        margin:0;
+		padding:0;
+		position:absolute;
+		left:299px;
+        width: 320px;
+        height: 180px;
+		z-index:1;
+}
+
+#header_right {
+		behavior:url("../img/png.htc");
+        margin:0;
+		padding:0;
+		position:absolute;
+		z-index:2;
+		right:0;
+        width: 1280px;
+        height: 180px;		
+}
+
+#header_logo {
+		behavior:url("../img/png.htc");
+        margin:0;
+		padding:0;
+		width:178px;
+		height:178px;
+		position:absolute;
+		left:40px;
+		top:-10px;
+		z-index:5;
+}
+#header_logoflash {
+		display:none;
+        margin:0;
+		padding:0;
+		width:178px;
+		height:178px;
+		position:absolute;
+		left:40px;
+		top:-10px;
+		z-index:5;
+}
+
+#header_slogan {
+		behavior:url("../img/png.htc");
+        margin:0;
+		padding:0;
+		width:300px;
+		height:60px;
+		position:absolute;
+		left:40%;
+		top:86px;
+		z-index:8;
+}
+
+#header_services {
+		behavior:url("../img/png.htc");
+        margin:0;
+		padding:0;
+		width:135px;
+		height:32px;
+		position:absolute;
+		left:299px;
+		top:0px;
+		z-index:6;
+}
+
+#header_service_home,#header_service_map,#header_service_print {
+		width:12px;
+		height:12px;
+		position:absolute;
+		top:13px;
+		z-index:7;
+}
+#header_service_home {
+		left:320px;
+}
+
+#header_service_map {
+		left:360px;
+}
+
+#header_service_print {
+		left:400px;
+}
+
+#menubar {
+		min-width:850px;
+		clear:both;
+		width:100%;
+		height:51px;
+		background-color: #fff;
+		background-image: url("../img/menubar_right-1.jpg");
+        background-repeat: no-repeat;
+		background-position:right top;
+}
+#menubar_left {
+		height:51px;
+		padding-left:110px;
+		background-image: url("../img/menubar_left-1.jpg");
+        background-repeat: no-repeat;
+}
+
+A.bcA {
+		color:#5C9DD5;
+		text-decoration:none;
+}
+/*---------------------------*/
+#submenubar {
+		min-width:850px;
+		clear:both;
+		width:100%;
+		height:28px;
+		background-image: url("../img/submenu_bg.gif");
+        background-repeat: repeat-x;
+
+}
+#submenubar_left {
+		height:28px;
+		padding-left:150px;
+		background-image: url("../img/submenubar_left.jpg");
+        background-repeat: no-repeat;
+}
+#submenubar_right {
+		height:28px;
+		background-image: url("../img/submenubar_right.jpg");
+        background-repeat: no-repeat;
+		background-position:right top;
+}
+
+
+
+#submenubar div.m {
+		width:100%;
+		margin-top:7px;
+		padding:0;
+		float:left;
+}
+
+#submenubar div.m ul {
+		padding:0;
+		margin:0;
+}
+
+#submenubar div.m ul li {
+		font-weight:normal;
+		display: inline;
+		list-style-type: none;
+		padding-right:6%;
+	
+}
+
+#submenubar div.m ul li a{
+		text-decoration:none;
+}
+
+a.submenu_itemA {
+		text-decoration:none;
+		color:#cc0000;
+}
+
+/*************************************/
+
+
+#sb_right {
+		width:100%;
+		height:100%;
+		background-image: url("../img/sb_right-1.gif");
+        background-repeat: no-repeat;
+		background-position:right top;		
+}
+
+#sb_left {
+		width:100%;
+		height:100%;
+		background-image: url("../img/sb_left-1.gif");
+        background-repeat: no-repeat;
+		background-position:left top;		
+}
+
+#pricelist_table, #demandlist_table {
+	background:#F4F5F9;
+	width:100%;
+	border-collapse: collapse;
+}
+
+#pricelist_table td, #demandlist_table td{
+	border: 1px solid #8598A9;
+	padding:4px;
+	color:#0D3E76;
+	text-align:center;
+}
+
+#pricelist_table tr.header,#demandlist_table tr.header {
+	background:#CCD9E2;
+	color:#0E4075;
+	font-weight:bold;
+}
+
+input.buttonorder,input.buttondemand {
+	border:0;
+	height:2em;
+	background:none;
+	text-decoration:underline;
+	font-weight:bold;
+	color:#cc0000;
+	font-family:Tahoma;
+	font-size:12pt;
+	padding:0;
+	cursor:hand;
+}
+
+input.flat, textarea.flat {
+	border: 1px solid #8598A9;
+}
+
+table td {padding:2px;text-align:center;}

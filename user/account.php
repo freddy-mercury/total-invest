@@ -16,4 +16,4 @@ $user = sql_row('
 			GROUP BY users.id
 		');
 Project::getInstance()->getSmarty()->assign('user', $user);
-Project::getInstance()->getSmarty()->display('user/account.tpl');
+Project::getInstance()->showPage('user/account.tpl');

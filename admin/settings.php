@@ -30,5 +30,8 @@ switch ($action) {
 		location($_SERVER['PHP_SELF'], '<p class=imp>Setting has beed deleted!</p>');
 	break;
 }
+if (isset($_GET['set'])) {
+	$_POST['name'] = $_GET['set'];
+}
 Project::getInstance()->getSmarty()->assign('settings', Project::getInstance()->getSettings());
 Project::getInstance()->getSmarty()->display('../default/admin/settings.tpl');

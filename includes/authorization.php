@@ -37,14 +37,14 @@ else {
 		}
 		else {
 			Project::getInstance()->getSmarty()->assign('message', '<p class=imp><strong>Alert:</strong> Authorization failed!</p>');
-			Project::getInstance()->getSmarty()->display('login_warning.tpl');
+			Project::getInstance()->showPage('login_warning.tpl');
 			exit;
 		}
 	}
 	else {
 		//if guest & ACCESS_LEVEL > guest
 		if ($GLOBALS['ACCESS_LEVEL'] > ACCESS_LEVEL_GUEST) {
-			Project::getInstance()->getSmarty()->display('login_warning.tpl');
+			Project::getInstance()->showPage('login_warning.tpl');
 			exit;
 		}
 	}
