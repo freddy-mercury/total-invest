@@ -67,23 +67,7 @@
 				</div>
 				
 				<div id="left_graf">
-					<h2>Monitoring</h2>
 					
-					<div>
-						<a href="" target="_blank">Real_1 (Счет №1)</a>
-						<span><a href="" target="_blank">
-						<img src="{get_theme_dir}/img/217.png" /></a></span>
-					</div>
-					<div>
-						<a href="" target="_blank">Real_2 (Счет №2)</a>
-						<span><a href="" target="_blank"><img src="{get_theme_dir}/img/214.png" /></a></span>
-					</div>
-					<div>
-						<a href="" target="_blank">Real_3 (Счет №3)</a>
-						<span><a href="" target="_blank"><img src="{get_theme_dir}/img/216.png" /></a></span>
-					</div>
-                    
-                    <div style="height:240px;"></div>
 
 				</div>
 				
