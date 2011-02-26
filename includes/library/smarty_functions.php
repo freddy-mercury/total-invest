@@ -63,7 +63,7 @@ function get_menu($params) {
 	while ($menu_page = mysql_fetch_assoc($result)) {
 		$out.= $prefix . '<a href="/index.php?page=' . $menu_page['id'] . '" class=menu>' . $menu_page['name'] . '</a>' . $suffix;
 		if (Project::getInstance()->getCurUser()->isAdmin()) {
-			$out.= $prefix . '<small><a href="/includes/inlines/admin/page.php?position=' . $menu_page['position'] . '"  target="blank  style="font-size:9px;">(add page here)</a></small>' . $suffix;
+			$out.= $prefix . '<small><a href="/includes/inlines/admin/page.php?position=' . $menu_page['position'] . '"  target="blank"  style="font-size:9px;">(add page here)</a></small>' . $suffix;
 		}
 	}
 	$out.= $exclude ? '' : $prefix . '<a href="/contactus.php" class=menu>' . _('Contact Us') . '</a>' . $suffix;
