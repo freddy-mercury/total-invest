@@ -45,12 +45,14 @@ function get_menu($params) {
 	$out = '';
 	include_once(LIB_ROOT . '/pages/page.class.php');
 	$out.= $prefix . '<a href="/" class=menu>' . _('Home') . '</a>' . $suffix;
-	if (!AuthController::getInstance()->isAuthorized()) {
+	if (!AuthController::getInstance()->isAuthorized() && $show_signup) {
 		$out.= $prefix . '<a href="/signup.php" class=menu>' . _('Sign Up') . '</a>' . $suffix;
 	}
-	$out.= $prefix . '<a href="/user/account.php" class=menu>' . _('Member\'s area') . '</a>' . $suffix;
+	if ($show_memberarea) {
+		$out.= $prefix . '<a href="/user/account.php" class=menu>' . _('Member\'s area') . '</a>' . $suffix;
+	}
 	if (Project::getInstance()->getCurUser()->isAdmin()) {
-		$out.= $prefix . '<a href="/includes/inlines/admin/page.php?position=0" target="blank">(add page here)</a>' . $suffix;
+		$out.= $prefix . '<small><a href="/includes/inlines/admin/page.php?position=0" target="blank">(add page here)</a></small>' . $suffix;
 	}
 	$result = sql_query('
 		SELECT *
