@@ -32,7 +32,7 @@
 							<td><b>Name:</b></td><td><input type="text" name="name" value="{$smarty.post.name}"></td>
 						</tr>
 						<tr>
-							<td><b>Value:</b></td><td><input type="text" name="value" value="{$smarty.post.value}"></td>
+							<td><b>Value:</b></td><td><textarea name="value">{$smarty.post.value}</textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><input type="submit" value="Add" class="button"></td>
