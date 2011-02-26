@@ -5,20 +5,18 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 switch ($action) {
 	case 'save':
 		$_POST['settings'] = array_map("encrypt", $_POST['settings']);
-		$_POST = sql_escapeArray($_POST);
 		foreach ($_POST['settings'] as $id=>$value) {
-			sql_query('UPDATE settings SET value="'.$value.'" WHERE id="'.intval($id).'"');
+			sql_query('UPDATE settings SET value="'.sql_escapeStr($value).'" WHERE id="'.intval($id).'"');
 		}
 		location($_SERVER['PHP_SELF'], '<p class=imp>Settings has beed saved!</p>');
 	break;
 	case 'add':
-		$_POST = sql_escapeArray($_POST);
 		sql_query('
 			INSERT INTO settings
 			SET
 				id=0,
-				name="'.$_POST['name'].'",
-				value="'.encrypt($_POST['value']).'",
+				name="'.sql_escapeStr($_POST['name']).'",
+				value="'.sql_escapeStr(encrypt($_POST['value'])).'",
 				custom=1
 		');
 		location($_SERVER['PHP_SELF'], '<p class=imp>Setting <u>'.htmlspecialchars($_POST['name']).'</u> has beed added!</p>');
