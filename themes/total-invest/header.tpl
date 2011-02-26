@@ -100,14 +100,13 @@
 				All rights reserved.
 			</div>
 			<div id="bottom_right">
-               
-				<a href="index.htm" >Home</a>    /
-				<a href="assetmanage.php.htm" >Trust management</a>    /
-				<a href="investment_conditions.php.htm" >Terms</a>   /
-				<a href="partners.php.htm" >Brokers</a> /  
-				<a href="statistics.php.htm" >Statistics</a> /   
-				<a href="faq.php.htm" >FAQ</a> /    
-                <a href="contacts.php.htm" >Contacts</a>
+				<a href="/index.php" >Home</a>    /
+				<a href="{get_page_link id='10'}" >Partnership</a>    /
+				<a href="{get_page_link id='11'}" >Anti-spam policy</a>   /
+				<a href="/user/account.php" >Member's area</a> /
+				<a href="/signup.php" >Sign Up</a> /
+				<a href="{get_page_link id='7'}" >Agreement</a> /
+                <a href="/contactus.php" >Contact Us</a>
 
                                 
 			</div>
