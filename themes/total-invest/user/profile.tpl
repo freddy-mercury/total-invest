@@ -53,7 +53,7 @@
 						</table>
 					</td>
 				</tr>
-			</table><br></br>
+			</table><br>
 			<table cellpadding="5" cellspacing="1" border="0" align="center">
 				<tr>
 					<td>{t}Your name{/t}:</td>
@@ -88,7 +88,7 @@
 				</tr>
 				{if $smarty.const.MASTER_PIN}
 				<tr valign="top">
-					<td colspan="2" align="center">{t}Security pin{/t}:
+					<td colspan="3" align="center">{t}Security pin{/t}:
 						{get_pin_input_field name="masterpin" length=$tpl_cfg.master_pin.length}
 					</td>
 				</tr>

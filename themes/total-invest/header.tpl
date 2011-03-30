@@ -34,7 +34,7 @@
 				<span>{get_setting name="phone_code"}</span> <strong>{get_setting name="phone"}</strong>
 			</div>
 			<div id="header_bottom">            
-            	{get_menu show_signup="FALSE" show_memberarea="FALSE" pre_tag="<ul>" after_tag="</ul>" prefix="<li>" suffix="</li>"}
+            	{get_menu show_signup="0" show_memberarea="0" pre_tag="<ul>" after_tag="</ul>" prefix="<li>" suffix="</li>"}
 			</div>
 		</div>
 		
