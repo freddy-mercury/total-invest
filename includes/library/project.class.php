@@ -185,7 +185,7 @@ class Project {
 				'cacheDir' => '/tmp/'.$_SERVER['HTTP_HOST'].'/',
 				'lifeTime' => 3600,
 				'output'=>false,
-				'hashedDirectoryLevel'=>3,
+				'hashedDirectoryLevel'=>1,
 				'hashedDirectoryUmask'=>0770,
 				'automaticSerialization'=>true,
 			);

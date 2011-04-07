@@ -146,6 +146,9 @@ Project::getInstance()->getSmarty()->register_function('get_setting', 'get_setti
 
 function get_page_link($params) {
 	extract($params);
+	if (Project::getInstance()->getCurUser()->isAdmin() && !sql_get('SELECT id FROM pages WHERE id="'.intval($id).'"')) {
+		return '/includes/inlines/admin/page.php?position=&id='.intval($id).'" target="_blank';
+	}
 	return '/index.php?page=' . $id;
 }
 

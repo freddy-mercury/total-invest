@@ -37,12 +37,8 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save') {
 else {
 	$page = sql_row('SELECT * FROM pages WHERE id="'.intval($_REQUEST['id']).'" AND lang="'.$_COOKIE['lang'].'"');
 	if (empty($page)) {
-		if (!isset($_REQUEST['position'])) {
-			$page['position'] = intval(sql_get('SELECT MAX(position) FROM pages'));
-		}
-		else {
-			$page['position'] = intval($_REQUEST['position']);
-		}
+		$page['position'] = !isset($_REQUEST['position']) ? intval(sql_get('SELECT MAX(position) FROM pages')) : intval($_REQUEST['position']);
+		$page['id'] = intval($_REQUEST['id']);
 	}
 }
 Project::getInstance()->getSmarty()->assign('page', $page);
