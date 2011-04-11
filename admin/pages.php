@@ -2,7 +2,7 @@
 
 $ACCESS_LEVEL = ACCESS_LEVEL_ADMIN;
 include_once(DOC_ROOT . '/includes/authorization.php');
-
+include_once(LIB_ROOT.'/html_page.class.php');
 $action = isset($_REQUEST['action']) && !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
 switch ($action) {

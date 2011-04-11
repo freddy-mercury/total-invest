@@ -23,12 +23,12 @@
 							<td class="list">{$page.lang}</td>
 							<td class="list">
 								<a href="{$smarty.server.PHP_SELF}?action=edit&id={$page.id}">Edit</a> |
-								<a href="{$smarty.server.PHP_SELF}?action=delete&id={$page.id}" onclick="return confirm('Do you realy want to delete it?')">Delete</a> 
+								<a href="{$smarty.server.PHP_SELF}?action=delete&id={$page.id}" onclick="return confirm('Do you realy want to delete it?')">Delete</a>
 							</td>
 						</tr>
 					{/foreach}
 				</table>
-				<p><a href="{$smarty.server.PHP_SELF}?action=edit">Add new</a></p>
+				<p><a href="/admin/pages.php?action=edit">Add new</a> | <a href="/admin/clear_cache.php">Clear cache</a></p>
 		</td>
 		</tr>
 </table>

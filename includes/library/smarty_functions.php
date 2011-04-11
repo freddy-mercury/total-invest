@@ -14,7 +14,7 @@ function get_user_menu($params) {
 					' . $prefix . '<a href="/admin/plans.php">Plans</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/statistics.php?ofc=chart-data.php">Statistics</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/pages.php">Edit pages</a>' . $suffix . '' . $separator . '
-			                ' . $prefix . '<a href="/admin/news.php">News</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/admin/news.php">News</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/emails.php">E-mail templates</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/settings.php">Settings</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/find_deposit.php">Find deposit</a>' . $suffix . '' . $separator . '
