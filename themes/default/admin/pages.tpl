@@ -32,3 +32,4 @@
 		</td>
 		</tr>
 </table>
+{include file='debug.tpl'}

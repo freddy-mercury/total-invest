@@ -35,43 +35,6 @@ function get_user_menu($params) {
 
 Project::getInstance()->getSmarty()->register_function('get_user_menu', 'get_user_menu');
 
-function get_menu($params) {
-	$out = '';
-	extract($params);
-	$prefix = empty($prefix) ? '' : $prefix;
-	$suffix = empty($suffix) ? '' : $suffix;
-	$pre_tag = empty($pre_tag) ? '' : $pre_tag;
-	$after_tag = empty($after_tag) ? '' : $after_tag;
-	$out = '';
-	include_once(LIB_ROOT . '/pages/page.class.php');
-	$out.= $prefix . '<a href="/" class=menu>' . _('Home') . '</a>' . $suffix;
-	if (!AuthController::getInstance()->isAuthorized() && $show_signup) {
-		$out.= $prefix . '<a href="/signup.php" class=menu>' . _('Sign Up') . '</a>' . $suffix;
-	}
-	if ($show_memberarea) {
-		$out.= $prefix . '<a href="/user/account.php" class=menu>' . _('Member\'s area') . '</a>' . $suffix;
-	}
-	if (Project::getInstance()->getCurUser()->isAdmin()) {
-		$out.= $prefix . '<small><a href="/includes/inlines/admin/page.php?position=0" target="blank" style="font-size:9px;">(add page here)</a></small>' . $suffix;
-	}
-	$result = sql_query('
-		SELECT *
-		FROM pages
-		WHERE lang="' . $_COOKIE['lang'] . '" AND home=0 AND show_in_menu=1
-		ORDER BY position, id DESC
-	');
-	while ($menu_page = mysql_fetch_assoc($result)) {
-		$out.= $prefix . '<a href="/index.php?page=' . $menu_page['id'] . '" class=menu>' . $menu_page['name'] . '</a>' . $suffix;
-		if (Project::getInstance()->getCurUser()->isAdmin()) {
-			$out.= $prefix . '<small><a href="/includes/inlines/admin/page.php?position=' . $menu_page['position'] . '"  target="blank"  style="font-size:9px;">(add page here)</a></small>' . $suffix;
-		}
-	}
-	$out.= $exclude ? '' : $prefix . '<a href="/contactus.php" class=menu>' . _('Contact Us') . '</a>' . $suffix;
-	return $pre_tag . $out . $after_tag;
-}
-
-Project::getInstance()->getSmarty()->register_function('get_menu', 'get_menu');
-
 function get_hint($params) {
 	$out = '';
 	extract($params);
@@ -146,9 +109,12 @@ Project::getInstance()->getSmarty()->register_function('get_setting', 'get_setti
 
 function get_page_link($params) {
 	extract($params);
-	if (Project::getInstance()->getCurUser()->isAdmin() && !sql_get('SELECT id FROM pages WHERE id="'.intval($id).'"')) {
-		return '/includes/inlines/admin/page.php?position=&id='.intval($id).'" target="_blank';
-	}
+//	if (
+//			Project::getInstance()->getCurUser()->isAdmin()
+//			&& !sql_get('SELECT id FROM pages WHERE id="'.intval($id).'"')
+//	) {
+//		return '/admin/pages.php?action=edit&id='.intval($id).'" target="_blank';
+//	}
 	return '/index.php?page=' . $id;
 }
 

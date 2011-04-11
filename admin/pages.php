@@ -1,73 +1,33 @@
 <?php
-exit('Depricated since 05/18/2010');
+
 $ACCESS_LEVEL = ACCESS_LEVEL_ADMIN;
-include_once(DOC_ROOT.'/includes/authorization.php');
-include_once(LIB_ROOT.'/pages/page.class.php');
-$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
-$langs = explode(',', get_setting('langs'));
-$langs = array_map('trim', $langs);
-Project::getInstance()->getSmarty()->assign('langs', $langs);
+include_once(DOC_ROOT . '/includes/authorization.php');
+
+$action = isset($_REQUEST['action']) && !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
+
 switch ($action) {
 	case 'edit':
-		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'save') {
-			$_POST = sql_escapeArray($_POST);
-                        foreach($_POST['text'] as $lang=>$text) {
-                            if ($lang == 'en') {
-                                sql_query('
-				REPLACE pages SET
-                                        id="'.$_POST['id'].'",
-                                        parent_id=0,
-					name="'.$text['name'].'",
-					text="'.$text['text'].'",
-					show_in_menu="'.$_POST['show_in_menu'].'",
-					lang="en"
-                                ');
-                                $parent_id = mysql_insert_id();
-                            }
-                            else {
-                                sql_query('
-				REPLACE pages SET
-                                        id="'.intval($text['id']).'",
-                                        parent_id="'.(!$parent_id ? $_POST['id'] : $parent_id).'",
-					name="'.$text['name'].'",
-					text="'.$text['text'].'",
-					show_in_menu="'.$_POST['show_in_menu'].'",
-					lang="'.$lang.'"
-                                ');
-                            }
-                        }
-			location($_SERVER['PHP_SELF'], '<p class=imp>Page <u>'.htmlspecialchars($_POST['name']).'</u> has been saved!</p>');
-		}
-		$page_result = sql_query('
-			SELECT * FROM pages 
-			WHERE id="'.intval($_REQUEST['id']).'" OR parent_id="'.intval($_REQUEST['id']).'" ORDER BY id
-        ');
-		$page = array();
-		if (intval($_REQUEST['id'])) {
-                while($row = mysql_fetch_assoc($page_result)) {
-                    if ($row['lang'] == 'en') {
-                        $page = $row;
-                        $page['text'] = array();
-                        $page['text']['en'] = array('id'=>$row['id'], 'text' => $row['text'], 'name' => $row['name']);
-                    }
-                    else {
-                        $page['text'][$row['lang']] = array('id'=>$row['id'], 'text' => $row['text'], 'name' => $row['name']);
-                    }
-                }
-		}
-		Project::getInstance()->getSmarty()->assign('page', $page);
+		$id = intval($_REQUEST['id']);
+		$html_page = new HtmlPage($id);
+		Project::getInstance()->getSmarty()->assign('page', $html_page->toArray());
 		Project::getInstance()->getSmarty()->display('../default/admin/page_profile.tpl');
-	break;
+		break;
+	case 'save':
+		$html_page = new HtmlPage();
+		$html_page->setData($_POST);
+		$html_page->save();
+		location($_SERVER['PHP_SELF'], '<p class="imp">Html page <u>' . htmlspecialchars($html_page->name) . '</u> saved!</p>');
+		break;
 	case 'delete':
-		sql_query('delete from pages where id="'.intval($_REQUEST['id']).'" and parent_id="'.intval($_REQUEST['id']).'"');
+		$id = intval($_REQUEST['id']);
+		$html_page = new HtmlPage($id, FALSE);
+		$html_page->delete();
+		location($_SERVER['PHP_SELF'], '<p class="imp">Html page <u>' . htmlspecialchars($html_page->name) . '</u> deleted!</p>');
+		break;
 	default:
-		$pages = array();
-		$result = sql_query('
-			SELECT * FROM pages WHERE parent_id=0 ORDER BY id
-		');
-		while ($row = mysql_fetch_assoc($result)) {
-			$pages[] = $row;
-		}
-		Project::getInstance()->getSmarty()->assign('pages', stripslashes_array($pages));
+		$query = 'SELECT * FROM ' . HtmlPage::table . ' ORDER BY name';
+		$html_pages_list = sql_rows($query);
+		Project::getInstance()->getSmarty()->assign('pages', $html_pages_list);
 		Project::getInstance()->getSmarty()->display('../default/admin/pages.tpl');
+		break;
 }

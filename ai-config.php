@@ -24,14 +24,14 @@ require_once(DOC_ROOT.'/includes/constants.php');
 /** MYSQL **/
 DEFINE('DB_HOST', 'localhost');
 DEFINE('DB_NAME', 'total-invest');
-DEFINE('DB_LOGIN', 'total-invest');
-DEFINE('DB_PASSWORD', 'total-invest');
+DEFINE('DB_LOGIN', 'root');
+DEFINE('DB_PASSWORD', '');
 
 /** TIMEZONE **/
 date_default_timezone_set('Europe/Luxembourg');
 
 /** SETTINGS **/
-DEFINE('CACHE_ENABLED', FALSE);
+DEFINE('CACHE_ENABLED', TRUE);
 DEFINE('SSL', 0);
 DEFINE('REFERRAL_ONCE', 1);
 DEFINE('CAPTCHA', 0);
