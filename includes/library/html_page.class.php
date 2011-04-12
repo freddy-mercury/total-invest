@@ -59,6 +59,7 @@ class HtmlPage {
 		$query = 'REPLACE INTO ' . self::table . ' SET ' . implode(',', $fields);
 		sql_query($query);
 		$this->id = $this->id ? : sql_insert_id();
+		Project::getInstance()->getCache()->remove($this->getCacheKey());
 		Project::getInstance()->getCache()->save($data, $this->getCacheKey());
 	}
 
