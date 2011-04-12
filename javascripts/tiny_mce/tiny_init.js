@@ -6,6 +6,5 @@ tinyMCE.init({
    		plugins: "table, template",
    		theme_advanced_buttons3_add : "tablecontrols",
    		table_inline_editing : true,
-   		keep_styles : false,
-		content_css : "/themes/" + theme + "/styles/style.css"
+   		keep_styles : false
 	});
