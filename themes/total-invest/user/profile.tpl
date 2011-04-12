@@ -9,7 +9,7 @@
 				{t}Please make sure all the information and personal data entered correctly{/t}
 				</p>
 			</div>
-		</div>
+		</div><br>
 		{get_notification}
 		<form action="" method="POST">
 		<input type="hidden" name="action" value="save">

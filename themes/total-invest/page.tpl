@@ -1,8 +1,7 @@
 <div class="wrapper">
 	<div class="page_name">
-		{eval var=$cur_page.name}
+		{eval var=$html_page->name}
 	</div>
-	{$cur_page.edit_link}
-	{eval var=$cur_page.text}
+	{$html_page->edit_link}
+	{eval var=$html_page->content}
 </div>
-	
