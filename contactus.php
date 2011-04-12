@@ -19,7 +19,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
 		$emailer->subject = 'From: '.($user->id ? $user->login : $emailer->from).' -> '.$_POST['subject'];
 		$emailer->body = $_POST['message'];
 		$emailer->sendToSystem();
-		location($_SERVER['PHP_SELF'], '<p  style="color:red; font-weight:bold;">Your message has been sent to the support!</p>');
+		location($_SERVER['PHP_SELF'], '<p  style="color:red; font-weight:bold;">Your message has been sent to support!</p>');
 	}
 }
 Project::getInstance()->showPage('contactus.tpl');

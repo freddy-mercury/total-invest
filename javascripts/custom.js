@@ -32,10 +32,12 @@ function calc(v, plan_id) {
 }
 var Signup = {
 	CheckLogin: function(input_id) {
-                $.get("/includes/inlines/check_login.php", { login: $(input_id).val() },
-                   function(data){
-                     $('#span_login').html(data);
-                   });
+				if ($(input_id).val().length >=3 ) {
+					$.get("/includes/inlines/check_login.php", { login: $(input_id).val() },
+					   function(data){
+						 $('#span_login').html(data);
+					   });
+				}
 	}
 };
 var Chat = {

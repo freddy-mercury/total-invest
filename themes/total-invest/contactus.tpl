@@ -5,7 +5,7 @@
 <table border="0" width="100%">
 	<tr>
 		<td align="center">
-		<form action="{$smarty.server.PHP_SELF}?action=send" method="POST">
+		<form action="{$smarty.server.PHP_SELF}?action=send" method="POST" id="contact_us_form">
 			{get_notification}
 				<table>
 					<tr>
@@ -24,7 +24,9 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" value="{t}Send{/t}" class="button">
+							<span class="button" style="display: inline-block; width: 100px" onclick="$('#contact_us_form').submit()">
+								<em><b>Send</b></em>
+							</span>
 						</td>
 					</tr>
 				</table>

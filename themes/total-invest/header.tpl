@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="description" content="Home page - free business website template available at TemplateMonster.com for free download."/>
-<link href="{get_theme_dir}/style.css" rel="stylesheet" type="text/css" />
-<link href="{get_theme_dir}/layout.css" rel="stylesheet" type="text/css" />
+<link href="{get_theme_dir}/styles/style.css" rel="stylesheet" type="text/css" />
+<link href="{get_theme_dir}/styles/layout.css" rel="stylesheet" type="text/css" />
 <script src="{get_theme_dir}/maxheight.js" type="text/javascript"></script>
 <!--[if lt IE 7]>
-	<link href="{get_theme_dir}/ie_style.css" rel="stylesheet" type="text/css" />
+	<link href="{get_theme_dir}/styles/ie_style.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 	<!-- jQuery -->
 	<link type="text/css" href="{get_theme_dir}/jquery/css/blitzer/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
 	<script src="/javascripts/custom.js" type="text/javascript"></script>
 </head>
 
-<body id="page1" onload="new ElementMaxHeight();">
+<body id="page1" onload="new ElementMaxHeight();$('input[type=checkbox]').css('width', 'auto');">
    <!-- header -->
    <div id="header">
       <div class="container">
@@ -37,7 +37,7 @@
                	<div class="right">
                   	<ul>
                      	<li><a href="/index.php" class="first-current"><em><b>HOME</b></em></a></li>
-                        <li><a href="{get_page_link id='2'}"><em><b>ABOUT US</b></em></a></li>
+                        <li><a href="/signup.php"><em><b>SIGNUP</b></em></a></li>
                         <li><a href="{get_page_link id='3'}"><em><b>F.A.Q.</b></em></a></li>
                         <li><a href="{get_page_link id='4'}"><em><b>PARTNERS</b></em></a></li>
                         <li><a href="{get_page_link id='5'}"><em><b>Services</b></em></a></li>
@@ -53,6 +53,13 @@
    <!-- content -->
    <div id="content">
       <div class="container page_content">
+		{get_user_menu
+			prefix=''
+			suffix=''
+			pre_tag='<div style="position:relative;"><span class="ui-corner-bl ui-corner-br button2" style="display: inline-block; width:700px; margin-left:125px;">'
+			after_tag="</span></div>"
+			separator=' :: '
+		}
       	{$CONTENT}
       </div>
    </div>

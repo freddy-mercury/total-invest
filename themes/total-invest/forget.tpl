@@ -2,10 +2,8 @@
 	<div class="page_name">
 	{t}Remember forgotten password{/t}
 	</div>
-	<div class="message">
-		{$error_message}
-	</div>
-	<form method="POST">
+	{get_notification}
+	<form method="POST" id="forget_form">
 	<input type="hidden" name="action" value="forget">
 	<input type="hidden" name="do" value="confirm">
 		<table align="center">
@@ -42,7 +40,9 @@
 		</tr>
 		<tr>
 				<td align="center" colspan="2">
-				<input type="submit" value="{t}Remember me{/t}" class="button">
+				<span class="button" style="display: inline-block; width: 100px" onclick="$('#forget_form').submit()">
+					<em><b>Remember me</b></em>
+				</span>
 				</td>
 			</tr>
 		</table>

@@ -3,15 +3,8 @@
 <div class="page_name">
 	{t}Personal information{/t}
 		</div>
-		<div>
-			<div style="padding: 0pt 0.7em;" class="ui-state-highlight">
-				<p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
-				{t}Please make sure all the information and personal data entered correctly{/t}
-				</p>
-			</div>
-		</div><br>
 		{get_notification}
-		<form action="" method="POST">
+		<form action="" method="POST" id="save_form">
 		<input type="hidden" name="action" value="save">
 		<table cellpadding="5" cellspacing="1" border="0" align="center">
 				<tr>
@@ -94,7 +87,9 @@
 				</tr>
 				{/if}
 				<tr>
-					<td colspan="3" align="center"><input type="submit" value="{t}Save{/t}" class="button"></td>
+					<td colspan="3" align="center"><span class="button" style="display: inline-block; width: 100px" onclick="$('#save_form').submit()">
+								<em><b>Save</b></em>
+							</span></td>
 				</tr>
 			</table>
 		</form>

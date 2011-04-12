@@ -3,7 +3,7 @@
 		<div class="page_name">
 			{t}Deposit confirmation{/t}
 		</div>
-		<form action="" method="POST">
+		<form action="" method="POST" id="save_form">
 		<input type="hidden" name="action" value="deposit">
 		<table cellpadding="5" cellspacing="1" align="center">
 			<tr>
@@ -40,7 +40,9 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="{t}Make deposit{/t}" class="button">
+					<span class="button" style="display: inline-block; width: 100px" onclick="$('#save_form').submit()">
+						<em><b>Make deposit</b></em>
+					</span>
 				</td>
 			</tr>
 		</table>

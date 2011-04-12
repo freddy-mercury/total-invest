@@ -19,12 +19,12 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="head" bgcolor="#f8f8f8"><b>#</b></th>
-					<th class="head" bgcolor="#f8f8f8"><b>{t}Type{/t}</b></th>
-					<th class="head" bgcolor="#f8f8f8"><b>{t}Plan{/t}</b></th>
-					<th class="head" bgcolor="#f8f8f8"><b>{t}Amount{/t}</b></th>
-					<th class="head" bgcolor="#f8f8f8"><b>{t}Date{/t}</b></th>
-					<th class="head" bgcolor="#f8f8f8"><b>{t}Comment{/t}</b></th>
+					<td bgcolor="#f8f8f8"><b>#</b></td>
+					<td bgcolor="#f8f8f8"><b>{t}Type{/t}</b></td>
+					<td bgcolor="#f8f8f8"><b>{t}Plan{/t}</b></td>
+					<td bgcolor="#f8f8f8"><b>{t}Amount{/t}</b></td>
+					<td bgcolor="#f8f8f8"><b>{t}Date{/t}</b></td>
+					<td bgcolor="#f8f8f8"><b>{t}Comment{/t}</b></td>
 				</tr>
 				{assign var="i" value="1"}
 				{foreach from=$lines item=line}
