@@ -5,7 +5,7 @@
 		</div>
 		{get_notification}
 		{foreach from=$plans item=plan}
-		<form action="{$smarty.server.PHP_SELF}?action=pre_deposit" method="POST">
+		<form action="{$smarty.server.PHP_SELF}?action=pre_deposit" method="POST" id="form{$plan.id}">
 		<p>
 		<table cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
 			<tr>
@@ -15,7 +15,11 @@
 				<th bgcolor="#f8f8f8" rowspan="2">Term</th>
 				<th bgcolor="#f8f8f8" rowspan="2">Working days</th>
 				<th bgcolor="#f8f8f8" colspan="2">Amount</th>
-				<th bgcolor="#f8f8f8" rowspan="3"><input type="hidden" name="plan_id" value="{$plan.id}"><input type="button" value="{t}Make deposit{/t}" onclick="if (getElementById('amount{$plan.id}').value=='0') alert('Incorrect amount has been defined!'); else this.form.submit();"></th>
+				<th bgcolor="#f8f8f8" rowspan="3"><input type="hidden" name="plan_id" value="{$plan.id}">
+				<span class="button" style="display: inline-block; width: 100px;" onclick="onclick="if (getElementById('amount{$plan.id}').value=='0') alert('Incorrect amount has been defined!'); else $('#form{$plan.id}').submit()">
+					<em><b>Make deposit</b></em>
+				</span>
+				</th>
 			</tr>
 			<tr>
 				<th bgcolor="#f8f8f8">Min</th>
