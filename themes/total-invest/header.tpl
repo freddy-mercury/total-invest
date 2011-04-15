@@ -36,12 +36,12 @@
             	<div class="left">
                	<div class="right">
                   	<ul>
-                     	<li><a href="/index.php" class="first-current"><em><b>HOME</b></em></a></li>
-                        <li><a href="/signup.php"><em><b>SIGNUP</b></em></a></li>
-                        <li><a href="{get_page_link id='3'}"><em><b>F.A.Q.</b></em></a></li>
-                        <li><a href="{get_page_link id='4'}"><em><b>PARTNERS</b></em></a></li>
-                        <li><a href="{get_page_link id='5'}"><em><b>Services</b></em></a></li>
-                        <li><a href="/contactus.php" class="last"><em><b>CONTACT US</b></em></a></li>
+                     	<li><a href="/index.php" class="first {get_active_page_class name_part="index.php" class="first-current"}"><em><b>HOME</b></em></a></li>
+                        <li><a href="/signup.php" class="{get_active_page_class name_part="signup.php" class="current"}"><em><b>SIGNUP</b></em></a></li>
+                        <li><a href="{get_page_link id='3'}" class="{get_active_page_class id="3" class="current"}"><em><b>F.A.Q.</b></em></a></li>
+                        <li><a href="{get_page_link id='4'}" class="{get_active_page_class id="4" class="current"}"><em><b>PARTNERS</b></em></a></li>
+                        <li><a href="{get_page_link id='5'}" class="{get_active_page_class id="5" class="current"}"><em><b>Services</b></em></a></li>
+                        <li><a href="/contactus.php" class="last class="{get_active_page_class name_part="contactus.php" class="last-current"}""><em><b>CONTACT US</b></em></a></li>
                      </ul>
                   </div>
                </div>

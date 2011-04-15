@@ -162,3 +162,17 @@ function get_theme_dir($params) {
 }
 
 Project::getInstance()->getSmarty()->register_function('get_theme_dir', 'get_theme_dir');
+
+function get_active_page_class($params) {
+	extract($params);
+	$id = intval($id);
+	if ($id && $id == intval($_REQUEST['page']))  {
+		return $class;
+	}
+	elseif (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], $name_part) !== FALSE) {
+		return $class;
+	}
+	return '';
+}
+
+Project::getInstance()->getSmarty()->register_function('get_active_page_class', 'get_active_page_class');
