@@ -22,7 +22,7 @@ class AuthController {
 			SELECT id 
 			FROM users 
 			WHERE 
-				login="'.$login.'" AND password="'.$password.'" AND status>0'.(LOGIN_PIN ? ' AND secpin="'.$secpin.'"' : ''));
+				login="'.$login.'" AND STRCMP(password, "'.$password.'")=0 AND status>0'.(LOGIN_PIN ? ' AND secpin="'.$secpin.'"' : ''));
 		if ($user_id) {
 			$_SESSION['CUR_USER']['id'] = $user_id;
 			Project::getInstance()->resetCurUser($user_id);
