@@ -8,6 +8,18 @@
 				<div class="page_name">
 					Messages
 				</div>
+				{get_notification}
+				<form method="POST">
+					Payment system: <select name="payment_system">
+						<option value="">All</option>
+						<option value="lr">LR</option>
+						<option value="pm">PM</option>
+					</select><br>
+					Subject: <input type="text" name="subject" value=""><br>
+					Body: <br><textarea name="body" cols="30" rows="5"></textarea><br>
+					<input type="submit" name="submit" value="Send">
+				</form>
+
 				<table width="100%" cellspacing="1">
 					<tr>
 						<td class="head"><b>#</b></td>
