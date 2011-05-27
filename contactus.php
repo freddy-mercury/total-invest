@@ -18,6 +18,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
 		$_SESSION['captcha'] = true;
 	}
 	if (empty($_POST['subject']) || empty($_POST['message']) || (empty($_POST['email']) && !$user->id)) {
+		$_SESSION['captcha'] = false;
 		location($_SERVER['PHP_SELF'], '<p  style="color:red; font-weight:bold;">All fields required!</p>');
 	}
 	else {
@@ -27,6 +28,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
 		$emailer->subject = 'From: '.($user->id ? $user->login : $emailer->from).' -> '.$_POST['subject'];
 		$emailer->body = $_POST['message'];
 		$emailer->sendToSystem();
+		$_SESSION['captcha'] = false;
 		location($_SERVER['PHP_SELF'], '<p  style="color:red; font-weight:bold;">Your message has been sent to support!</p>');
 	}
 }
