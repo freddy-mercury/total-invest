@@ -26,7 +26,7 @@ class Project {
 	private $cur_user;
 	private $now;
 	public $notification;
-	
+
 	private function __construct() {
         //process SSL
         $this->processSSL();
@@ -68,11 +68,6 @@ class Project {
 	}
 	public function resetCurUser($user_id = 0) {
 		$this->cur_user = new User(!$user_id ? $this->cur_user->id : $user_id);
-		if ($this->cur_user->id) {
-			include_once(LIB_ROOT.'/users/ip_controller.class.php');
-			$ip_ctrl = new IpController($this->cur_user->id);
-			$ip_ctrl->saveIp();
-		}
 	}
 	/**
 	 * Returns current authorized user instance
@@ -111,7 +106,7 @@ class Project {
 	public function getNotification() {
 		return $this->notification;
 	}
-	
+
 	public function processEarnings() {
 		if ($this->cur_user instanceof User && $this->cur_user->id) {
 			include_once(LIB_ROOT.'/earnings.class.php');
