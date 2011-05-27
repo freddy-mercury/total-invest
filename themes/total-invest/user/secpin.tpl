@@ -4,7 +4,7 @@
 		{t}Login pin{/t}
 		</div>
 		{get_notification}
-		<form action="{$smarty.server.PHP_SELF}?change=secpin&do=save" method="POST">
+		<form action="{$smarty.server.PHP_SELF}?change=secpin&do=save" method="POST" id="save_form">
 				<table cellpadding="5" cellspacing="1" border="0" align="center">
 					<tr valign="top">
 						<td nowrap><b>{t}Old Login pin{/t}:</b></td>
@@ -26,7 +26,9 @@
 					</tr>
 					{/if}
 					<tr>
-						<td colspan="3" align="center"><input type="submit" value="{t}Save{/t}" class="button"></td>
+						<td colspan="3" align="center"><span class="button" style="display: inline-block; width: 100px" onclick="$('#save_form').submit()">
+								<em><b>Save</b></em>
+							</span></td>
 					</tr>
 				</table>
 			</form>

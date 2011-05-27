@@ -29,7 +29,7 @@ switch($action) {
 				$email = new Emails($user->id, 'forget_email', $params);
 				$email->send();
 			}
-			Project::getInstance()->getSmarty()->assign('error_message', '<div style="color:red">Check your email for account info.</div>');
+			location('/index.php?action=forget', '<p class="imp">Check your email for account info.</p>');
 		}
 		$page_tpl = 'forget.tpl';
 		break;

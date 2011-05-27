@@ -4,23 +4,23 @@
 		{t}Message{/t}
 		</div>
 
-			<table width="100%" border="0">
+			<table width="100%" cellspacing="1" bgcolor="#cccccc">
 				<tr>
-					<th class="head">{t}From{/t}:</th>
-					<td style="border-bottom:1px dashed #cccccc">{$from}</td>
+					<td bgcolor="#f8f8f8"><b>From:</b></th>
+					<td bgcolor="#f8f8f8">{$from}</td>
 				</tr>
 				<tr>
-					<th class="head">{t}Subject{/t}:</th>
-					<td style="border-bottom:1px dashed #cccccc">{$title|escape}</td>
+					<td bgcolor="#f8f8f8"><b>Subject:</b></th>
+					<td bgcolor="#f8f8f8">{$title|escape}</td>
 				</tr>
 				<tr valign="top">
-					<th class="head" height="100px">{t}Message{/t}:</th>
-					<td width="100%" style="border-bottom:1px dashed #cccccc">
+					<td bgcolor="#f8f8f8" height="100px"><b>Message:</b></th>
+					<td bgcolor="#f8f8f8" width="100%">
 						{$text|nl2br|escape}
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center">
+					<td colspan="2" align="center" bgcolor="#f8f8f8">
 						<a href="/user/messages.php">{t}Back to Messages{/t}</a>
 					</td>
 				</tr>

@@ -28,7 +28,9 @@
 				{/if}
 				<tr>
 					<td colspan="2" align="center">
-					<input type="submit" value="{t}Confirm{/t}" class="button">
+					<span class="button" style="display: inline-block; width: 100px" onclick="$('#save_form').submit()">
+						<em><b>Confirm</b></em>
+					</span>
 					</td>
 				</tr>
 			</table>

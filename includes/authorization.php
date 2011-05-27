@@ -36,8 +36,7 @@ else {
 			location('/user/account.php');
 		}
 		else {
-			Project::getInstance()->getSmarty()->assign('message', '<p class=imp><strong>Alert:</strong> Authorization failed!</p>');
-			Project::getInstance()->showPage('login_warning.tpl');
+			location('/user/account.php', '<p class="imp"><strong>Alert:</strong> Authorization failed!</p>');
 			exit;
 		}
 	}

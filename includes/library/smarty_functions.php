@@ -18,7 +18,7 @@ function get_user_menu($params) {
 					' . $prefix . '<a href="/admin/emails.php">E-mail templates</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/settings.php">Settings</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/find_deposit.php">Find deposit</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/messages.php">Sent messages</a>' . $suffix . '';
+					' . $prefix . '<a href="/admin/messages.php">Sent messages</a>' . $suffix . '<br>';
 		}
 		$user_messages_list = new UserMessageList(Project::getInstance()->getCurUser());
 		$out.= '' . $prefix . '<a href="/user/account.php">' . _('Account Summary') . '</a>' . $suffix . '' . $separator . '
@@ -29,8 +29,9 @@ function get_user_menu($params) {
 				' . $prefix . '<a href="/user/statistics.php">' . _('History') . '</a>' . $suffix . '' . $separator . '
 				' . $prefix . '<a href="/user/messages.php">' . _('Messages') . ' (' . $user_messages_list->getCountUnread() . ')</a>' . $suffix . '' . $separator . '
 				' . $prefix . '<a href="/index.php?action=logout">' . _('Logout') . '</a>' . $suffix . '';
+		$out = $pre_tag . $out . $after_tag;
 	}
-	return $pre_tag . $out . $after_tag;
+	return $out;
 }
 
 Project::getInstance()->getSmarty()->register_function('get_user_menu', 'get_user_menu');
@@ -161,3 +162,17 @@ function get_theme_dir($params) {
 }
 
 Project::getInstance()->getSmarty()->register_function('get_theme_dir', 'get_theme_dir');
+
+function get_active_page_class($params) {
+	extract($params);
+	$id = intval($id);
+	if ($id && $id == intval($_REQUEST['page']))  {
+		return $class;
+	}
+	elseif (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], $name_part) !== FALSE) {
+		return $class;
+	}
+	return '';
+}
+
+Project::getInstance()->getSmarty()->register_function('get_active_page_class', 'get_active_page_class');

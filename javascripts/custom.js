@@ -20,22 +20,24 @@ function calc(v, plan_id) {
 			}
 		}
 		if (document.getElementById('percent_per'+plan_id).value == 'term') {
-			document.getElementById('calc'+plan_id).innerHTML = '$ ' + 
+			document.getElementById('calc'+plan_id).innerHTML = '$&nbsp;' + 
 (parseFloat(v)*(document.getElementById('percent'+plan_id).value/100/(document.getElementById('term'+plan_id).value*86400/step))*count).toFixed(2);
 		}
 		else if (document.getElementById('percent_per'+plan_id).value == 'periodicity') {
-			document.getElementById('calc'+plan_id).innerHTML = '$ ' + 
+			document.getElementById('calc'+plan_id).innerHTML = '$&nbsp;' + 
 (parseFloat(v)+parseFloat(v)*(document.getElementById('percent'+plan_id).value/100)*count).toFixed(2);
 		}
 	}
-	else document.getElementById('calc'+plan_id).innerHTML='$ 0';
+	else document.getElementById('calc'+plan_id).innerHTML='$&nbsp;0';
 }
 var Signup = {
 	CheckLogin: function(input_id) {
-                $.get("/includes/inlines/check_login.php", { login: $(input_id).val() },
-                   function(data){
-                     $('#span_login').html(data);
-                   });
+				if ($(input_id).val().length >=3 ) {
+					$.get("/includes/inlines/check_login.php", { login: $(input_id).val() },
+					   function(data){
+						 $('#span_login').html(data);
+					   });
+				}
 	}
 };
 var Chat = {

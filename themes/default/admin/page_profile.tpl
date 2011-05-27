@@ -1,5 +1,8 @@
 {include file='header_lite.tpl'}
 <!-- TinyMCE -->
+<script language="Javascript">
+var theme = '{get_setting name="theme"}';
+</script>
 <script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript" src="/javascripts/tiny_mce/tiny_init.js"></script>
 <!-- /TinyMCE -->
@@ -15,10 +18,6 @@
                         <tr>
 							<td nowrap>Page name:</td>
 							<td width="100%"><input type="text" name="name" value="{$page.name|stripslashes|escape}"></td>
-						</tr>
-						<tr>
-							<td nowrap>Set home:</td>
-							<td width="100%"><input type="checkbox" name="home" value="1" {if $page.home==1}checked{/if}></td>
 						</tr>
                         <tr>
 							<td nowrap>Language:</td>

@@ -1,6 +1,6 @@
 .container {width:950px; margin:0 auto; }
 
-#header {height:185px; background:url(images/header-bg.gif) left top repeat-x #fff; }
+#header {height:185px; background:url(../images/header-bg.gif) left top repeat-x #fff; }
 #header, #content, #extra-content, #footer { font-size:0.75em;}
 
 .col-1, .col-2, .col-3 { float:left;}
@@ -30,4 +30,4 @@
 /*=========================*/
 
 
-#footer {background:url(images/footer-bg.gif) left top repeat-x #717171;}
+#footer {background:url(../images/footer-bg.gif) left top repeat-x #717171;}

@@ -2,31 +2,11 @@
 <div class="page_name">
 			Signup
 		</div>
-			<form action="{$smarty.server.PHP_SELF}?action=signup" method="POST">
+			{if $error_message != ''}
+			<p class="imp">{$error_message}</p>
+			{/if}
+			<form action="/signup.php?action=signup" method="POST" id="signup_form">
 			<table cellpadding="3" cellspacing="1" align="center">
-				<tr>
-					<td colspan="3">
-					<div class="">
-						<div style="padding: 0pt 0.7em;" class="ui-state-highlight">
-							<p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
-							Please fill out the form below to complete registration and create the investment account on the site. Before pressing the SIGN UP button, please make sure all the information and personal data entered correctly.
-							</p>
-						</div>
-					</div>
-					</td>
-				</tr>
-				{if $error_message>''}
-				<tr>
-					<td colspan="3">
-					<div class="">
-						<div style="padding: 0pt 0.7em;" class="ui-state-error">
-							<p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span>
-							Alert: {$error_message}</p>
-						</div>
-					</div>
-					</td>
-				</tr>
-				{/if}
 				<tr>
 					<td nowrap>Fullname<em>*</em>:</td>
 					<td><input type="text" name="fullname" value="{$signup.fullname}"></td>
@@ -139,8 +119,12 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<input type="submit" value="Signup" class="button">
-						<input type="reset" value="Reset" class="button">
+						<span class="button" style="display: inline-block; width: 100px" onclick="$('#signup_form').submit()">
+							<em><b>Signup</b></em>
+						</span>
+						<span class="button" style="display: inline-block; width: 100px" onclick="$('#signup_form')[0].reset()">
+							<em><b>Reset</b></em>
+						</span>
 					</td>
 				</tr>
 			</table>
