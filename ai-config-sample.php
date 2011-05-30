@@ -10,7 +10,7 @@ define('BASE_ROOT', dirname(__FILE__));
  * Путь к скрипту
  * Он у нас в другом месте
  */
-DEFINE('DOC_ROOT', dirname(__FILE__));
+DEFINE('DOC_ROOT', '/home/hyip-script/public_html/total-invest-1.1');
 DEFINE('LIB_ROOT', DOC_ROOT.'/includes/library');
 
 /** ERROR REPORTING **/

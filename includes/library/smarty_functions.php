@@ -8,7 +8,6 @@ function get_menu($params) {
 	$pre_tag = empty($pre_tag) ? '' : $pre_tag;
 	$after_tag = empty($after_tag) ? '' : $after_tag;
 	$out = '';
-	include_once(LIB_ROOT.'/pages/page.class.php');
 	$out.= $prefix.'<a href="/">'._('Home').'</a>'.$suffix;
 	if (!AuthController::getInstance()->isAuthorized()) {
 		$out.= $prefix.'<a href="/signup.php">'._('Sign Up').'</a>'.$suffix;
