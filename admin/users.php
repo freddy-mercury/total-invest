@@ -8,15 +8,15 @@ switch ($action) {
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'save') {
 			$_POST = sql_escapeArray($_POST);
 			sql_query('
-				update users set 
-					fullname="'.$_POST['fullname'].'", 
-					payment_system="'.$_POST['payment_system'].'", 
+				update users set
+					fullname="'.$_POST['fullname'].'",
+					payment_system="'.$_POST['payment_system'].'",
 					'.(!empty($_POST['pm_member_id']) ? 'pm_member_id="'.$_POST['pm_member_id'].'",' : '').'
-					account="'.$_POST['account'].'", 
-					email="'.$_POST['email'].'", 
-					status="'.$_POST['status'].'", 
-					access="'.$_POST['access'].'", 
-					withdrawal_limit="'.$_POST['withdrawal_limit'].'", 
+					account="'.$_POST['account'].'",
+					email="'.$_POST['email'].'",
+					status="'.$_POST['status'].'",
+					access="'.$_POST['access'].'",
+					withdrawal_limit="'.$_POST['withdrawal_limit'].'",
 					daily_withdrawal_limit="'.$_POST['daily_withdrawal_limit'].'",
 					monitor="'.$_POST['monitor'].'",
 					question="'.$_POST['question'].'",
@@ -27,10 +27,10 @@ switch ($action) {
 			location($_SERVER['PHP_SELF'].'?action=profile&id='.$_POST['id'], '<p class=imp>User profile has been saved!</p>');
 		}
 		$user = sql_row('
-			SELECT 
+			SELECT
 				'.(PRO_VERSION ? 'users.*' : implode(',', $GLOBALS['USERS_FIELDS'])).',
 				COUNT(b.user_id) as bads
-			FROM users 
+			FROM users
 			LEFT JOIN bad_withdrawals as b ON b.user_id = users.id
 			WHERE users.id="'.intval($_REQUEST['id']).'"
 			GROUP BY users.id
@@ -78,8 +78,8 @@ switch ($action) {
 				');
 			if ($_POST['deposit']) {
 				sql_query('
-					INSERT INTO translines 
-					SET 
+					INSERT INTO translines
+					SET
 						id=0,
 						parent_id=0,
 						user_id="'.intval($_POST['id']).'",
@@ -91,16 +91,16 @@ switch ($action) {
 						batch="[reinvested]"
 				');
 				sql_query('
-					INSERT INTO translines 
-					SET 
-						id=0, 
-						parent_id=0, 
-						user_id="'.intval($_POST['id']).'", 
-						plan_id="'.intval($_POST['plan_id']).'", 
-						type="i", 
-						amount="-'.floatval($_POST['amount']).'", 
-						stamp="'.Project::getInstance()->getNow().'", 
-						status="1", 
+					INSERT INTO translines
+					SET
+						id=0,
+						parent_id=0,
+						user_id="'.intval($_POST['id']).'",
+						plan_id="'.intval($_POST['plan_id']).'",
+						type="i",
+						amount="-'.floatval($_POST['amount']).'",
+						stamp="'.Project::getInstance()->getNow().'",
+						status="1",
 						batch="[internal]"
 				');
 			}
@@ -152,8 +152,8 @@ switch ($action) {
 		$users_by_ips = array();
 		$users_by_ips_result = sql_query('
 			SELECT INET_NTOA(ip) as ip, CONVERT( GROUP_CONCAT( DISTINCT user_id )
-			USING  "utf8" )  as user_ids 
-			FROM  `visits` 
+			USING  "utf8" )  as user_ids
+			FROM  `visits`
 			GROUP BY ip');
 		while ($users_by_ips_row = mysql_fetch_assoc($users_by_ips_result)) {
 			$users_by_ips[$users_by_ips_row['ip']] = explode(',', $users_by_ips_row['user_ids']);
@@ -196,5 +196,5 @@ switch ($action) {
 		}
 		Project::getInstance()->getSmarty()->assign('pagination', pagination(sql_get('SELECT FOUND_ROWS()')));
 		Project::getInstance()->getSmarty()->assign('users', stripslashes_array($users));
-		Project::getInstance()->getSmarty()->display('../default/admin/users.tpl');		
+		Project::getInstance()->getSmarty()->display('../default/admin/users.tpl');
 }

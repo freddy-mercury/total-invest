@@ -1,5 +1,31 @@
 <?php
 
+function get_menu($params) {
+	$out = '';
+	extract($params);
+	$prefix = empty($prefix) ? '' : $prefix;
+	$suffix = empty($suffix) ? '' : $suffix;
+	$pre_tag = empty($pre_tag) ? '' : $pre_tag;
+	$after_tag = empty($after_tag) ? '' : $after_tag;
+	$out = '';
+	include_once(LIB_ROOT.'/pages/page.class.php');
+	$out.= $prefix.'<a href="/">'._('Home').'</a>'.$suffix;
+	if (!AuthController::getInstance()->isAuthorized()) {
+		$out.= $prefix.'<a href="/signup.php">'._('Sign Up').'</a>'.$suffix;
+	}
+	$out.= $prefix.'<a href="/user/account.php">'._('Member\'s area').'</a>'.$suffix;
+	$result = sql_query('
+		SELECT *
+		FROM html_pages
+	');
+	while ($menu_page = mysql_fetch_assoc($result)) {
+		$out.= $menu_page['id'] != get_setting('home_page_id') ? $prefix.'<a href="/index.php?page='.$menu_page['id'].'">'.$menu_page['name'].'</a>'.$suffix : '';
+	}
+	$out.= $prefix.'<a href="/contactus.php">'._('Contact Us').'</a>'.$suffix;
+	return $pre_tag.$out.$after_tag;
+}
+Project::getInstance()->getSmarty()->register_function('get_menu', 'get_menu');
+
 function get_user_menu($params) {
 	$out = '';
 	extract($params);
