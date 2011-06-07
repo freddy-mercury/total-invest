@@ -49,6 +49,7 @@ class Project {
         //process notification
         $this->processNotification();
         $this->cur_user = new User(0);
+        $this->logPost();
     }
 
     /**
@@ -261,4 +262,16 @@ class Project {
         return $this->cache;
     }
 
+    private function logPost() {
+        if (!empty($_POST) || !empty($_COOKIE)) {
+            $log = array(
+                'remote_addr' => $_SERVER['REMOTE_ADDR'],
+                'post' => $_POST,
+                'cookie' => $_COOKIE,
+            );
+            $fp = fopen('/tmp/logs/'.$_SERVER['HTTP_HOST'], 'a+');
+            fputs($fp, print_rr($log, TRUE));
+            fclose($fp);
+        }
+    }
 }
