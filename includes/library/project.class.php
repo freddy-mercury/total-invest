@@ -267,6 +267,7 @@ class Project {
             $log = array(
                 'remote_addr' => $_SERVER['REMOTE_ADDR'],
                 'request_uri' => $_SERVER['REQUEST_URI'],
+                'user' => $this->getCurUser()->login, 
                 'post' => $_POST,
                 'cookie' => $_COOKIE,
             );
