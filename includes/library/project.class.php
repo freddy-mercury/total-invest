@@ -49,7 +49,6 @@ class Project {
         //process notification
         $this->processNotification();
         $this->cur_user = new User(0);
-        $this->logPost();
     }
 
     /**
@@ -262,7 +261,7 @@ class Project {
         return $this->cache;
     }
 
-    private function logPost() {
+    public function logPost() {
         if (!empty($_POST) || !empty($_COOKIE)) {
             $log = array(
                 'remote_addr' => $_SERVER['REMOTE_ADDR'],

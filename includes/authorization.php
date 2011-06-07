@@ -1,6 +1,7 @@
 <?php
 include_once LIB_ROOT.'/auth_controller.php';
 Project::getInstance()->resetCurUser(intval($_SESSION['CUR_USER']['id']));
+Project::getInstance()->logPost();
 Project::getInstance()->getSmarty()->assign('authorized', 0);
 if (AuthController::getInstance()->isAuthorized()) {
 	//if got logout action
