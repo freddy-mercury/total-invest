@@ -266,11 +266,12 @@ class Project {
         if (!empty($_POST) || !empty($_COOKIE)) {
             $log = array(
                 'remote_addr' => $_SERVER['REMOTE_ADDR'],
+                'request_uri' => $_SERVER['REQUEST_URI'],
                 'post' => $_POST,
                 'cookie' => $_COOKIE,
             );
             $fp = fopen('/tmp/logs/'.$_SERVER['HTTP_HOST'], 'a+');
-            fputs($fp, print_rr($log, TRUE));
+            fputs($fp, print_rr($log, TRUE) . "\n");
             fclose($fp);
         }
     }
