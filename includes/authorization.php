@@ -18,9 +18,6 @@ if (AuthController::getInstance()->isAuthorized()) {
 			$ip_ctrl->saveIp();
 		}
 	}
-	if (Project::getInstance()->getCurUser()->access < $GLOBALS['ACCESS_LEVEL']) {
-		Project::getInstance()->getSmarty()->display('login_warning.tpl');
-	}
 	if (Project::getInstance()->getCurUser()->isAdmin()) {
 		$last_visit = sql_row('SELECT INET_NTOA(ip) as ip, stamp, user_id FROM visits WHERE user_id="'.Project::getInstance()->getCurUser()->id.'" ORDER BY stamp DESC LIMIT 1');
 		if ($last_visit['ip'] != $_SERVER['REMOTE_ADDR']) {
@@ -28,6 +25,10 @@ if (AuthController::getInstance()->isAuthorized()) {
 			Project::getInstance()->showPage('pin_warning.tpl');
 			exit;
 		}
+	}
+	if (Project::getInstance()->getCurUser()->access < $GLOBALS['ACCESS_LEVEL']) {
+		Project::getInstance()->showPage('login_warning.tpl');
+		exit();
 	}
 	Project::getInstance()->getSmarty()->assign('authorized', 1);
 }
