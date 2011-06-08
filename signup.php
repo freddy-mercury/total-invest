@@ -1,7 +1,7 @@
 <?php
 $ACCESS_LEVEL = ACCESS_LEVEL_GUEST;
 include_once(DOC_ROOT.'/includes/authorization.php');
-
+$_POST = sql_escapeArray($_POST);
 if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 	$valid = true;
 	if (empty($_POST['fullname']) && $valid) {
