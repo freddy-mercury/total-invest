@@ -191,10 +191,14 @@ class Project {
 
     private function processCache() {
         if (CACHE_ENABLED) {
+			$cache_dir = '/tmp/' . strtolower($_SERVER['HTTP_HOST']) . '/';
+			if (!file_exists($cache_dir)) {
+				mkdir($cache_dir, 0755);
+			}
             require_once('Cache/Lite.php');
             // Set a few options
             $options = array(
-                'cacheDir' => '/tmp/' . $_SERVER['HTTP_HOST'] . '/',
+                'cacheDir' => $cache_dir,
                 'lifeTime' => 3600,
                 'output' => false,
                 'hashedDirectoryLevel' => 0,
