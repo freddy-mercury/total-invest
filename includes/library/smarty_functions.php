@@ -202,3 +202,8 @@ function get_active_page_class($params) {
 }
 
 Project::getInstance()->getSmarty()->register_function('get_active_page_class', 'get_active_page_class');
+
+function get_cur_user_account($params) {
+        return Project::getInstance()->getCurUser()->account;
+}
+Project::getInstance()->getSmarty()->register_function('get_cur_user_account', 'get_cur_user_account');

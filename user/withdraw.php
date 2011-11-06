@@ -155,7 +155,8 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='withdraw') {
 					stamp="'.Project::getInstance()->getNow().'"'
 			);
 			$withdrawal_details = intval(get_setting('withdrawal_details'));
-			location($_SERVER['PHP_SELF'], '<p class=imp><strong>Notification:</strong> The action can not be done, please try again later! '.(!$withdrawal_details ? 'Get more <a href="/index.php?page='.$withdrawal_details.'">details</a>.' : '').'</p>');
+                        location($_SERVER['PHP_SELF'], '<p class=imp><strong>Notification:</strong> The action can not be done, please try 
+again later! '.($withdrawal_details ? 'Get more <a href="/index.php?page='.$withdrawal_details.'">details</a>.' : '').'</p>');
 		}
 	}
 	else {

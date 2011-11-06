@@ -38,7 +38,7 @@ define('WITHDRAWAL_DELAY', 30);
 $MY_IPS = array(
 	'195.68.140.*',
 	//'127.0.0.*',
-	'95.220.*.*',
+	//'95.220.*.*',
 );
 
 $TPL_CFG = array(
