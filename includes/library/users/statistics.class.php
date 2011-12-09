@@ -19,6 +19,7 @@ class Statistics {
 		$this->last_withdrawal = $this->getLastWithdrawal();
 	}
 	public function getLines($types = array('e', 'r', 'd', 'w', 'b'), $status = 1, $stamp_from = 0, $stamp_to = 0) {
+        $types = array_intersect($types, array('e', 'r', 'd', 'w', 'b'));
 		$where_user = $this->user_id != 0 ? ' and translines.user_id="'.$this->user_id.'"' : '';
 		$where_status = ' and translines.status in'.(is_array($status) ? ' ("'.implode('", "', $status).'")' : ' ("'.$status.'")');
 		$where_stamp_from = $stamp_from > 0 ? ' and translines.stamp>'.$stamp_from : '';
