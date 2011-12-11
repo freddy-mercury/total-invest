@@ -113,7 +113,7 @@ class Smarty
 
     /**
      * This is the path to the debug console template. If not set,
-     * the default one will be used.
+     * the index one will be used.
      *
      * @var string
      */
@@ -314,10 +314,10 @@ class Smarty
      * at the beginning of the resource path. examples:
      * $smarty->display('file:index.tpl');
      * $smarty->display('db:index.tpl');
-     * $smarty->display('index.tpl'); // will use default resource type
+     * $smarty->display('index.tpl'); // will use index resource type
      * {include file="file:index.tpl"}
      * {include file="db:index.tpl"}
-     * {include file="index.tpl"} {* will use default resource type *}
+     * {include file="index.tpl"} {* will use index resource type *}
      *
      * @var array
      */
@@ -502,14 +502,14 @@ class Smarty
     var $_cache_info           = array();
 
     /**
-     * default file permissions
+     * index file permissions
      *
      * @var integer
      */
     var $_file_perms           = 0644;
 
     /**
-     * default dir permissions
+     * index dir permissions
      *
      * @var integer
      */
@@ -1571,10 +1571,10 @@ class Smarty
         }
 
         if (!$_return) {
-            // see if we can get a template with the default template handler
+            // see if we can get a template with the index template handler
             if (!empty($this->default_template_handler_func)) {
                 if (!is_callable($this->default_template_handler_func)) {
-                    $this->trigger_error("default template handler function \"$this->default_template_handler_func\" doesn't exist.");
+                    $this->trigger_error("index template handler function \"$this->default_template_handler_func\" doesn't exist.");
                 } else {
                     $_return = call_user_func_array(
                         $this->default_template_handler_func,

@@ -26,7 +26,7 @@ tinyMCEPopup = {
 		// Setup local DOM
 		t.dom = t.editor.windowManager.createInstance('tinymce.dom.DOMUtils', document);
 
-		// Enables you to skip loading the default css
+		// Enables you to skip loading the index css
 		if (t.features.popup_css !== false)
 			t.dom.loadCSS(t.features.popup_css || t.editor.settings.popup_css);
 

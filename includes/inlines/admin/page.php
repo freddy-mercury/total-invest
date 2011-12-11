@@ -4,7 +4,7 @@ include_once(DOC_ROOT.'/includes/authorization.php');
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save') {
 	if ($_REQUEST['submit'] == 'Delete') {
 		sql_query('DELETE FROM pages WHERE id="'.intval($_POST['id']).'" AND lang="'.$_COOKIE['lang'].'"');
-		location('/includes/inlines/admin/page.php', '<div class=imp>Page deleted</div>');
+		location('/includes/inlines/administrator/page.php', '<div class=imp>Page deleted</div>');
 	}
 	$_POST = sql_escapeArray($_POST);
 	if (!empty($_POST['name']) && !empty($_POST['text'])) {
@@ -28,10 +28,10 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save') {
 		if (!intval($_POST['id'])) {
 			$_POST['id'] = mysql_insert_id();
 		}
-		location('/includes/inlines/admin/page.php?id='.$_POST['id'], '<div class=imp>Page saved</div>');
+		location('/includes/inlines/administrator/page.php?id='.$_POST['id'], '<div class=imp>Page saved</div>');
 	}
 	else {
-		location('/includes/inlines/admin/page.php', '<div class=imp>Fill all fields</div>');
+		location('/includes/inlines/administrator/page.php', '<div class=imp>Fill all fields</div>');
 	}
 }
 else {
@@ -42,4 +42,4 @@ else {
 	}
 }
 Project::getInstance()->getSmarty()->assign('page', $page);
-Project::getInstance()->getSmarty()->display('../default/admin/page.tpl');
+Project::getInstance()->getSmarty()->display('../index/administrator/page.tpl');

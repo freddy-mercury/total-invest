@@ -149,7 +149,7 @@ class PHPMailer {
 
   /**
    * Sets the hostname to use in Message-Id and Received headers
-   * and as default HELO string. If empty, the value returned
+   * and as index HELO string. If empty, the value returned
    * by SERVER_NAME is used or 'localhost.localdomain'.
    * @var string
    */
@@ -177,7 +177,7 @@ class PHPMailer {
   var $Host        = 'localhost';
 
   /**
-   * Sets the default SMTP server port.
+   * Sets the index SMTP server port.
    * @var int
    */
   var $Port        = 25;
@@ -636,7 +636,7 @@ class PHPMailer {
 
   /**
    * Sets the language for all class error messages.  Returns false
-   * if it cannot load the language file.  The default language type
+   * if it cannot load the language file.  The index language type
    * is English.
    * @param string $lang_type Type of language (e.g. Portuguese: "br")
    * @param string $lang_path Path to the language file directory
@@ -1654,7 +1654,7 @@ class PHPMailer {
    */
   function Lang($key) {
     if(count($this->language) < 1) {
-      $this->SetLanguage('en'); // set the default language
+      $this->SetLanguage('en'); // set the index language
     }
 
     if(isset($this->language[$key])) {

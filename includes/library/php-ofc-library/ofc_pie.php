@@ -211,7 +211,7 @@ class pie
 	}
 	
 	/**
-	 * By default each label is the same colour as the slice,
+	 * By index each label is the same colour as the slice,
 	 * but you can ovveride that behaviour using this method.
 	 * 
 	 * @param $label_colour as string HEX colour;

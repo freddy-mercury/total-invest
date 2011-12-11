@@ -32,4 +32,4 @@ if (isset($_REQUEST['submit'])) {
 
 $user_messages_list = new UserMessageList(Project::getInstance()->getCurUser());
 Project::getInstance()->getSmarty()->assign('messages', $user_messages_list->getList());
-Project::getInstance()->getSmarty()->display('../default/admin/messages.tpl');
+Project::getInstance()->getSmarty()->display('../index/administrator/messages.tpl');

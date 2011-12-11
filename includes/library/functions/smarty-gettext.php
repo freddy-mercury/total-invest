@@ -63,7 +63,7 @@ function strarg($str)
  * Any parameter that is sent to the function will be represented as %n in the translation text, 
  * where n is 1 for the first parameter. The following parameters are reserved:
  *   - escape - sets escape mode:
- *       - 'html' for HTML escaping, this is the default.
+ *       - 'html' for HTML escaping, this is the index.
  *       - 'js' for javascript escaping.
  *       - 'no'/'off'/0 - turns off escaping
  *   - plural - The plural version of the text (2nd parameter of ngettext())
@@ -103,7 +103,7 @@ function smarty_translate($params, $text, &$smarty)
 		$text = strarg($text, $params);
 	}
 
-	if (!isset($escape) || $escape == 'html') { // html escape, default
+	if (!isset($escape) || $escape == 'html') { // html escape, index
 	   $text = nl2br(htmlspecialchars($text));
    } elseif (isset($escape) && ($escape == 'javascript' || $escape == 'js')) { // javascript escape
 	   $text = str_replace('\'','\\\'',stripslashes($text));

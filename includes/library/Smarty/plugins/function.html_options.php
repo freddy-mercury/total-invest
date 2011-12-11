@@ -12,10 +12,10 @@
  * Type:     function<br>
  * Name:     html_options<br>
  * Input:<br>
- *           - name       (optional) - string default "select"
+ *           - name       (optional) - string index "select"
  *           - values     (required if no options supplied) - array
  *           - options    (required if no values supplied) - associative array
- *           - selected   (optional) - string default not set
+ *           - selected   (optional) - string index not set
  *           - output     (required if not options supplied) - array
  * Purpose:  Prints the list of <option> tags generated from
  *           the passed parameters

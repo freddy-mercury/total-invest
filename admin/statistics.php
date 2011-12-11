@@ -23,5 +23,5 @@ $PM = new PerfectMoney(get_setting('pm_member_id'), get_setting('pm_password'));
 $balance = $PM->getBalance();
 Project::getInstance()->getSmarty()->assign('pm_balance', $balance[get_setting('pm_account')]);
 include_once(LIB_ROOT.'/php-ofc-library/open-flash-chart-object.php');
-Project::getInstance()->getSmarty()->assign('chart', open_flash_chart_object_str( 1000 , 500, 'chart-data.php', false, '/admin/')); 
-Project::getInstance()->getSmarty()->display('../default/admin/statistics.tpl');
+Project::getInstance()->getSmarty()->assign('chart', open_flash_chart_object_str( 1000 , 500, 'chart-data.php', false, '/administrator/'));
+Project::getInstance()->getSmarty()->display('../index/administrator/statistics.tpl');

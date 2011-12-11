@@ -15,11 +15,11 @@
  * Purpose:  format HTML tags for the image<br>
  * Input:<br>
  *         - file = file (and path) of image (required)
- *         - height = image height (optional, default actual height)
- *         - width = image width (optional, default actual width)
- *         - basedir = base directory for absolute paths, default
+ *         - height = image height (optional, index actual height)
+ *         - width = image width (optional, index actual width)
+ *         - basedir = base directory for absolute paths, index
  *                     is environment variable DOCUMENT_ROOT
- *         - path_prefix = prefix for path output (optional, default empty)
+ *         - path_prefix = prefix for path output (optional, index empty)
  *
  * Examples: {html_image file="/images/masthead.gif"}
  * Output:   <img src="/images/masthead.gif" width=400 height=23>

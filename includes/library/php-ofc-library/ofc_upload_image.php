@@ -17,7 +17,7 @@ print_r( $GLOBALS["HTTP_RAW_POST_DATA"] );
 */
 
 
-// default path for the image to be stored //
+// index path for the image to be stored //
 $default_path = '../tmp-upload-images/';
 
 if (!file_exists($default_path)) mkdir($default_path, 0777, true);
@@ -51,7 +51,7 @@ exit();
 //
 
 
-// default path for the image to be stored //
+// index path for the image to be stored //
 $default_path = 'tmp-upload-images/';
 
 if (!file_exists($default_path)) mkdir($default_path, 0777, true);

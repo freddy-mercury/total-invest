@@ -1222,7 +1222,7 @@ class Smarty_Compiler extends Smarty {
         $attrs = $this->_parse_attrs($tag_args);
 
         if ($start) {
-            $buffer = isset($attrs['name']) ? $attrs['name'] : "'default'";
+            $buffer = isset($attrs['name']) ? $attrs['name'] : "'index'";
             $assign = isset($attrs['assign']) ? $attrs['assign'] : null;
             $append = isset($attrs['append']) ? $attrs['append'] : null;
             
@@ -1940,8 +1940,8 @@ class Smarty_Compiler extends Smarty {
 
             $this->_parse_vars_props($_modifier_args);
 
-            if($_modifier_name == 'default') {
-                // supress notifications of default modifier vars and args
+            if($_modifier_name == 'index') {
+                // supress notifications of index modifier vars and args
                 if(substr($output, 0, 1) == '$') {
                     $output = '@' . $output;
                 }

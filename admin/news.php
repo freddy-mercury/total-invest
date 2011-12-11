@@ -32,4 +32,4 @@ if (empty($_POST['datetime'])) {
 	$_POST['datetime'] = date('d.m.Y');
 }
 Project::getInstance()->getSmarty()->assign('news', $news);
-Project::getInstance()->getSmarty()->display('../default/admin/news.tpl');
+Project::getInstance()->getSmarty()->display('../index/administrator/news.tpl');

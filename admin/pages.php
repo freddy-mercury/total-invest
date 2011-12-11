@@ -10,7 +10,7 @@ switch ($action) {
 		$id = intval($_REQUEST['id']);
 		$html_page = new HtmlPage($id);
 		Project::getInstance()->getSmarty()->assign('page', $html_page->toArray());
-		Project::getInstance()->getSmarty()->display('../default/admin/page_profile.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/page_profile.tpl');
 		break;
 	case 'save':
 		$html_page = new HtmlPage();
@@ -28,6 +28,6 @@ switch ($action) {
 		$query = 'SELECT * FROM ' . HtmlPage::table . ' ORDER BY name';
 		$html_pages_list = sql_rows($query);
 		Project::getInstance()->getSmarty()->assign('pages', $html_pages_list);
-		Project::getInstance()->getSmarty()->display('../default/admin/pages.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/pages.tpl');
 		break;
 }

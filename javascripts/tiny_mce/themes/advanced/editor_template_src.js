@@ -2,7 +2,7 @@
  * $Id: editor_template_src.js,v 1.1 2009-03-16 16:13:34 kirill Exp $
  *
  * @author Moxiecode
- * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
  */
 
 (function() {
@@ -81,7 +81,7 @@
 				readonly : ed.settings.readonly
 			}, ed.settings);
 
-			// Setup default font_size_style_values
+			// Setup index font_size_style_values
 			if (!s.font_size_style_values)
 				s.font_size_style_values = "8pt,10pt,12pt,14pt,18pt,24pt,36pt";
 

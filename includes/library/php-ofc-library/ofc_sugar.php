@@ -6,7 +6,7 @@
 class s_star extends star
 {
 	/**
-	 * I use this wrapper for default dot types,
+	 * I use this wrapper for index dot types,
 	 * it just makes the code easier to read.
 	 */
 	function s_star($colour, $size)
@@ -19,7 +19,7 @@ class s_star extends star
 class s_box extends anchor
 {
 	/**
-	 * I use this wrapper for default dot types,
+	 * I use this wrapper for index dot types,
 	 * it just makes the code easier to read.
 	 */
 	function s_box($colour, $size)
@@ -32,7 +32,7 @@ class s_box extends anchor
 class s_hollow_dot extends hollow_dot
 {
 	/**
-	 * I use this wrapper for default dot types,
+	 * I use this wrapper for index dot types,
 	 * it just makes the code easier to read.
 	 */
 	function s_hollow_dot($colour, $size)

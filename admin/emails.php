@@ -19,4 +19,4 @@ Project::getInstance()->getSmarty()->assign('deposit_notify', get_setting('depos
 Project::getInstance()->getSmarty()->assign('withdrawal_notify', get_setting('withdrawal_notify'));
 Project::getInstance()->getSmarty()->assign('forget_email', get_setting('forget_email'));
 
-Project::getInstance()->getSmarty()->display('../default/admin/emails.tpl');
+Project::getInstance()->getSmarty()->display('../index/administrator/emails.tpl');

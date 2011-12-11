@@ -36,7 +36,7 @@ switch ($action) {
 			GROUP BY users.id
 			');
 		Project::getInstance()->getSmarty()->assign('user', stripslashes_array($user));
-		Project::getInstance()->getSmarty()->display('../default/admin/user_profile.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/user_profile.tpl');
 	break;
 	case 'statistics':
 		include_once(LIB_ROOT.'/users/statistics.class.php');
@@ -58,7 +58,7 @@ switch ($action) {
 		$lines = $stats->getLines($types, $status);
 		Project::getInstance()->getSmarty()->assign('lines', $lines);
 		Project::getInstance()->getSmarty()->assign('user_id', intval($_REQUEST['id']));
-		Project::getInstance()->getSmarty()->display('../default/admin/user_statistics.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/user_statistics.tpl');
 	break;
 	case 'bonus':
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'save') {
@@ -115,7 +115,7 @@ switch ($action) {
 		}
 		Project::getInstance()->getSmarty()->assign('plans', stripslashes_array($plans));
 		Project::getInstance()->getSmarty()->assign('user_id', intval($_REQUEST['id']));
-		Project::getInstance()->getSmarty()->display('../default/admin/user_bonus.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/user_bonus.tpl');
 	break;
 	case 'bad_withdrawals':
 		$result = sql_query('
@@ -126,7 +126,7 @@ switch ($action) {
 			$bads[] = $row;
 		}
 		Project::getInstance()->getSmarty()->assign('bads', $bads);
-		Project::getInstance()->getSmarty()->display('../default/admin/user_bad_withdrawals.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/user_bad_withdrawals.tpl');
 	break;
 	case 'message':
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'send') {
@@ -139,7 +139,7 @@ switch ($action) {
 			location($_SERVER['PHP_SELF'].'?action=profile&id='.intval($_REQUEST['id']), '<p class=imp>Message <u>'.htmlspecialchars($message->title).'</u> has been send!</p>');
 		}
 		Project::getInstance()->getSmarty()->assign('user_id', intval($_REQUEST['id']));
-		Project::getInstance()->getSmarty()->display('../default/admin/user_message.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/user_message.tpl');
 	break;
 	default:
 		$result_ips = sql_query('
@@ -196,5 +196,5 @@ switch ($action) {
 		}
 		Project::getInstance()->getSmarty()->assign('pagination', pagination(sql_get('SELECT FOUND_ROWS()')));
 		Project::getInstance()->getSmarty()->assign('users', stripslashes_array($users));
-		Project::getInstance()->getSmarty()->display('../default/admin/users.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/users.tpl');
 }

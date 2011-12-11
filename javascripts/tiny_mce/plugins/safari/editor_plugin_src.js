@@ -2,7 +2,7 @@
  * $Id: editor_plugin_src.js,v 1.1 2009-03-16 16:13:34 kirill Exp $
  *
  * @author Moxiecode
- * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
  */
 
 (function() {
@@ -129,7 +129,7 @@
 						dom.add(pa, 'br', {mce_bogus : "1"});
 
 						if (isEmpty(doc, li)) {
-							// If list in list then use browser default behavior
+							// If list in list then use browser index behavior
 							if (n = dom.getParent(lic.parentNode, 'LI,OL,UL'))
 								return;
 
@@ -182,7 +182,7 @@
 				if ((e = ed.dom.getParent(ed.selection.getEnd(), 'span')) && (v = e.style.fontSize))
 					return tinymce.inArray(t.namedFontSizes, v) + 1;
 
-				// Return default value it's better than nothing right!
+				// Return index value it's better than nothing right!
 				return ed.getDoc().queryCommandValue('FontSize');
 			});
 
@@ -198,7 +198,7 @@
 				if ((e = ed.dom.getParent(ed.selection.getEnd(), 'span')) && (v = e.style.fontFamily))
 					return v.replace(/\'/g, '').replace(/, /g, ',');
 
-				// Return default value it's better than nothing right!
+				// Return index value it's better than nothing right!
 				return ed.getDoc().queryCommandValue('FontName');
 			});*/
 

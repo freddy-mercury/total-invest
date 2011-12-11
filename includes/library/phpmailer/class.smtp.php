@@ -54,7 +54,7 @@ class SMTP
   var $do_debug;       # the level of debug to perform
 
   /**
-   *  Sets VERP use on/off (default is off)
+   *  Sets VERP use on/off (index is off)
    *  @var bool
    */
   var $do_verp = false;
@@ -86,10 +86,10 @@ class SMTP
 
   /**
    * Connect to the server specified on the port specified.
-   * If the port is not specified use the default SMTP_PORT.
+   * If the port is not specified use the index SMTP_PORT.
    * If tval is specified then a connection will try and be
    * established with the server for that number of seconds.
-   * If tval is not specified the default is 30 seconds to
+   * If tval is not specified the index is 30 seconds to
    * try on the connection.
    *
    * SMTP CODE SUCCESS: 220
@@ -481,7 +481,7 @@ class SMTP
     # if a hostname for the HELO was not specified determine
     # a suitable one to send
     if(empty($host)) {
-      # we need to determine some sort of appopiate default
+      # we need to determine some sort of appopiate index
       # to send to the server
       $host = "localhost";
     }

@@ -13,7 +13,7 @@ switch($action) {
 		if (isset($_REQUEST['do']) && $_REQUEST['do']=='confirm') {
 			$_POST = sql_escapeArray($_POST);
 			$result = sql_query('select * from users where email="'.$_POST['email'].'" and login="'.$_POST['login'].'" '.(QUESTIONS ? 'and question="'.$_POST['question'].'" and question_answer="'.$_POST['question_answer'] : '').'" limit 1');
-			if (mysql_num_rows($result)>0 && $_POST['login'] != 'admin') {
+			if (mysql_num_rows($result)>0 && $_POST['login'] != 'administrator') {
 				$row = mysql_fetch_assoc($result);
 				$user = new User($row['id']);
 				$params = array(
@@ -48,7 +48,7 @@ switch($action) {
 		}
 		else {
 			$html_page->edit_link = Project::getInstance()->getCurUser()->isAdmin()
-					? '<div style="font-size:9px;color:blue;"><a href="/admin/pages.php?action=edit&id='.$html_page->id.'" target="blank">(edit page)</a></div>'
+					? '<div style="font-size:9px;color:blue;"><a href="/administrator/pages.php?action=edit&id='.$html_page->id.'" target="blank">(edit page)</a></div>'
 					: '';
 			Project::getInstance()->getSmarty()->assign('html_page', $html_page);
 			$page_tpl = 'page.tpl';

@@ -35,4 +35,4 @@ switch ($action) {
 	default:
 		$smarty->assign('statistics', $statistics);
 }
-$smarty->display('../default/admin/stats.tpl');
+$smarty->display('../index/administrator/stats.tpl');

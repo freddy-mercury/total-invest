@@ -214,7 +214,7 @@ class Project {
     public function setupSmarty() {
         /** SMARTY * */
         $theme = get_setting('theme');
-        $theme = !empty($theme) && file_exists(BASE_ROOT . '/themes/' . $theme . '/') ? get_setting('theme') : 'default';
+        $theme = !empty($theme) && file_exists(BASE_ROOT . '/themes/' . $theme . '/') ? get_setting('theme') : 'index';
         $this->settings[17]['value'] = $theme;
         $this->smarty->template_dir = BASE_ROOT . '/themes/' . $theme . '/';
         $this->smarty->compile_dir = BASE_ROOT . '/templates_c/';

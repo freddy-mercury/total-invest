@@ -339,7 +339,7 @@ if (!this.JSON) {
 // The stringify method takes a value and an optional replacer, and an optional
 // space parameter, and returns a JSON text. The replacer can be a function
 // that can replace values, or an array of strings that will select the keys.
-// A default replacer method can be provided. Use of the space parameter can
+// A index replacer method can be provided. Use of the space parameter can
 // produce text that is more easily readable.
 
                 var i;
@@ -362,7 +362,7 @@ if (!this.JSON) {
                     }
                 }
 
-// If there is no replacer parameter, use the default replacer.
+// If there is no replacer parameter, use the index replacer.
 
                 if (!replacer) {
                     rep = function (key, value) {

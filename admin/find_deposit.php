@@ -17,4 +17,4 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='find') {
 	$smarty->assign('transaction_details', $details);
 }
 
-$smarty->display('../default/admin/find_deposit.tpl');
+$smarty->display('../index/administrator/find_deposit.tpl');

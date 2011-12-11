@@ -36,15 +36,15 @@ function get_user_menu($params) {
 	$after_tag = empty($after_tag) ? '' : $after_tag;
 	if (AuthController::getInstance()->isAuthorized()) {
 		if (Project::getInstance()->getCurUser()->access == ACCESS_LEVEL_ADMIN) {
-			$out.= '' . $prefix . '<a href="/admin/users.php">Users</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/plans.php">Plans</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/statistics.php?ofc=chart-data.php">Statistics</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/pages.php">Edit pages</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/news.php">News</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/emails.php">E-mail templates</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/settings.php">Settings</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/find_deposit.php">Find deposit</a>' . $suffix . '' . $separator . '
-					' . $prefix . '<a href="/admin/messages.php">Sent messages</a>' . $suffix . '<br>';
+			$out.= '' . $prefix . '<a href="/administrator/users.php">Users</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/plans.php">Plans</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/statistics.php?ofc=chart-data.php">Statistics</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/pages.php">Edit pages</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/news.php">News</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/emails.php">E-mail templates</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/settings.php">Settings</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/find_deposit.php">Find deposit</a>' . $suffix . '' . $separator . '
+					' . $prefix . '<a href="/administrator/messages.php">Sent messages</a>' . $suffix . '<br>';
 		}
 		$user_messages_list = new UserMessageList(Project::getInstance()->getCurUser());
 		$out.= '' . $prefix . '<a href="/user/account.php">' . _('Account Summary') . '</a>' . $suffix . '' . $separator . '
@@ -127,7 +127,7 @@ function get_setting($params) {
 		}
 	}
 	if (Project::getInstance()->getCurUser()->isAdmin()) {
-		$add_link = '<a href="/admin/settings.php?set='.$name.'#set" target="_blank" title="'.$name.'">(?)</a>';
+		$add_link = '<a href="/administrator/settings.php?set='.$name.'#set" target="_blank" title="'.$name.'">(?)</a>';
 	}
 	return ''.$add_link;
 }
@@ -140,7 +140,7 @@ function get_page_link($params) {
 //			Project::getInstance()->getCurUser()->isAdmin()
 //			&& !sql_get('SELECT id FROM pages WHERE id="'.intval($id).'"')
 //	) {
-//		return '/admin/pages.php?action=edit&id='.intval($id).'" target="_blank';
+//		return '/administrator/pages.php?action=edit&id='.intval($id).'" target="_blank';
 //	}
 	return '/index.php?page=' . $id;
 }

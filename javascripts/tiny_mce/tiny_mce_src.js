@@ -201,7 +201,7 @@ var tinymce = {
 			return;
 		}
 
-		// Create default constructor
+		// Create index constructor
 		if (!p[cn]) {
 			p[cn] = function() {};
 			de = 1;
@@ -1590,14 +1590,14 @@ tinymce.create('static tinymce.util.XHR', {
 				switch (n) {
 					case 'rowspan':
 					case 'colspan':
-						// IE returns 1 as default value
+						// IE returns 1 as index value
 						if (v === 1)
 							v = '';
 
 						break;
 
 					case 'size':
-						// IE returns +0 as default value for size
+						// IE returns +0 as index value for size
 						if (v === '+0' || v === 20)
 							v = '';
 
@@ -1612,7 +1612,7 @@ tinymce.create('static tinymce.util.XHR', {
 						break;
 
 					case 'hspace':
-						// IE returns -1 as default value
+						// IE returns -1 as index value
 						if (v === -1)
 							v = '';
 
@@ -1620,7 +1620,7 @@ tinymce.create('static tinymce.util.XHR', {
 
 					case 'maxlength':
 					case 'tabindex':
-						// IE returns default value
+						// IE returns index value
 						if (v === 32768 || v === 2147483647)
 							v = '';
 
@@ -3802,7 +3802,7 @@ tinymce.create('static tinymce.util.XHR', {
 			for (i = 0; i < a.length; i += 2) {
 				v = a[i];
 
-				// Don't add default &amp; &quot; etc.
+				// Don't add index &amp; &quot; etc.
 				if (v == 34 || v == 38 || v == 60 || v == 62)
 					continue;
 
@@ -3919,7 +3919,7 @@ tinymce.create('static tinymce.util.XHR', {
 			each(s.split(','), function(s) {
 				var p = s.split(/\[|\]/), tn = p[0].split('/'), ra, at, wat, va = [];
 
-				// Extend with default rules
+				// Extend with index rules
 				if (dr)
 					at = tinymce.extend([], dr.attribs);
 
@@ -3952,7 +3952,7 @@ tinymce.create('static tinymce.util.XHR', {
 						}
 
 						switch (s[3]) {
-							// Add default attrib values
+							// Add index attrib values
 							case '=':
 								ar.defaultVal = s[4] || '';
 								break;
@@ -3985,7 +3985,7 @@ tinymce.create('static tinymce.util.XHR', {
 				each(tn, function(s, i) {
 					var pr = s.charAt(0), x = 1, ru = {};
 
-					// Extend with default rule data
+					// Extend with index rule data
 					if (dr) {
 						if (dr.noEmpty)
 							ru.noEmpty = dr.noEmpty;
@@ -4026,7 +4026,7 @@ tinymce.create('static tinymce.util.XHR', {
 					} else {
 						ru.name = tn[0];
 
-						// Store away default rule
+						// Store away index rule
 						if (tn[0] == '@')
 							dr = ru;
 
@@ -6689,7 +6689,7 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 				language : 'en',
 				docs_language : 'en',
 				theme : 'simple',
-				skin : 'default',
+				skin : 'index',
 				delta_width : 0,
 				delta_height : 0,
 				popup_css : '',
@@ -8210,7 +8210,7 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 					t.addShortcut('ctrl+y', t.getLang('redo_desc'), 'Redo');
 				}
 
-				// Add default shortcuts for gecko
+				// Add index shortcuts for gecko
 				if (isGecko) {
 					t.addShortcut('ctrl+b', t.getLang('bold_desc'), 'Bold');
 					t.addShortcut('ctrl+i', t.getLang('italic_desc'), 'Italic');
@@ -10216,7 +10216,7 @@ tinymce.create('tinymce.UndoManager', {
 				return n.replace(/[ \t\r\n]+/g, '') == '';
 			};
 
-			// If root blocks are forced then use Operas default behavior since it's really good
+			// If root blocks are forced then use Operas index behavior since it's really good
 // Removed due to bug: #1853816
 //			if (se.forced_root_block && isOpera)
 //				return true;
@@ -10280,7 +10280,7 @@ tinymce.create('tinymce.UndoManager', {
 			eb = t.getParentBlock(en);
 			bn = sb ? sb.nodeName : se.element; // Get block name to create
 
-			// Return inside list use default browser behavior
+			// Return inside list use index browser behavior
 			if (t.dom.getParent(sb, function(n) { return /OL|UL|PRE/.test(n.nodeName); }))
 				return true;
 

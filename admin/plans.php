@@ -28,7 +28,7 @@ switch ($action) {
 		}
 		$plan = sql_row('SELECT * FROM plans WHERE id="'.intval($_REQUEST['id']).'"');
 		Project::getInstance()->getSmarty()->assign('plan', stripslashes_array($plan));
-		Project::getInstance()->getSmarty()->display('../default/admin/plan_profile.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/plan_profile.tpl');
 	break;
 	case 'add':
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'save') {
@@ -53,7 +53,7 @@ switch ($action) {
 			');
 			location($_SERVER['PHP_SELF'], '<p class=imp>Plan <u>'.$_POST['name'].'</u> has been added!</p>');
 		}
-		Project::getInstance()->getSmarty()->display('../default/admin/plan_profile.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/plan_profile.tpl');
 	break;
 	case 'status':
 		$plan = new Plan(intval($_REQUEST['id']));
@@ -71,5 +71,5 @@ switch ($action) {
 			$plans[] = $row;
 		}
 		Project::getInstance()->getSmarty()->assign('plans', stripslashes_array($plans));
-		Project::getInstance()->getSmarty()->display('../default/admin/plans.tpl');
+		Project::getInstance()->getSmarty()->display('../index/administrator/plans.tpl');
 }

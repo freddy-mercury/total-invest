@@ -32,4 +32,4 @@ if (isset($_GET['set'])) {
 	$_POST['name'] = $_GET['set'];
 }
 Project::getInstance()->getSmarty()->assign('settings', Project::getInstance()->getSettings());
-Project::getInstance()->getSmarty()->display('../default/admin/settings.tpl');
+Project::getInstance()->getSmarty()->display('../index/administrator/settings.tpl');
