@@ -13,6 +13,5 @@ return array(
 		'database' => 'total-invest',
 		'user' => 'root',
 		'password' => '',
-
 	),
 );

@@ -21,7 +21,7 @@ class App {
 		set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . '/models');
 		$this->config['views_path'] = (isset($this->config['views_path']) && file_exists($this->config['views_path']))
 			? $this->config['views_path']
-			: ROOT .'/views';
+			: ROOT . '/views';
 	}
 
 	final private function __clone() {
@@ -39,30 +39,31 @@ class App {
 		return self::$_instance;
 	}
 
-	public function errorHandler($errno, $errstr , $errfile, $errline, $errcontext) {
+	public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+		$error = $errline.'#'.$errfile.'-'.$errstr . '<br><pre>' . print_r($errcontext, true) . '</pre>';
 		if ($errno !== E_NOTICE) {
 			if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
-				die($errcontext);
+				die($error);
 			}
 			else {
-				mail('tmp@tmp.tmp', 'Error', $errcontext);
+				mail('tmp@tmp.tmp', 'Error', $error);
 			}
 		}
 		else {
-			$GLOBALS['errors'][] = $errstr . ' - ' . $errfile . ' - ' . $errline . '<pre>' . print_r($errcontext, true) . '</pre>';
+			$GLOBALS['errors'][] = $error;
 		}
 	}
 
 	public function exceptionHandler(Exception $exception) {
-		die($exception->getMessage());
+		die($exception->getLine() . '#' . $exception->getFile() . '-' . $exception->getMessage() . '<br><pre>' . print_r($exception->getTrace(), true) . '</pre>');
 	}
 
 	public function autoloader($classname) {
 		$segments = explode('\\', $classname);
 		$classname = array_pop($segments);
 		$words = array_map('strtolower',
-			preg_split('/([[:upper:]][[:lower:]]+)/', $classname, null, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY));
-		$classfile = implode('_', $words).'.class.php';
+			preg_split('/([[:upper:]][[:lower:]]+)/', $classname, null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY));
+		$classfile = implode('_', $words) . '.class.php';
 		include_once $classfile;
 	}
 
@@ -96,8 +97,11 @@ class App {
 		}
 		$controller = ucfirst((($controller = array_shift($segments)) ? $controller : 'Index') . 'Controller');
 		$action = ucfirst((($action = array_shift($segments)) ? $action : 'Index'));
-		$classname = $module .'\\' . $controller;
-		parse_str($request['query'], $parameters);
+		$classname = $module . '\\' . $controller;
+		$parameters = array();
+		if (isset($request['query'])) {
+			parse_str($request['query'], $parameters);
+		}
 		return new $classname($action, $parameters);
 	}
 
@@ -107,14 +111,13 @@ class App {
 		$controller->run();
 	}
 
+	/**
+	 * @return PDO
+	 */
 	public function getDb() {
 		if ($this->_db === null) {
-			try {
-				$this->_db = new PDO('mysql:host=localhost;dbname=' . $this->config['db']['database'], $this->config['db']['user'], $$this->config['db']['password']);
-			}
-			catch (PDOException $e) {
-				die($e->getMessage());
-			}
+			$this->_db = new PDO('mysql:host=localhost;dbname=' . $this->config['db']['database'], $this->config['db']['user'], $this->config['db']['password']);
 		}
+		return $this->_db;
 	}
 }
