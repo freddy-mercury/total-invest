@@ -40,7 +40,7 @@ class App {
 	}
 
 	public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
-		$error = $errline.'#'.$errfile.'-'.$errstr . '<br><pre>' . print_r($errcontext, true) . '</pre>';
+		$error = $errline.'#'.$errfile.'-'.$errstr . '<!--br><pre>' . print_r($errcontext, true) . '</pre-->';
 		if ($errno !== E_NOTICE) {
 			if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
 				die($error);
@@ -55,7 +55,7 @@ class App {
 	}
 
 	public function exceptionHandler(Exception $exception) {
-		die($exception->getLine() . '#' . $exception->getFile() . '-' . $exception->getMessage() . '<br><pre>' . print_r($exception->getTrace(), true) . '</pre>');
+		die($exception->getLine() . '#' . $exception->getFile() . '-' . $exception->getMessage() . '<!--br><pre>' . print_r($exception->getTrace(), true) . '</pre-->');
 	}
 
 	public function autoloader($classname) {
@@ -98,11 +98,7 @@ class App {
 		$controller = ucfirst((($controller = array_shift($segments)) ? $controller : 'Index') . 'Controller');
 		$action = ucfirst((($action = array_shift($segments)) ? $action : 'Index'));
 		$classname = $module . '\\' . $controller;
-		$parameters = array();
-		if (isset($request['query'])) {
-			parse_str($request['query'], $parameters);
-		}
-		return new $classname($action, $parameters);
+		return new $classname($action, $_REQUEST);
 	}
 
 	public function run() {

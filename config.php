@@ -14,4 +14,9 @@ return array(
 		'user' => 'root',
 		'password' => '',
 	),
+	'recaptcha' => array(
+		'enabled' => true,
+		'public_key' => '6LcNwsQSAAAAAGlQU25aUQDDUs1wFbv_j3XHZZ8b',
+		'private_key' => '6LcNwsQSAAAAAMKYE64_1FChTxf1MkF5OQBNm-t7'
+	),
 );
