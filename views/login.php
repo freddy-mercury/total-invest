@@ -1,3 +1,6 @@
+<?php
+	/* @var $login_form LoginForm */
+?>
 <h2>Login</h2>
 <form action="" method="post">
 	<div class="form-element">
@@ -9,7 +12,7 @@
 		<input type="password" name="Login[password]" id="password" value="">
 	</div>
 	<div class="form-element">
-		<input type="checkbox" name="Login[remember_me]" id="remember_me" value="1">
+		<input type="checkbox" name="Login[remember_me]" id="remember_me" value="1" <?php echo $login_form->remember_me ? 'checked="checked"' : '' ?>>
 		<label for="remember_me">Remember me</label>
 	</div>
 	<?php if (App::get()->config['recaptcha']['enabled']) { ?>
