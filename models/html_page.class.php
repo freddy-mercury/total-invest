@@ -1,10 +1,14 @@
 <?php
+
 /**
- * Created by JetBrains PhpStorm.
- * User: Asus
- * Date: 12.12.11
- * Time: 21:33
- * To change this template use File | Settings | File Templates.
+ * @class HtmlPage
+ * @parent AbstractActiveRecord
+ *
+ * @property $keyword
+ * @property $title
+ * @property $content
+ * @property $lang
+ * @property $published
  */
 class HtmlPage extends AbstractActiveRecord {
 	/**
@@ -13,5 +17,14 @@ class HtmlPage extends AbstractActiveRecord {
 	public function tableName() {
 		return 'html_pages';
 	}
+
+	/**
+	 * @static
+	 * @return HtmlPage
+	 */
+	public static function model() {
+		return parent::model();
+	}
+
 
 }

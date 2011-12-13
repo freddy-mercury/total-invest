@@ -1,59 +1,35 @@
-body{ background-image:url(images/bg.jpg);font-size: 12px;font-family: Arial;margin:0;padding:0;cursor:default; background-position:center; background-repeat:no-repeat; background-position:top;color:#333333}
-a{ text-decoration:none;}
-img{border:0px}
-h1, .page_name {font-size:18px; color:#59592f; font-family:Arial;margin-top:5px}
-
-#lang_box{width:300px;height:25px;margin-left:395px; background-image:url(images/lang.jpg);margin-top:22px}
-#lang{width:155px;height:25px;margin-left:148px;padding-top:7px}
-#menu_block{width:255px;margin-left:15px}
-#line_top{width:85%;height:14px;border-style:none none solid none;border-width:1px;border-color:#e8e8e8}
-#line_top2{width:100%;height:1px;border-style:none none solid none;border-width:1px;border-color:#e8e8e8}
-#line_top3{width:68%;height:1px;border-style:none none solid none;border-width:1px;border-color:#e8e8e8}
-
-
-#cont1{width:95%}
-#block{width:95%}
-#block3{margin-left:30px}
-ul{color:#666666;font-size:11pt;font-family:Arial;font-weight:bold;margin:0}
-li{margin-bottom:5px}
-#charts_block{margin-left:25px}
-
-#news_block{width:95%; background-color:#f6f7f7;height:250px}
-#news_h{width:75%;height:26px;border:1px solid black;margin-left:10px;border-style:none none solid none;border-width:2px;border-color:#666666;float:left;margin-top:14px}
-#news_img{float:left;margin-top:13px;margin-left:20px}
-#news_content{width:85%;float:left;height:150px;margin-left:10px}
-#news_link{float:left;margin-top:10px;margin-left:292px}
-#news_line_bot{border-style:none none solid none;border-width:5px;border-color:#666666;width:95%}
-
-#img{margin-top:40px}
-#img2{margin-top:30px}
-#img3{margin-top:12px}
-
-#contact{margin-top:15px;margin-left:40px}
-#user_menu{margin-left:55px;}
-#user_menu ul {margin-top:20px;padding:0px;}
-#user_menu a {font-size:12px;color:#000000;}
-#contact_line{border-style:none none solid none;border-width:5px;border-color:#666666;width:35%;height:20px}
-
-.menu{color:#666666;}
-.news{color:#666666;text-decoration:underline}
-.date{color:#5d97bb}
-
-
-#ddos{margin-left:35px;margin-top:55px}
-
-#footer_line{border-style:none none solid none;border-width:4px;border-color:#dcdcdc;width:91%}
-#footer_menu_block{margin-left:35px;margin-top:45px}
-#footer_menu{margin-bottom:5px;font-weight:bold;color:#666666}
-#footer_text{margin-top:40px;margin-right:80px}
-
-.imp {
-	color: red;
+/* This is a sample style.css file */
+body {
+    background-color: #FFFFFF;
+    margin: 0;
 }
 
-#reg_h{height:25px;float:left;width:710px;text-align:center;color:#E83028;font-family:Philosopher;font-size:14pt;padding-top:5px; background-color:#DCDCDC;border:1px solid white}
-#reg_text{float:left; background-color:#EEEEEE;padding:10px;width:690px}
-#block_reg_dotted{width:705px;float:left;border-style: none none dashed none;border-color:#EEEEEE;border-width:1px}
-#block_reg{width:705px;float:left;}
-#reg_name{float:left;width:140px;text-align:right;background-color:#F5F5F5;padding:10px;}
-#reg_form{float:left;padding:5px;margin-left:10px}
+#body {
+    border: 1px solid #cccccc;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#header {
+    border: 1px solid #cccccc;
+}
+
+#content {
+    border: 1px solid #cccccc;
+}
+
+#footer {
+    border: 1px solid #cccccc;
+}
+
+.form-element label {
+
+}
+
+.form-element input {
+
+}
+
+.form-element span.error {
+    color: red;
+}

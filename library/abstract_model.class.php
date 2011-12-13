@@ -17,8 +17,16 @@ abstract class AbstractModel extends AbstractComponent {
 	 * Returns the list of attribute names of the model.
 	 * @return array list of attribute names.
 	 */
-
-	abstract public function attributeNames();
+	public function attributeNames() {
+		$attribute_names = array();
+        $reflection = new ReflectionClass(get_class($this));
+        /* @var $property ReflectionProperty */
+        foreach ($reflection->getProperties() as $property) {
+            if ($property->isPublic())
+                $attribute_names[] = $property->getName();
+        }
+		return $attribute_names;
+	}
 
 	/**
 	 * Performs the validation.
@@ -169,7 +177,7 @@ abstract class AbstractModel extends AbstractComponent {
 	 * @return array safe attribute names
 	 */
 	public function getSafeAttributeNames() {
-		return $this->_safe_attribute_names;
+		return $this->_safe_attribute_names ?: $this->attributeNames();
 	}
 
 }
