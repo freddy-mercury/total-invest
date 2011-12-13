@@ -100,7 +100,7 @@ function get_chat($params) {
 	$OUT = '';
 	$result = sql_query('select * from chat order by stamp desc limit 30');
 	while ($post = mysql_fetch_assoc($result)) {
-		$user = new User($post['user_id']);
+		$user = new UserOld($post['user_id']);
 		$user_name = $user->id ? $user->login : 'guest_' . substr($post['session'], 0, 4);
 		$OUT.= '<div><b>(' . $user_name . ')[' . date('H:i', $post['stamp']) . ']:</b> ' . htmlspecialchars(stripslashes(iconv('utf-8', 'windows-1251', urldecode($post['message'])))) . '</div>';
 	}

@@ -6,6 +6,7 @@
 	<div class="form-element">
 		<label for="email">E-mail</label><br>
 		<input type="text" name="Login[email]" id="email" value="">
+		<span class="error"><?php echo $login_form->getError('email'); ?></span>
 	</div>
 	<div class="form-element">
 		<label for="password">Password</label><br>

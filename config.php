@@ -15,8 +15,8 @@ return array(
 		'password' => '',
 	),
 	'recaptcha' => array(
-		'enabled' => true,
-		'public_key' => '6LcNwsQSAAAAAGlQU25aUQDDUs1wFbv_j3XHZZ8b',
-		'private_key' => '6LcNwsQSAAAAAMKYE64_1FChTxf1MkF5OQBNm-t7'
+		'enabled' => false,
+		'public_key' => '6LdHKssSAAAAAKwhRCbS3N0SPYCRC45AmUZDHnKy',
+		'private_key' => '6LdHKssSAAAAAEV--1Xdfrzmun9BOm2uvA1Te4y2'
 	),
 );

@@ -32,4 +32,5 @@ body {
 
 .form-element span.error {
     color: red;
+    display: block;
 }

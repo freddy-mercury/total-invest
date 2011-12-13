@@ -11,7 +11,9 @@ class TableShema extends AbstractModel {
 
 	public function __construct($table_name) {
 		$this->_table_name = $table_name;
-		$result = App::get()->getDb()->query('DESCRIBE '.$this->_table_name);
+		if (!($result = App::get()->getDb()->query('DESCRIBE '.$this->_table_name))) {
+			throw new Exception('Cannot get shema of ' . $this->_table_name.' table!');
+		}
 		foreach ($result->fetchAll(PDO::FETCH_ASSOC) as $column) {
 			$this->_columns[$column['Field']] = $column['Default'];
 			if ($column['Key'] == 'PRI') {

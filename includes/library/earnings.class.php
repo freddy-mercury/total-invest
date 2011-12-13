@@ -10,27 +10,27 @@ class Earnings {
 				$earnings_count = $plan->term*86400/($plan->periodicy_value*$plan->periodicy);
 				if ($plan->percent_per == 'term') {
 					if (Project::getInstance()->getCurUser()->monitor == 1) {
-						//монитор получает только %
+						//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ %
 						$plan->percent-=100;
 					}
-					//получаем итоговую сумму и делим на кол-выплат
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ
 					$amount = round($deposit['amount']*($plan->percent/100/$earnings_count), 3);
 				}
 				elseif ($plan->percent_per == 'periodicity') {
 					if (Project::getInstance()->getCurUser()->monitor == 1) {
 						//
 						$total_percent = $earnings_count*$plan->percent;
-						//получаем итоговую сумму - 100% и делим на кол-выплат
+						//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - 100% пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ
 						$amount = round($deposit['amount']*($total_percent-100/100/$earnings_count), 3);
 					}
 					else {
-						//сумма за выплату
+						//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						$amount = round($deposit['amount']*($plan->percent/100), 3);
 					}
 				}
 				for ($i=0; $i < $earnings_count; $i++) {
 					$stamp_day = date('w', $stamp);
-					//если в плане указана галка working_days, то начисления только с ПН-ПТ
+					//пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ working_days, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ-пїЅпїЅ
 					if (($plan->working_days && ($stamp_day == 0 || $stamp_day == 6)) && $plan->percent_per == 'term') {
 						$earnings_count++;
 					}
@@ -41,7 +41,7 @@ class Earnings {
 				}
 				sql_query('update translines set status="2" where id="'.$deposit['id'].'"');
 				/**
-				 * добовляем бонус для моников
+				 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				 */
 				if (Project::getInstance()->getCurUser()->monitor == 1) {
 					sql_query('insert into translines values (0, "'.$deposit['id'].'", "'.Project::getInstance()->getCurUser()->id.'", "0", "b", "'.$deposit['amount'].'", "'.$stamp.'", "1", "")');
@@ -50,7 +50,7 @@ class Earnings {
 		}
 	}
 	private function bonusReferrals() {
-		$user = new User(Project::getInstance()->getCurUser()->id);
+		$user = new UserOld(Project::getInstance()->getCurUser()->id);
 		$referrals = $user->getReferralList();
 		
 	}

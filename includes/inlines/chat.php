@@ -16,7 +16,7 @@ if (isset($_REQUEST['text']) && !empty($_REQUEST['text'])) {
 $OUT = '';
 $posts = $dbh->fetchAll($dbh->query('select * from chat order by stamp desc limit 50'));
 foreach ($posts as $post) {
-	$user = new User($post['user_id']);
+	$user = new UserOld($post['user_id']);
 	$user_name = $user->id ? $user->login : 'guest_'.substr($post['session'], 0, 4);
 	$OUT.= '<div><b>('.$user_name.')['.date('H:i', $post['stamp']).']:</b> '.htmlspecialchars(stripslashes(urldecode($post['message']))).'</div>';
 }

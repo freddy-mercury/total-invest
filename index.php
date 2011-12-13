@@ -15,7 +15,7 @@ switch($action) {
 			$result = sql_query('select * from users where email="'.$_POST['email'].'" and login="'.$_POST['login'].'" '.(QUESTIONS ? 'and question="'.$_POST['question'].'" and question_answer="'.$_POST['question_answer'] : '').'" limit 1');
 			if (mysql_num_rows($result)>0 && $_POST['login'] != 'administrator') {
 				$row = mysql_fetch_assoc($result);
-				$user = new User($row['id']);
+				$user = new UserOld($row['id']);
 				$params = array(
 					'%user_fullname%' => $user->fullname,
 					'%user_login%' => $user->login,

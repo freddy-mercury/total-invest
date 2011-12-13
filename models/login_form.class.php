@@ -20,6 +20,10 @@ class LoginForm extends AbstractModel {
 				return false;
 			}
 		}
+		if (!App::get()->identity->authenticate($this->email, $this->password, $this->remember_me)) {
+			$this->addError('email', 'E-mail and password are not valid!');
+			return false;
+		}
 		return parent::validate($attributes);
 	}
 

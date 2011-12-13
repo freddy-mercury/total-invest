@@ -189,7 +189,7 @@ abstract class AbstractActiveRecord extends AbstractModel implements ArrayAccess
 	 */
 	public function findByPk($primary_keys) {
 		if (count($this->primaryKeys()) != count($primary_keys)) {
-			throw new Exception('Primary key be array of ' . count($this->primaryKeys()) . ' values!');
+			throw new Exception('Primary key must be array of ' . count($this->primaryKeys()) . ' values - '.count($primary_keys).' defined!');
 		}
 		$condition = array();
 		foreach ($primary_keys as $key=> $value) {

@@ -12,7 +12,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 		Project::getInstance()->getSmarty()->assign('error_message', 'Invalid login!');
 		$valid = false;
 	}
-	if (User::loginExist($_POST['login']) && $valid) {
+	if (UserOld::loginExist($_POST['login']) && $valid) {
 		Project::getInstance()->getSmarty()->assign('error_message', 'This login is already in use!');
 		$valid = false;
 	}
@@ -36,7 +36,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 		Project::getInstance()->getSmarty()->assign('error_message', 'Answer is empty!');
 		$valid = false;
 	}
-	if ((!check_email($_POST['email']) || User::emailExist($_POST['email'])) && $valid) {
+	if ((!check_email($_POST['email']) || UserOld::emailExist($_POST['email'])) && $valid) {
 		Project::getInstance()->getSmarty()->assign('error_message', 'Invalid e-mail address or this email is already used!');
 		$valid = false;
 	}
@@ -74,7 +74,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 		$_POST['referral'] = '';
 	}
 	if ($valid) {
-		$user = new User();
+		$user = new UserOld();
 		$_POST['pm_member_id'] = !empty($_POST['pm_member_id']) ? $_POST['pm_member_id'] : '';
 		$_POST['secpin'] = $_POST['secpin_signup'];
 		$_POST['masterpin'] = $_POST['masterpin_signup'];

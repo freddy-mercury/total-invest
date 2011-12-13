@@ -51,6 +51,10 @@ abstract class AbstractController {
 		return $this->_action;
 	}
 
+	protected function redirect($path) {
+		header('Location: ' . $path);
+		exit();
+	}
 }
 
 ?>

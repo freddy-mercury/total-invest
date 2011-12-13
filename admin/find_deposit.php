@@ -11,7 +11,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='find') {
 	$transaction = mysql_fetch_assoc($dbh->query($query));
 	if ($transaction['id']) {
 		$plan = new Plan($transaction['plan_id']);
-		$user = new User($transaction['user_id']);
+		$user = new UserOld($transaction['user_id']);
 		$details = print_rr($transaction, true).print_rr($plan, true).print_rr($user, true);
 	}
 	$smarty->assign('transaction_details', $details);

@@ -1,7 +1,7 @@
 <?php
 include_once LIB_ROOT.'/users/ip_controller.class.php';
 include_once LIB_ROOT.'/users/statistics.class.php';
-class User {
+class UserOld {
 	public $id;
 	public $fullname;
 	public $login;

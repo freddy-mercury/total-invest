@@ -1,27 +1,35 @@
 <?php
+require_once ROOT . '/library/abstract_component.class.php';
+
 /**
- * User: k.komarov
- * Date: 09.12.11
- * Time: 16:28
- * @package application.class.php
+ * @property array $config
+ * @property PDO $db
+ * @property Identity $identity
+ * @property int $now
  */
-class App {
+class App extends AbstractComponent {
+
 	const ROUTE_PARAMETER = 'r';
 	private static $_instance;
-	public $config;
+	private $_config;
 	private $_db;
+	private $_identity;
+	private $_now;
 
 	final private function __construct($config) {
-		$this->config = $config;
+		$this->_config = $config;
 		error_reporting(E_ALL ^ E_NOTICE);
 		set_error_handler(array($this, 'errorHandler'));
 		set_exception_handler(array($this, 'exceptionHandler'));
 		spl_autoload_register(array($this, 'autoloader'));
 		set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . '/library');
 		set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . '/models');
-		$this->config['views_path'] = (isset($this->config['views_path']) && file_exists($this->config['views_path']))
-			? $this->config['views_path']
+
+		$this->_config['views_path'] = (isset($this->_config['views_path']) && file_exists($this->_config['views_path']))
+			? $this->_config['views_path']
 			: ROOT . '/views';
+
+		session_start();
 	}
 
 	final private function __clone() {
@@ -40,7 +48,8 @@ class App {
 	}
 
 	public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
-		$error = $errline.'#'.$errfile.'-'.$errstr . '<!--br><pre>' . print_r($errcontext, true) . '</pre-->';
+		$error = 'ERROR: ' . $errline . '#' . $errfile . ' &mdash; ' . $errstr
+			. '<!--br><pre>' . print_r($errcontext, true) . '</pre-->';
 		if ($errno !== E_NOTICE) {
 			if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
 				die($error);
@@ -55,7 +64,15 @@ class App {
 	}
 
 	public function exceptionHandler(Exception $exception) {
-		die($exception->getLine() . '#' . $exception->getFile() . '-' . $exception->getMessage() . '<!--br><pre>' . print_r($exception->getTrace(), true) . '</pre-->');
+		$trace = $exception->getTrace();
+		$get_trace = function($file, $line) {
+			$trace = '';
+			for ($i = -3; $i <= 3; $i++) {
+				$trace .= ($i == -1 ? '<span style="color:red">' : '') . ($file[$line + $i] ? ($line + $i) . $file[$line + $i] : '') . ($i == -1 ? '</span>' : '');
+			}
+			return '<pre>' . $trace . '</pre>';
+		};
+		echo '<fieldset><legend>' . $exception->getMessage() . '</legend>' . $trace[0]['file'] . '<br>' . $get_trace(file($trace[0]['file']), $trace[0]['line']) . '</fieldset>';
 	}
 
 	public function autoloader($classname) {
@@ -87,7 +104,7 @@ class App {
 	 */
 	private function getRoutedController($request) {
 		$segments = array_map('strtolower', explode('/', $request['path']));
-		if (($module = array_shift($segments)) && in_array($module, $this->config['modules'])) {
+		if (($module = array_shift($segments)) && in_array($module, $this->_config['modules'])) {
 			set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . '/modules/' . $module . '/controllers');
 			$module = ucfirst($module);
 		}
@@ -107,13 +124,35 @@ class App {
 		$controller->run();
 	}
 
+	public function getConfig() {
+		return $this->_config;
+	}
+
 	/**
 	 * @return PDO
 	 */
 	public function getDb() {
 		if ($this->_db === null) {
-			$this->_db = new PDO('mysql:host=localhost;dbname=' . $this->config['db']['database'], $this->config['db']['user'], $this->config['db']['password']);
+			$this->_db = new PDO('mysql:host=localhost;dbname=' . $this->_config['db']['database'], $this->_config['db']['user'], $this->_config['db']['password']);
 		}
 		return $this->_db;
 	}
+
+	/**
+	 * @return Identity
+	 */
+	public function getIdentity() {
+		if ($this->_identity === null) {
+			$this->_identity = new Identity();
+		}
+		return $this->_identity;
+	}
+
+	public function getNow() {
+		if ($this->_now === null) {
+			$this->_now = time();
+		}
+		return $this->_now;
+	}
+
 }

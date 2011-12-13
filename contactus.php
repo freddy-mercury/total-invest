@@ -4,7 +4,7 @@ $ACCESS_LEVEL = ACCESS_LEVEL_GUEST;
 include_once(DOC_ROOT.'/includes/authorization.php');
 
 if (AuthController::getInstance()->isAuthorized()) {
-	$user = new User(Project::getInstance()->getCurUser()->id);
+	$user = new UserOld(Project::getInstance()->getCurUser()->id);
 	Project::getInstance()->getSmarty()->assign('user', $user);
 }
 include_once(LIB_ROOT.'/recaptchalib.php');

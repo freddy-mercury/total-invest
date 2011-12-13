@@ -48,7 +48,7 @@ class Project {
         $this->processCache();
         //process notification
         $this->processNotification();
-        $this->cur_user = new User(0);
+        $this->cur_user = new UserOld(0);
     }
 
     /**
@@ -73,7 +73,7 @@ class Project {
     }
 
     public function resetCurUser($user_id = 0) {
-        $this->cur_user = new User(!$user_id ? $this->cur_user->id : $user_id);
+        $this->cur_user = new UserOld(!$user_id ? $this->cur_user->id : $user_id);
     }
 
     /**
@@ -83,7 +83,7 @@ class Project {
      */
     public function getCurUser() {
         if (is_null($this->cur_user)) {
-            return new User(0);
+            return new UserOld(0);
         }
         return $this->cur_user;
     }
@@ -118,7 +118,7 @@ class Project {
     }
 
     public function processEarnings() {
-        if ($this->cur_user instanceof User && $this->cur_user->id) {
+        if ($this->cur_user instanceof UserOld && $this->cur_user->id) {
             include_once(LIB_ROOT . '/earnings.class.php');
             $earnins = new Earnings();
             $earnins->calculate();

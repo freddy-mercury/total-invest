@@ -19,7 +19,7 @@ class Emails {
 	
 	public function __construct($user_id = 0, $type = '', $parameters = array()) {
 		if ($user_id) {
-			$this->user = new User($user_id);
+			$this->user = new UserOld($user_id);
 		}
 		else {
 			$this->user = $user_id;
