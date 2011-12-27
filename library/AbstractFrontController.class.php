@@ -9,8 +9,12 @@
  */
 abstract class AbstractFrontController {
 
-	protected $parameters;
-	protected $breadcrumbs;
+	protected $_parameters;
+	/**
+	 *
+	 * @var View
+	 */
+	protected $_view;
 
 	/**
 	 * Возвращает название параметра действия. По-умолчанию: action
@@ -25,7 +29,8 @@ abstract class AbstractFrontController {
 	 * @param array|NULL $parameters Массив с параметрами (чаще всего $_REQUEST, $_GET или $_POST), если NULL, то по-умолчанию присваевается $_REQUEST
 	 */
 	public function __construct(array $parameters = NULL) {
-		$this->parameters = is_null($parameters) ? (array) $_REQUEST : (array) $parameters;
+		$this->_parameters = is_null($parameters) ? (array) $_REQUEST : (array) $parameters;
+		$this->_view = new View();
 		$this->init();
 	}
 
@@ -48,10 +53,10 @@ abstract class AbstractFrontController {
 	 * @return string
 	 */
 	final public function getAction() {
-		return isset($this->parameters[$this->actionParameterName()]) &&
-				is_string($this->parameters[$this->actionParameterName()]) &&
-				!empty($this->parameters[$this->actionParameterName()]) ?
-				$this->parameters[$this->actionParameterName()] : 'Index';
+		return isset($this->_parameters[$this->actionParameterName()]) &&
+				is_string($this->_parameters[$this->actionParameterName()]) &&
+				!empty($this->_parameters[$this->actionParameterName()]) ?
+				$this->_parameters[$this->actionParameterName()] : 'Index';
 	}
 
 	/**
@@ -80,7 +85,7 @@ abstract class AbstractFrontController {
 	 * @return mixed
 	 */
 	final protected function getParam($name) {
-		return isset($this->parameters[$name]) ? $this->parameters[$name] : NULL;
+		return isset($this->_parameters[$name]) ? $this->_parameters[$name] : NULL;
 	}
 
 	/**
@@ -120,14 +125,9 @@ abstract class AbstractFrontController {
 	protected function renderError($code = 404) {
 		switch ($code) {
 			case 404:
-				$this->
+				$this->_view->render('404');
 				exit(1);
 		}
-	}
-
-	protected function renderTemplate($template) {
-		App::get()->smarty->assign('CONTENT', App::get()->smarty->fetch($template));
-		App::get()->smarty->display('header.tpl');
 	}
 
 }

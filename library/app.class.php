@@ -4,11 +4,13 @@
  * @property-read resource $db
  * @property-read Smarty $smarty
  * @property-read array $settings
+ * @property-read integer $now
+ * @property-read boolean $isGuest
  */
 class App extends AbstractComponent {
 
 	private static $_instance;
-	private $_member, $_db, $_smarty, $_settings;
+	private $_member, $_db, $_smarty, $_settings, $_now;
 
 	private function __construct() {
 
@@ -41,7 +43,8 @@ class App extends AbstractComponent {
 	 * @return boolean
 	 */
 	public function getIsGuest() {
-		return $this->_member !== null;
+		$idenity = new Identity();
+		return $idenity->isGuest;
 	}
 
 	public function getDb() {
@@ -96,6 +99,12 @@ class App extends AbstractComponent {
 		return $this->_settings;
 	}
 
+	public function getNow() {
+		if ($this->_now === null) {
+			$this->_now = time();
+		}
+		return $this->_now;
+	}
 }
 
 ?>

@@ -1,5 +1,7 @@
 <?php
-
+if ($GLOBALS['ACCESS_LEVEL'] > ACCESS_LEVEL_GUEST && App::get()->isGuest) {
+	location('/index.php?action=login');
+}
 //include_once LIB_ROOT.'/auth_controller.php';
 //Project::getInstance()->resetCurUser(intval($_SESSION['CUR_USER']['id']));
 //Project::getInstance()->logPost();

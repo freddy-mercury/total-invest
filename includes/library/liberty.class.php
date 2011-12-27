@@ -109,7 +109,7 @@ class LibertyReserve
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 		if(($response = curl_exec ($ch))==FALSE) die(curl_error($ch));
 		curl_close ($ch);
-		if ($this->debug) print_r($response);
+		if ($this->debug) var_dump($response);
 		$xml = simplexml_load_string($response);
 
 		return $xml->Balance->Value;

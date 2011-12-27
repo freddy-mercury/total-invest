@@ -9,7 +9,7 @@
 function check_email($email = '', $strict = false) {
 $regex = $strict? 
   '/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i' : 
-   '/^([*+!.&#$¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i' 
+   '/^([*+!.&#$ï¿½\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i' 
 ; 
 if (preg_match($regex, trim($email), $matches)) { 
 	return array($matches[1], $matches[2]); 
@@ -40,19 +40,6 @@ function pin_input_field($name, $length, $direction = 1) {
 	$out.= '<input type="button" value="Clear" onclick="document.getElementById(\''.$name.'\').value=\'\'" style="width:50px;">
 	</div>';
 	return $out;
-}
-/**
- * Returns notification from location()
- *
- * @return unknown
- */
-function get_notification() {
-	if (!empty($_COOKIE['notification'])) {
-		$notification = $_COOKIE['notification'];
-		setcookie('notification', '');
-		return stripslashes($notification);
-	}
-	return '';
 }
 function encrypt($data = '') {
 	/*if (substr($data, 0, 3) != 'A@H') {

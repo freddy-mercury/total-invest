@@ -68,8 +68,8 @@ function check_pass($pass, $length) {
 	}
 	return true;
 }
-function location($url, $message = '') {
-	setcookie('notification', $message);
+function location($url, $message = '', $class_attr = 'error') {
+	setcookie('notification', serialize(array('message' => $message, 'class_attr' => $class_attr)));
 	header('Location: '.$url);
 	exit();
 }
@@ -84,4 +84,17 @@ function stripslashes_array($arr = array()) {
 		}
 	}
 	return $rs;
+}
+function get_notification() {
+	if (!empty($_COOKIE['notification'])) {
+		$cookie = unserialize($_COOKIE['notification']);
+		$message = $cookie['message'];
+		$class_attr = $cookie['class_attr'];
+		setcookie('notification', '');
+		return '<div class="'.$class_attr.'">'.$message.'</div>';
+	}
+	return '';
+}
+function h($string) {
+	return htmlspecialchars($string);
 }
