@@ -5,43 +5,43 @@ $_POST = sql_escapeArray($_POST);
 if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 	$valid = true;
 	if (empty($_POST['fullname']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Fullname is empty!');
+		App::get()->smarty->assign('error_message', 'Fullname is empty!');
 		$valid = false;
 	}
 	if (!preg_match('/^[A-z]{1}[0-9A-z]{2,}/', $_POST['login']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Invalid login!');
+		App::get()->smarty->assign('error_message', 'Invalid login!');
 		$valid = false;
 	}
 	if (User::loginExist($_POST['login']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'This login is already in use!');
+		App::get()->smarty->assign('error_message', 'This login is already in use!');
 		$valid = false;
 	}
 	if (!check_pass($_POST['password'], 6) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Password is very simple!');
+		App::get()->smarty->assign('error_message', 'Password is very simple!');
 		$valid = false;
 	}
 	if ($_POST['password']!=$_POST['repassword'] && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Passwords doesn\'t match!');
+		App::get()->smarty->assign('error_message', 'Passwords doesn\'t match!');
 		$valid = false;
 	}
 	if (LOGIN_PIN && !preg_match('/\d{'.$GLOBALS['TPL_CFG']['login_pin']['length'].'}/', $_POST['secpin_signup']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Not valid Login pin!');
+		App::get()->smarty->assign('error_message', 'Not valid Login pin!');
 		$valid = false;
 	}
 	if (MASTER_PIN && !preg_match('/\d{'.$GLOBALS['TPL_CFG']['master_pin']['length'].'}/', $_POST['masterpin_signup']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Not valid Security pin!');
+		App::get()->smarty->assign('error_message', 'Not valid Security pin!');
 		$valid = false;
 	}
 	if (QUESTIONS && empty($_POST['question_answer']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Answer is empty!');
+		App::get()->smarty->assign('error_message', 'Answer is empty!');
 		$valid = false;
 	}
 	if ((!check_email($_POST['email']) || User::emailExist($_POST['email'])) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Invalid e-mail address or this email is already used!');
+		App::get()->smarty->assign('error_message', 'Invalid e-mail address or this email is already used!');
 		$valid = false;
 	}
 	if (empty($_POST['payment_system']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'Invalid payment system!');
+		App::get()->smarty->assign('error_message', 'Invalid payment system!');
 		$valid = false;
 	}
 	/**
@@ -49,7 +49,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 	 */
 	if (empty($_POST['pm_member_id']) && $_POST['payment_system'] == 'LR') {
 		if (!ereg("^(U|X)[0-9]{1,}$", $_POST['account']) && $valid) {
-			Project::getInstance()->getSmarty()->assign('error_message', 'Invalid LR account number!');
+			App::get()->smarty->assign('error_message', 'Invalid LR account number!');
 			$valid = false;
 		}
 	}
@@ -58,16 +58,16 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 	 */
 	elseif ($_POST['payment_system'] == 'PM') {
 		if (!ereg("^[0-9]{1,}$", $_POST['pm_member_id']) && $valid) {
-			Project::getInstance()->getSmarty()->assign('error_message', 'Invalid PM member ID!');
+			App::get()->smarty->assign('error_message', 'Invalid PM member ID!');
 			$valid = false;
 		}
 		if (!ereg("^(U|X)[0-9]{1,}$", $_POST['account']) && $valid) {
-			Project::getInstance()->getSmarty()->assign('error_message', 'Invalid PM account number!');
+			App::get()->smarty->assign('error_message', 'Invalid PM account number!');
 			$valid = false;
 		}
 	}
 	if (empty($_POST['terms']) && $valid) {
-		Project::getInstance()->getSmarty()->assign('error_message', 'You should accept Terms and Conditions!');
+		App::get()->smarty->assign('error_message', 'You should accept Terms and Conditions!');
 		$valid = false;
 	}
 	if ($_POST['login'] == $_POST['referral']) {
@@ -99,12 +99,12 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='signup') {
 		}
 	}
 	else {
-		Project::getInstance()->getSmarty()->assign('signup', $_POST);
+		App::get()->smarty->assign('signup', $_POST);
 		$page_tpl = 'signup.tpl';
 	}
 }
 else {
 	$page_tpl = 'signup.tpl';
-	Project::getInstance()->getSmarty()->assign('signup', array($_SESSION['referral']));
+	App::get()->smarty->assign('signup', array($_SESSION['referral']));
 }
-Project::getInstance()->showPage($page_tpl);
+App::get()->showPage($page_tpl);

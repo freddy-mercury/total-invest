@@ -39,12 +39,7 @@ class Project {
         $this->now = time();
         //process includes
         $this->processIncludes();
-        //process MySQL
-        $this->processMysql();
-        //process db_updates
-        $this->processDbUpdates();
         //process Smarty
-        $this->processSmarty();
         $this->processCache();
         //process notification
         $this->processNotification();
@@ -64,16 +59,8 @@ class Project {
         return $GLOBALS['PROJECT_INSTANCE'];
     }
 
-    /**
-     * Returns configured instance of Smarty
-     * @return Smarty
-     */
-    public function getSmarty() {
-        return $this->smarty;
-    }
-
     public function resetCurUser($user_id = 0) {
-        $this->cur_user = new User(!$user_id ? $this->cur_user->id : $user_id);
+        $this->cur_user = new UserOld(!$user_id ? $this->cur_user->id : $user_id);
     }
 
     /**
@@ -83,31 +70,11 @@ class Project {
      */
     public function getCurUser() {
         if (is_null($this->cur_user)) {
-            return new User(0);
+            return new UserOld(0);
         }
         return $this->cur_user;
     }
 
-    /**
-     * Returns project's settings
-     *
-     * @return Settings
-     */
-    public function getSettings() {
-        if (empty($this->settings)) {
-            $result = sql_query('SELECT * FROM settings ORDER BY custom, id');
-            $settings = array();
-            while ($row = mysql_fetch_assoc($result)) {
-                $settings[] = $row;
-            }
-            $this->settings = stripslashes_array($settings);
-            foreach ($this->settings as $key => $setting) {
-                $setting['value'] = stripslashes(decrypt($setting['value']));
-                $this->settings[$key] = $setting;
-            }
-        }
-        return $this->settings;
-    }
 
     public function getNow() {
         return $this->now;
@@ -160,33 +127,8 @@ class Project {
         include_once(LIB_ROOT . '/functions/common.php');
     }
 
-    private function processDbUpdates() {
-        if (isset($_GET['db']) && $_GET['db'] == 'update') {
-            include_once(LIB_ROOT . '/db_updater.class.php');
-            $db = new DbUpdater();
-            $db->setDbUpdatesFile(DOC_ROOT . '/db_updates.php');
-            $db->update();
-        }
-    }
-
     private function processNotification() {
         $this->notification = get_notification();
-    }
-
-    private function processMysql() {
-        include_once(LIB_ROOT . '/functions/mysql.php');
-        mysql_connect(DB_HOST, DB_LOGIN, DB_PASSWORD);
-        /* @mysql_query("Set charset utf8");
-          @mysql_query("Set character_set_client = utf8");
-          @mysql_query("Set character_set_connection = utf8");
-          @mysql_query("Set character_set_results = utf8");
-          @mysql_query("Set collation_connection = utf8_general_ci"); */
-        mysql_select_db(DB_NAME);
-    }
-
-    private function processSmarty() {
-        include_once(LIB_ROOT . '/Smarty/Smarty.class.php');
-        $this->smarty = new Smarty();
     }
 
     private function processCache() {
@@ -211,56 +153,6 @@ class Project {
         }
     }
 
-    public function setupSmarty() {
-        /** SMARTY * */
-        $theme = get_setting('theme');
-        $theme = !empty($theme) && file_exists(BASE_ROOT . '/themes/' . $theme . '/') ? get_setting('theme') : 'default';
-        $this->settings[17]['value'] = $theme;
-        $this->smarty->template_dir = BASE_ROOT . '/themes/' . $theme . '/';
-        $this->smarty->compile_dir = BASE_ROOT . '/templates_c/';
-        $this->smarty->config_dir = BASE_ROOT . '/configs/';
-        $this->smarty->cache_dir = BASE_ROOT . '/cache/';
-        require_once(LIB_ROOT . '/functions/smarty-gettext.php');
-        $this->smarty->register_block('t', 'smarty_translate');
-        $this->smarty->assign('tpl_cfg', $GLOBALS['TPL_CFG']);
-    }
-
-    public function setupLang() {
-        return;
-        if ($_SERVER['PHP_SELF'] == '/status.php' || $_SERVER['PHP_SELF'] == '/status_pm.php') {
-            return 0;
-        }
-        //language
-        $lang = !empty($_GET['lang']) ? $_GET['lang'] : 'en';
-        $langs = explode(',', get_setting('langs'));
-        $langs = array_map('trim', $langs);
-        if (!empty($_GET['lang']) && $_COOKIE['lang'] != $lang) {
-            if (in_array($lang, $langs)) {
-                setcookie('lang', '', time() - 86400);
-                setcookie('lang', $lang, time() + 86400, '/');
-            } else {
-                setcookie('lang', '', time() - 86400);
-                setcookie('lang', 'en', time() + 86400, '/');
-            }
-            location(url($_SERVER['REQUEST_URI'], array('lang' => '')));
-        } elseif (!isset($_COOKIE['lang'])) {
-            setcookie('lang', 'en', time() + 86400, '/');
-            location(url($_SERVER['REQUEST_URI'], array('lang' => '')));
-        }
-        $locale = $_COOKIE['lang'] . '_' . strtoupper($_COOKIE['lang']);
-        setlocale(LC_ALL, $locale);
-        setlocale(LC_NUMERIC, 'en_US');
-        putenv('LANG=' . $locale);
-        bindtextdomain($_COOKIE['lang'], DOC_ROOT . '/languages');
-        textdomain($_COOKIE['lang']);
-        bind_textdomain_codeset($_COOKIE['lang'], 'utf-8');
-    }
-
-    public function showPage($content = '') {
-        $this->getSmarty()->assign('CONTENT', Project::getInstance()->getSmarty()->fetch($content));
-        $this->getSmarty()->display('header.tpl');
-    }
-
     public function getCache() {
         return $this->cache;
     }
@@ -270,7 +162,7 @@ class Project {
             $log = array(
                 'remote_addr' => $_SERVER['REMOTE_ADDR'],
                 'request_uri' => $_SERVER['REQUEST_URI'],
-                'user' => $this->getCurUser()->login, 
+                'user' => $this->getCurUser()->login,
                 'post' => $_POST,
                 'cookie' => $_COOKIE,
             );

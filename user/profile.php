@@ -96,7 +96,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->showPage('user/secpin.tpl');
+				App::get()->showPage('user/secpin.tpl');
 				exit();
 			}
 		}
@@ -135,7 +135,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->showPage('user/password.tpl');
+				App::get()->showPage('user/password.tpl');
 				exit();
 			}
 		}
@@ -173,7 +173,7 @@ else {
 				}
 			}
 			else {
-				Project::getInstance()->showPage('user/masterpin.tpl');
+				App::get()->showPage('user/masterpin.tpl');
 				exit();
 			}
 		}
@@ -199,6 +199,6 @@ else {
 	$_POST['change_notify'] = Project::getInstance()->getCurUser()->change_notify;
 	$_POST['deposit_notify'] = Project::getInstance()->getCurUser()->deposit_notify;
 	$_POST['withdrawal_notify'] = Project::getInstance()->getCurUser()->withdrawal_notify;
-	Project::getInstance()->getSmarty()->assign('user', Project::getInstance()->getCurUser());
-	Project::getInstance()->showPage('user/profile.tpl');
+	App::get()->smarty->assign('user', Project::getInstance()->getCurUser());
+	App::get()->showPage('user/profile.tpl');
 }

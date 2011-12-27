@@ -15,15 +15,16 @@ DEFINE('LIB_ROOT', DOC_ROOT.'/includes/library');
 
 /** ERROR REPORTING **/
 error_reporting(E_ALL);
-include_once(LIB_ROOT.'/functions.php');
-set_error_handler('user_log');
+require_once(DOC_ROOT.'/library/functions.php');
+require_once(DOC_ROOT.'/library/mysql.php');
+set_error_handler('errorHandler');
 
 /** CONSTANTS **/
 require_once(DOC_ROOT.'/includes/constants.php');
 
 /** MYSQL **/
 DEFINE('DB_HOST', 'localhost');
-DEFINE('DB_NAME', 'total-invest');
+DEFINE('DB_NAME', 'total-invest-old');
 DEFINE('DB_LOGIN', 'root');
 DEFINE('DB_PASSWORD', '');
 
@@ -41,17 +42,12 @@ DEFINE('QUESTIONS', 1);
 DEFINE('PAGE_ROWS', 20);
 
 session_start();
+
+set_include_path(get_include_path().PATH_SEPARATOR.DOC_ROOT.'/controllers/'.PATH_SEPARATOR.DOC_ROOT.'/library/'.PATH_SEPARATOR.DOC_ROOT.'/models/');
+spl_autoload_extensions('.class.php');
+spl_autoload_register();
+
 require_once(LIB_ROOT.'/project.class.php');
 require_once(LIB_ROOT.'/smarty_functions.php');
 
-Project::getInstance()->setupLang();
-Project::getInstance()->setupSmarty();
-
-$GLOBALS['row'] = 0;
-$GLOBALS['queries'] = array();
-$GLOBALS['warnings'] = array();
-
-
 if (isset($_REQUEST['referral'])) $_SESSION['referral'] = $_REQUEST['referral'];
-/** DEVINFO **/
-include_once(LIB_ROOT.'/devinfo.php');

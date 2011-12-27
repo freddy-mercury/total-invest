@@ -41,5 +41,5 @@ else {
 		$page['id'] = intval($_REQUEST['id']);
 	}
 }
-Project::getInstance()->getSmarty()->assign('page', $page);
-Project::getInstance()->getSmarty()->display('../default/admin/page.tpl');
+App::get()->smarty->assign('page', $page);
+App::get()->smarty->display('../default/admin/page.tpl');

@@ -27,8 +27,8 @@ switch ($action) {
 			location($_SERVER['PHP_SELF'], '<p class=imp>Plan <u>'.htmlspecialchars($_POST['name']).'</u> has been saved!</p>');
 		}
 		$plan = sql_row('SELECT * FROM plans WHERE id="'.intval($_REQUEST['id']).'"');
-		Project::getInstance()->getSmarty()->assign('plan', stripslashes_array($plan));
-		Project::getInstance()->getSmarty()->display('../default/admin/plan_profile.tpl');
+		App::get()->smarty->assign('plan', stripslashes_array($plan));
+		App::get()->smarty->display('../default/admin/plan_profile.tpl');
 	break;
 	case 'add':
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'save') {
@@ -53,7 +53,7 @@ switch ($action) {
 			');
 			location($_SERVER['PHP_SELF'], '<p class=imp>Plan <u>'.$_POST['name'].'</u> has been added!</p>');
 		}
-		Project::getInstance()->getSmarty()->display('../default/admin/plan_profile.tpl');
+		App::get()->smarty->display('../default/admin/plan_profile.tpl');
 	break;
 	case 'status':
 		$plan = new Plan(intval($_REQUEST['id']));
@@ -70,6 +70,6 @@ switch ($action) {
 		while ($row = mysql_fetch_assoc($result)) {
 			$plans[] = $row;
 		}
-		Project::getInstance()->getSmarty()->assign('plans', stripslashes_array($plans));
-		Project::getInstance()->getSmarty()->display('../default/admin/plans.tpl');
+		App::get()->smarty->assign('plans', stripslashes_array($plans));
+		App::get()->smarty->display('../default/admin/plans.tpl');
 }

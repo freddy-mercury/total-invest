@@ -31,5 +31,5 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit') {
 if (empty($_POST['datetime'])) {
 	$_POST['datetime'] = date('d.m.Y');
 }
-Project::getInstance()->getSmarty()->assign('news', $news);
-Project::getInstance()->getSmarty()->display('../default/admin/news.tpl');
+App::get()->smarty->assign('news', $news);
+App::get()->smarty->display('../default/admin/news.tpl');

@@ -18,7 +18,7 @@ $user = stripslashes_array(sql_row('
 			GROUP BY users.id
 			'));
 $balance = floatval($user['earning'] + $user['withdrawal'] + $user['bonus'] + $user['referral'] + $user['reinvest']);
-Project::getInstance()->getSmarty()->assign('user', $user);
+App::get()->smarty->assign('user', $user);
 
 if (isset($_REQUEST['action']) && $_REQUEST['action']=='withdraw') {
 	//���� ������ ��� ������������
@@ -167,6 +167,6 @@ else {
 	if ($user['monitor'] == 1) {
 		$balance = floatval($user['bonus'] + $user['reinvest'] > 0 ? $balance - ($user['bonus'] + $user['reinvest']) : ($balance));
 	}
-	Project::getInstance()->getSmarty()->assign('balance', $balance);
-	Project::getInstance()->showPage('user/withdraw.tpl');
+	App::get()->smarty->assign('balance', $balance);
+	App::get()->showPage('user/withdraw.tpl');
 }

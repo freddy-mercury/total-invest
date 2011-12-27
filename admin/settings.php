@@ -31,5 +31,5 @@ switch ($action) {
 if (isset($_GET['set'])) {
 	$_POST['name'] = $_GET['set'];
 }
-Project::getInstance()->getSmarty()->assign('settings', Project::getInstance()->getSettings());
-Project::getInstance()->getSmarty()->display('../default/admin/settings.tpl');
+App::get()->smarty->assign('settings', Project::getInstance()->getSettings());
+App::get()->smarty->display('../default/admin/settings.tpl');

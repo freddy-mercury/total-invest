@@ -5,7 +5,7 @@ include_once(DOC_ROOT.'/includes/authorization.php');
 
 if (AuthController::getInstance()->isAuthorized()) {
 	$user = new User(Project::getInstance()->getCurUser()->id);
-	Project::getInstance()->getSmarty()->assign('user', $user);
+	App::get()->smarty->assign('user', $user);
 }
 include_once(LIB_ROOT.'/recaptchalib.php');
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
@@ -28,5 +28,5 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'send') {
 	}
 }
 
-Project::getInstance()->getSmarty()->assign('captcha', recaptcha_get_html('6LcNwsQSAAAAAGlQU25aUQDDUs1wFbv_j3XHZZ8b'));
-Project::getInstance()->showPage('contactus.tpl');
+App::get()->smarty->assign('captcha', recaptcha_get_html('6LcNwsQSAAAAAGlQU25aUQDDUs1wFbv_j3XHZZ8b'));
+App::get()->showPage('contactus.tpl');

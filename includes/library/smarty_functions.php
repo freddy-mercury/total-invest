@@ -7,24 +7,23 @@ function get_menu($params) {
 	$suffix = empty($suffix) ? '' : $suffix;
 	$pre_tag = empty($pre_tag) ? '' : $pre_tag;
 	$after_tag = empty($after_tag) ? '' : $after_tag;
-        $exclude = (array)explode(',', $exclude);
+	$exclude = (array) explode(',', $exclude);
 	$out = '';
-	$out.= $prefix.'<a href="/">'._('Home').'</a>'.$suffix;
-	if (!AuthController::getInstance()->isAuthorized()) {
-		$out.= $prefix.'<a href="/signup.php">'._('Sign Up').'</a>'.$suffix;
+	$out.= $prefix . '<a href="/">' . _('Home') . '</a>' . $suffix;
+	if (App::get()->isGuest) {
+		$out.= $prefix . '<a href="/signup.php">' . _('Sign Up') . '</a>' . $suffix;
 	}
-	$out.= $prefix.'<a href="/user/account.php">'._('Member\'s area').'</a>'.$suffix;
+	$out.= $prefix . '<a href="/user/account.php">' . _('Member\'s area') . '</a>' . $suffix;
 	$result = sql_query('
 		SELECT *
-		FROM html_pages
+		FROM pages
 	');
 	while ($menu_page = mysql_fetch_assoc($result)) {
-		$out.= $menu_page['id'] != get_setting('home_page_id') && !in_array($menu_page['id'], $exclude) ? $prefix.'<a href="/index.php?page='.$menu_page['id'].'">'.$menu_page['name'].'</a>'.$suffix : '';
+		$out.= $menu_page['id'] != get_setting('home_page_id') && !in_array($menu_page['id'], $exclude) ? $prefix . '<a href="/index.php?page=' . $menu_page['id'] . '">' . $menu_page['name'] . '</a>' . $suffix : '';
 	}
-	$out.= $prefix.'<a href="/contactus.php">'._('Contact Us').'</a>'.$suffix;
-	return $pre_tag.$out.$after_tag;
+	$out.= $prefix . '<a href="/contactus.php">' . _('Contact Us') . '</a>' . $suffix;
+	return $pre_tag . $out . $after_tag;
 }
-Project::getInstance()->getSmarty()->register_function('get_menu', 'get_menu');
 
 function get_user_menu($params) {
 	$out = '';
@@ -34,7 +33,7 @@ function get_user_menu($params) {
 	$suffix = empty($suffix) ? '' : $suffix;
 	$pre_tag = empty($pre_tag) ? '' : $pre_tag;
 	$after_tag = empty($after_tag) ? '' : $after_tag;
-	if (AuthController::getInstance()->isAuthorized()) {
+	if (!App::get()->isGuest) {
 		if (Project::getInstance()->getCurUser()->access == ACCESS_LEVEL_ADMIN) {
 			$out.= '' . $prefix . '<a href="/admin/users.php">Users</a>' . $suffix . '' . $separator . '
 					' . $prefix . '<a href="/admin/plans.php">Plans</a>' . $suffix . '' . $separator . '
@@ -60,8 +59,6 @@ function get_user_menu($params) {
 	return $out;
 }
 
-Project::getInstance()->getSmarty()->register_function('get_user_menu', 'get_user_menu');
-
 function get_hint($params) {
 	$out = '';
 	extract($params);
@@ -79,8 +76,6 @@ function get_hint($params) {
 	return $out;
 }
 
-Project::getInstance()->getSmarty()->register_function('get_hint', 'get_hint');
-
 function get_lang_switcher($params) {
 	extract($params);
 	$langs = explode(',', get_setting('langs'));
@@ -94,8 +89,6 @@ function get_lang_switcher($params) {
 	return '<div class="lang_switcher">' . $out . '</div>';
 }
 
-Project::getInstance()->getSmarty()->register_function('get_lang_switcher', 'get_lang_switcher');
-
 function get_chat($params) {
 	$OUT = '';
 	$result = sql_query('select * from chat order by stamp desc limit 30');
@@ -107,13 +100,9 @@ function get_chat($params) {
 	return $OUT;
 }
 
-Project::getInstance()->getSmarty()->register_function('get_chat', 'get_chat');
-
 function get_notifications() {
 	return Project::getInstance()->getNotification();
 }
-
-Project::getInstance()->getSmarty()->register_function('get_notification', 'get_notifications');
 
 function get_setting($params) {
 	if (is_array($params)) {
@@ -121,18 +110,9 @@ function get_setting($params) {
 	} else {
 		$name = $params;
 	}
-	foreach (Project::getInstance()->getSettings() as $setting) {
-		if ($setting['name'] == $name) {
-			return $setting['value'];
-		}
-	}
-	if (Project::getInstance()->getCurUser()->isAdmin()) {
-		$add_link = '<a href="/admin/settings.php?set='.$name.'#set" target="_blank" title="'.$name.'">(?)</a>';
-	}
-	return ''.$add_link;
+	$settings = App::get()->settings;
+	return isset($settings[$name]) ? $settings[$name] : null;
 }
-
-Project::getInstance()->getSmarty()->register_function('get_setting', 'get_setting');
 
 function get_page_link($params) {
 	extract($params);
@@ -144,8 +124,6 @@ function get_page_link($params) {
 //	}
 	return '/index.php?page=' . $id;
 }
-
-Project::getInstance()->getSmarty()->register_function('get_page_link', 'get_page_link');
 
 function get_news($params) {
 	extract($params);
@@ -162,48 +140,51 @@ function get_news($params) {
 	return $out;
 }
 
-Project::getInstance()->getSmarty()->register_function('get_news', 'get_news');
-
 function get_pin_input_field($params) {
 	extract($params);
 	$direction = !$direction ? 1 : $direction;
 	return pin_input_field($name, intval($length), $direction);
 }
 
-Project::getInstance()->getSmarty()->register_function('get_pin_input_field', 'get_pin_input_field');
-
 function get_cur_user_login($params) {
 	extract($params);
 	return Project::getInstance()->getCurUser()->login;
 }
-
-Project::getInstance()->getSmarty()->register_function('get_cur_user_login', 'get_cur_user_login');
 
 function smarty_gettext($params, $content, &$smarty, &$repeat) {
 	return $content;
 }
 
 function get_theme_dir($params) {
-	return '/themes/'.get_setting('theme');
+	return '/themes/' . get_setting('theme');
 }
-
-Project::getInstance()->getSmarty()->register_function('get_theme_dir', 'get_theme_dir');
 
 function get_active_page_class($params) {
 	extract($params);
 	$id = intval($id);
-	if ($id && $id == intval($_REQUEST['page']))  {
+	if ($id && $id == intval($_REQUEST['page'])) {
 		return $class;
-	}
-	elseif (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], $name_part) !== FALSE) {
+	} elseif (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], $name_part) !== FALSE) {
 		return $class;
 	}
 	return '';
 }
 
-Project::getInstance()->getSmarty()->register_function('get_active_page_class', 'get_active_page_class');
-
 function get_cur_user_account($params) {
-        return Project::getInstance()->getCurUser()->account;
+	return Project::getInstance()->getCurUser()->account;
 }
-Project::getInstance()->getSmarty()->register_function('get_cur_user_account', 'get_cur_user_account');
+
+App::get()->smarty->register_function('get_cur_user_account', 'get_cur_user_account');
+App::get()->smarty->register_function('get_menu', 'get_menu');
+App::get()->smarty->register_function('get_user_menu', 'get_user_menu');
+App::get()->smarty->register_function('get_hint', 'get_hint');
+App::get()->smarty->register_function('get_lang_switcher', 'get_lang_switcher');
+App::get()->smarty->register_function('get_chat', 'get_chat');
+App::get()->smarty->register_function('get_notification', 'get_notifications');
+App::get()->smarty->register_function('get_setting', 'get_setting');
+App::get()->smarty->register_function('get_page_link', 'get_page_link');
+App::get()->smarty->register_function('get_news', 'get_news');
+App::get()->smarty->register_function('get_pin_input_field', 'get_pin_input_field');
+App::get()->smarty->register_function('get_cur_user_login', 'get_cur_user_login');
+App::get()->smarty->register_function('get_theme_dir', 'get_theme_dir');
+App::get()->smarty->register_function('get_active_page_class', 'get_active_page_class');

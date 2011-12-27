@@ -1,7 +1,7 @@
 <?php
 
 function sql_query($query) {
-	$result = mysql_query($query) or die(mysql_error() . print_rr(debug_backtrace(), true));
+	$result = mysql_query($query, App::get()->db);
 	$GLOBALS['queries'][] = $query;
 	return $result;
 }
@@ -19,13 +19,13 @@ function sql_rows($query) {
 	return $rows;
 }
 
-function sql_get($query) {
+function sql_get($query) {	
 	$row = sql_row($query);
 	return $row[0];
 }
 
 function sql_insert_id() {
-	return mysql_insert_id();
+	return mysql_insert_id(App::get()->db);
 }
 
 function sql_escapeArray($arr = array()) {

@@ -18,7 +18,7 @@ $user = stripslashes_array(sql_row('
 			GROUP BY users.id
 			'));
 $balance = floatval($user['earning'] + $user['withdrawal'] + $user['bonus'] + $user['referral'] + $user['reinvest']);
-Project::getInstance()->getSmarty()->assign('user', $user);
+App::get()->smarty->assign('user', $user);
 
 if (isset($_REQUEST['action']) && $_REQUEST['action']=='pre_deposit') {
 	$plan = stripslashes_array(sql_row('SELECT * FROM plans WHERE id="'.intval($_POST['plan_id']).'"'));
@@ -33,9 +33,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='pre_deposit') {
 		}
 		//���� ��� ������, �� ������ �����������
 		elseif (isset($_POST['amount']) && floatval($_POST['amount']) >= $plan['min'] && floatval($_POST['amount']) <= $plan['max']) {
-			Project::getInstance()->getSmarty()->assign('plan', $plan);
-			Project::getInstance()->getSmarty()->assign('balance', $balance);
-			Project::getInstance()->showPage('user/deposit_confirm.tpl');
+			App::get()->smarty->assign('plan', $plan);
+			App::get()->smarty->assign('balance', $balance);
+			App::get()->showPage('user/deposit_confirm.tpl');
 		}
 		else {
 			location($_SERVER['PHP_SELF'], '<p class=imp><strong>Warning:</strong> Incorrect amount has been defined!</p>');
@@ -151,6 +151,6 @@ else {
 	while ($row = mysql_fetch_assoc($result)) {
 		$plans[] = $row;
 	}
-	Project::getInstance()->getSmarty()->assign('plans', stripslashes_array($plans));
-	Project::getInstance()->showPage('user/deposit.tpl');
+	App::get()->smarty->assign('plans', stripslashes_array($plans));
+	App::get()->showPage('user/deposit.tpl');
 }

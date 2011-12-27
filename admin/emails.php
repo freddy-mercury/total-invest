@@ -12,11 +12,11 @@ if (isset($_REQUEST['action']) && $_REQUEST['action']=='save') {
 	sql_query('REPLACE settings SET  value = "'.htmlspecialchars($_POST['forget_email']).'", name="forget_email"');
 	location($_SERVER['PHP_SELF'], '<p class=imp>Email templates has been saved!</p>');
 }
-Project::getInstance()->getSmarty()->assign('signup_notify', get_setting('signup_notify'));
-Project::getInstance()->getSmarty()->assign('access_notify', get_setting('access_notify'));
-Project::getInstance()->getSmarty()->assign('change_notify', get_setting('change_notify'));
-Project::getInstance()->getSmarty()->assign('deposit_notify', get_setting('deposit_notify'));
-Project::getInstance()->getSmarty()->assign('withdrawal_notify', get_setting('withdrawal_notify'));
-Project::getInstance()->getSmarty()->assign('forget_email', get_setting('forget_email'));
+App::get()->smarty->assign('signup_notify', get_setting('signup_notify'));
+App::get()->smarty->assign('access_notify', get_setting('access_notify'));
+App::get()->smarty->assign('change_notify', get_setting('change_notify'));
+App::get()->smarty->assign('deposit_notify', get_setting('deposit_notify'));
+App::get()->smarty->assign('withdrawal_notify', get_setting('withdrawal_notify'));
+App::get()->smarty->assign('forget_email', get_setting('forget_email'));
 
-Project::getInstance()->getSmarty()->display('../default/admin/emails.tpl');
+App::get()->smarty->display('../default/admin/emails.tpl');

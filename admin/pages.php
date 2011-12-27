@@ -9,8 +9,8 @@ switch ($action) {
 	case 'edit':
 		$id = intval($_REQUEST['id']);
 		$html_page = new HtmlPage($id);
-		Project::getInstance()->getSmarty()->assign('page', $html_page->toArray());
-		Project::getInstance()->getSmarty()->display('../default/admin/page_profile.tpl');
+		App::get()->smarty->assign('page', $html_page->toArray());
+		App::get()->smarty->display('../default/admin/page_profile.tpl');
 		break;
 	case 'save':
 		$html_page = new HtmlPage();
@@ -27,7 +27,7 @@ switch ($action) {
 	default:
 		$query = 'SELECT * FROM ' . HtmlPage::table . ' ORDER BY name';
 		$html_pages_list = sql_rows($query);
-		Project::getInstance()->getSmarty()->assign('pages', $html_pages_list);
-		Project::getInstance()->getSmarty()->display('../default/admin/pages.tpl');
+		App::get()->smarty->assign('pages', $html_pages_list);
+		App::get()->smarty->display('../default/admin/pages.tpl');
 		break;
 }
