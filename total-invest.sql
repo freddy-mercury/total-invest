@@ -138,8 +138,8 @@ CREATE TABLE `users` (
   `fullname` varchar(255) DEFAULT NULL,
   `login` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `secpin` varchar(10) DEFAULT NULL,
-  `masterpin` varchar(10) DEFAULT NULL,
+  `login_pin` varchar(10) DEFAULT NULL,
+  `master_pin` varchar(10) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `payment_system` enum('LR','PM') DEFAULT 'LR',
   `pm_member_id` varchar(255) DEFAULT NULL,
@@ -154,15 +154,16 @@ CREATE TABLE `users` (
   `withdrawal_limit` float DEFAULT '0',
   `daily_withdrawal_limit` float DEFAULT '0',
   `monitor` tinyint(1) DEFAULT '0',
-  `question` varchar(255) NOT NULL,
-  `question_answer` varchar(255) NOT NULL,
+  `security_question` varchar(255) NOT NULL,
+  `security_answer` varchar(255) NOT NULL,
   `lang` enum('en','ru') NOT NULL DEFAULT 'en',
   `hash` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `access`, `fullname`, `login`, `password`, `secpin`, `masterpin`, `email`, `payment_system`, `pm_member_id`, `account`, `reg_date`, `status`, `referral`, `access_notify`, `change_notify`, `deposit_notify`, `withdrawal_notify`, `withdrawal_limit`, `daily_withdrawal_limit`, `monitor`, `question`, `question_answer`, `lang`, `hash`) VALUES
-(1,	2,	NULL,	'admin',	'admin\"',	'0',	'0',	NULL,	'LR',	NULL,	NULL,	0,	1,	'0',	0,	0,	0,	0,	0,	0,	0,	'',	'',	'en',	'');
+INSERT INTO `users` (`id`, `access`, `fullname`, `login`, `password`, `login_pin`, `master_pin`, `email`, `payment_system`, `pm_member_id`, `account`, `reg_date`, `status`, `referral`, `access_notify`, `change_notify`, `deposit_notify`, `withdrawal_notify`, `withdrawal_limit`, `daily_withdrawal_limit`, `monitor`, `security_question`, `security_answer`, `lang`, `hash`) VALUES
+(1,	2,	'',	'admin',	'admin',	'0',	'0',	'',	'LR',	'',	'',	0,	1,	'0',	0,	0,	0,	0,	0,	0,	0,	'',	'',	'en',	'8765c586dff6de741d2d84161caeadb1');
 
 DROP TABLE IF EXISTS `visits`;
 CREATE TABLE `visits` (
@@ -177,4 +178,4 @@ CREATE TABLE `visits` (
 INSERT INTO `visits` (`id`, `user_id`, `stamp`, `ip`) VALUES
 (2,	1,	1323460112,	2130706433);
 
--- 2011-12-27 10:13:44
+-- 2011-12-28 03:58:51
