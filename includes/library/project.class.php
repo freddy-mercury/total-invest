@@ -31,10 +31,6 @@ class Project {
     public $notification;
 
     private function __construct() {
-        //process SSL
-        $this->processSSL();
-        //process CAPTCHA
-        $this->processCaptcha();
         //get time()
         $this->now = time();
         //process includes
@@ -96,30 +92,6 @@ class Project {
         if (SSL && empty($_SERVER['HTTPS'])) {
             header('Location: https://' . $_SERVER['HTTP_HOST'] . (!empty($_REQUEST['referral']) ? '/?referral=' . $_REQUEST['referral'] : ''));
             exit();
-        }
-    }
-
-    private function processCaptcha() {
-        if (CAPTCHA) {
-            //if got payment status from LR or PM
-            if ($_SERVER['PHP_SELF'] == "/status.php" || $_SERVER['PHP_SELF'] == "/status_pm.php") {
-                $_SESSION['captcha'] = true;
-            }
-            include_once(LIB_ROOT . '/recaptchalib.php');
-            if (isset($_REQUEST['submit']) && !isset($_SESSION['captcha'])) {
-                $privatekey = "6LeV9gQAAAAAAHPiU0rSW075RqhGniBuT3g1mKN9";
-                $resp = recaptcha_check_answer($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
-                if (!$resp->is_valid) {
-                    die("The CAPTCHA wasn't entered correctly. Go back and try it again.");
-                }
-                $_SESSION['captcha'] = true;
-            } elseif (!isset($_SESSION['captcha'])) {
-                $publickey = "6LeV9gQAAAAAAFPwL1_pArNijtaodq7AEOY3SOCv"; // you got this from the signup page
-                die('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-				<html><head><title>Enter the site</title></head><body><table width="100%" height="100%"><caption></caption><tr><td align="center"><form action="" method="post">' . recaptcha_get_html($publickey) . '<br/>
-			    <input type="submit" name="submit" value="Enter the site" />
-			    </form></td></tr></table></body></html>');
-            }
         }
     }
 

@@ -1,11 +1,10 @@
 <?php
-DEFINE('PRO_VERSION', true);
 /** PATHS **/
 /**
  * Путь к public_html проекта
  * Здесь будет конфиг, скин и временные директории
  */
-define('BASE_ROOT', dirname(__FILE__));
+DEFINE('BASE_ROOT', dirname(__FILE__));
 /**
  * Путь к скрипту
  * Он у нас в другом месте
@@ -33,13 +32,14 @@ date_default_timezone_set('Europe/Luxembourg');
 
 /** SETTINGS **/
 DEFINE('CACHE_ENABLED', TRUE);
-DEFINE('SSL', 0);
-DEFINE('REFERRAL_ONCE', 1);
-DEFINE('CAPTCHA', 0);
-DEFINE('LOGIN_PIN', 0);
-DEFINE('MASTER_PIN', 1);
-DEFINE('QUESTIONS', 1);
+DEFINE('CAPTCHA_ENABLED', FALSE);
+DEFINE('LOGIN_PIN_ENABLED', TRUE);
+DEFINE('MASTER_PIN_ENABLED', TRUE);
 DEFINE('PAGE_ROWS', 20);
+
+/** reCAPTCHA **/
+DEFINE('RECAPTCHA_PUBLIC_KEY', '6LdHKssSAAAAAKwhRCbS3N0SPYCRC45AmUZDHnKy');
+DEFINE('RECAPTCHA_PRIVATE_KEY', '6LdHKssSAAAAAEV--1Xdfrzmun9BOm2uvA1Te4y2');
 
 session_start();
 
@@ -51,3 +51,16 @@ require_once(LIB_ROOT.'/project.class.php');
 require_once(LIB_ROOT.'/smarty_functions.php');
 
 if (isset($_REQUEST['referral'])) $_SESSION['referral'] = $_REQUEST['referral'];
+
+$GLOBALS['q'] = array(
+	'Mother\'s Maiden Name',
+	'City of Birth',
+	'Highschool Name',
+	'Name of Your First Love',
+	'Favorite Pet',
+	'Favorite Book',
+	'Favorite TV Show/Sitcom',
+	'Favorite Movie',
+	'Favorite Flower',
+	'Favorite Color',
+);

@@ -27,16 +27,20 @@ class Identity extends AbstractComponent {
 	 *
 	 * @param type $login
 	 * @param type $password
-	 * @param type $secpin
+	 * @param type $login_pin
 	 * @param type $remember
 	 * @return boolean
 	 */
-	public function login($login, $password, $secpin = '', $remember = true) {
-		$members = Member::model()->find('login=' . q($login) . ' AND password=' . q($password));
+	public function login($login, $password, $login_pin = '', $remember = true) {
+		$condition = 'login=' . q($login) . ' AND password=' . q($password);
+		if (LOGIN_PIN_ENABLED) {
+			$condition.= ' AND login_pin=' . q($login_pin);
+		}
+		$members = Member::model()->find($condition);
 		$member = reset($members);
 		if ($member) {
 			setcookie('user_in', true, null, '/');
-			if ($remember)
+			if ((bool) $remember)
 				$this->remember($member);
 			self::$_member = $member;
 			return TRUE;

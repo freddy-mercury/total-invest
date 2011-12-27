@@ -18,3 +18,76 @@ body {
 .success {
 	color: green;
 }
+
+/** Forms **/
+div.form
+{
+}
+
+div.form input,
+div.form textarea,
+div.form select
+{
+	margin: 0.2em 0 0.5em 0;
+}
+
+div.form fieldset
+{
+	border: 1px solid #DDD;
+	padding: 10px;
+	margin: 0 0 10px 0;
+    -moz-border-radius:7px;
+}
+
+div.form label
+{
+	font-weight: bold;
+	font-size: 0.9em;
+	display: block;
+}
+
+div.form label.checkbox {
+	display: inline;
+}
+
+div.form .row
+{
+	margin: 5px 0;
+}
+
+div.form .hint
+{
+	margin: 0;
+	padding: 0;
+	color: #999;
+}
+
+div.form .note
+{
+	font-style: italic;
+}
+
+div.form span.required
+{
+	color: red;
+}
+
+div.form div.error label,
+div.form label.error,
+div.form span.error
+{
+	color: #C00;
+	font-size: 0.8em;
+	display: block;
+}
+
+div.form div.error input,
+div.form div.error textarea,
+div.form div.error select,
+div.form input.error,
+div.form textarea.error,
+div.form select.error
+{
+	background: #FEE;
+	border-color: #C00;
+}

@@ -19,6 +19,7 @@
 			<?php } else {?>
 			<a href="/index.php?action=logout">Logout</a>
 			<?php } ?>
+			<a href="/index.php?action=contactus">Contact us</a>
 		</div>
 	</body>
 </html>
