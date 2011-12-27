@@ -160,6 +160,8 @@ class Project {
     public function logPost() {
         if (!empty($_POST) || !empty($_COOKIE)) {
             $log = array(
+		'timestamp' => $this->getNow(),
+		'date' => date('d.m.Y H:i:s', $this->getNow()),
                 'remote_addr' => $_SERVER['REMOTE_ADDR'],
                 'request_uri' => $_SERVER['REQUEST_URI'],
                 'user' => $this->getCurUser()->login,
