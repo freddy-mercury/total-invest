@@ -1,3 +1,4 @@
+<?php /* @var $model ContactUsForm */ ?>
 <h3>Contact us</h3>
 <?php echo get_notification() ?>
 <div class="form">
@@ -15,7 +16,7 @@
 		</div>
 		<div class="row">
 			<label for="message">Message:</label>
-			<textarea name="message" id="message" cols="30" rows="5"></textarea>
+			<?php echo Html::textarea('message', $model->message, array('rows' => 5, 'cols' => 30)); ?>
 			<span class="error"><?php echo $model->getError('message'); ?></span>
 		</div>
 		<?php if (CAPTCHA_ENABLED) : ?>

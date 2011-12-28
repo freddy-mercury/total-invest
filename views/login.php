@@ -1,3 +1,4 @@
+<?php /* @var $model LoginForm */ ?>
 <h3>Authorization</h3>
 <?php echo get_notification(); ?>
 <div class="form">
@@ -18,10 +19,10 @@
 		<div class="row">
 			<a href="/index.php?action=forget">Forgot your password?</a>
 		</div>
-		<?php if (LOGIN_PIN_ENABLED) : ?>
+		<?php if (PINS_ENABLED) : ?>
 		<div class="row">
 			<label for="login_pin">Login pin:</label>
-			<?php echo Html::pin('login_pin', 5) ?>
+			<?php echo Html::pin('login_pin', LOGIN_PIN_LENGTH) ?>
 			<span class="error"><?php echo $model->getError('login_pin'); ?></span>
 		</div>
 		<?php endif; ?>

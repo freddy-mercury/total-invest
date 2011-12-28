@@ -36,7 +36,7 @@ class Identity extends AbstractComponent {
 		if (LOGIN_PIN_ENABLED) {
 			$condition.= ' AND login_pin=' . q($login_pin);
 		}
-		$members = Member::model()->find($condition);
+		$members = Member::model()->findAll($condition);
 		$member = reset($members);
 		if ($member) {
 			setcookie('user_in', true, null, '/');

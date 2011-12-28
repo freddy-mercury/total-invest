@@ -1,3 +1,4 @@
+<?php /* @var $model ForgetPasswordForm */ ?>
 <h3>Remember forgotten password</h3>
 <?php echo get_notification() ?>
 <div class="form">

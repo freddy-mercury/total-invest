@@ -13,7 +13,7 @@ class ForgetPasswordForm extends AbstractForm {
 	public function remind() {
 		$condition = 'email='.q($this->email).'  AND security_question='. q($this->security_answer).' AND security_answer='.q($this->security_answer);
 		/* @var $member Member */
-		$members = Member::model()->find($condition);
+		$members = Member::model()->findAll($condition);
 		$member = reset($members);
 		if ($member !== null && $member->login != 'admin') {
 			$params = array(

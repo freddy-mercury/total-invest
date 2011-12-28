@@ -7,9 +7,11 @@ class Html {
 
 	public static function input($type, $name, $value, array $attrs = array()) {
 		$_attrs = array();
+		$attrs['size'] = $attrs['size'] ?: 38;
 		foreach ($attrs as $k => $v) {
 			$_attrs[] = $k . '="' . $v . '"';
 		}
+		
 		$value = htmlspecialchars($value);
 		return '<input type="' . $type . '" name="' . $name . '" id="' . $name . '" value="' . $value . '"'
 				. ($_attrs ? ' ' . implode(' ', $_attrs) : '') . ' />';
@@ -34,10 +36,10 @@ class Html {
 		return recaptcha_get_html(RECAPTCHA_PUBLIC_KEY);
 	}
 
-	public static function pin($name, $length) {
+	public static function pin($name, $length, $value = '') {
 		$buttons = range(0, 9);
 		shuffle($buttons);
-		$out = self::input('password', $name, '', array(
+		$out = self::input('password', $name, $value, array(
 					'size' => $length,
 					'maxlength' => $length,
 					'readonly' => 'readonly',
@@ -58,6 +60,15 @@ class Html {
 		return $out;
 	}
 
+	public static function textarea($name, $value,  array $attrs = array()) {
+		$_attrs = array();
+		foreach ($attrs as $k => $v) {
+			$_attrs[] = $k . '="' . $v . '"';
+		}
+		$value = htmlspecialchars($value);
+		return '<textarea name="' . $name . '" id="' . $name . '"'
+				. ($_attrs ? ' ' . implode(' ', $_attrs) : '') . '>'.$value.'</textarea>';
+	}
 }
 
 ?>

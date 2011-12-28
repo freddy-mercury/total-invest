@@ -5,10 +5,12 @@ body {
 
 #header {
 	border-bottom: 1px solid black;
+	clear: both;
 }
 
 #footer {
 	border-top: 1px solid black;
+	clear: both;
 }
 
 .error {
@@ -22,6 +24,7 @@ body {
 /** Forms **/
 div.form
 {
+	margin-top: 1em;
 }
 
 div.form input,
@@ -33,10 +36,21 @@ div.form select
 
 div.form fieldset
 {
-	border: 1px solid #DDD;
-	padding: 10px;
+	border: none;
+	padding: 0;
 	margin: 0 0 10px 0;
     -moz-border-radius:7px;
+	min-width: 250px;
+	display: inline-block;
+}
+
+div.form fieldset legend
+{
+	border: 1px solid #CCC;
+	min-width: 257px;
+	background: #000;
+	color: #FFF;
+	font-weight: bold;
 }
 
 div.form label
@@ -60,6 +74,7 @@ div.form .hint
 	margin: 0;
 	padding: 0;
 	color: #999;
+	font-size: 0.8em;
 }
 
 div.form .note

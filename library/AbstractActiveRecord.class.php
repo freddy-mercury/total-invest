@@ -118,7 +118,7 @@ abstract class AbstractActiveRecord extends AbstractDomainModel implements Array
 	 * @param string $condition SQL условие (colume = "value")
 	 * @return array|AbstractActiveRecord[]
 	 */
-	public function find($condition = '') {
+	public function findAll($condition = '') {
 		$result = sql_query('SELECT * FROM ' . $this->tableName()
 			. (!empty($condition) ? ' WHERE ' . $condition : ''));
 		$found = array();
@@ -131,6 +131,16 @@ abstract class AbstractActiveRecord extends AbstractDomainModel implements Array
 			unset($c);
 		}
 		return $found;
+	}
+
+	/**
+	 * Метод, возвращающий экземляр найденной модели
+	 * @param string $condition SQL условие (colume = "value")
+	 * @return AbstractActiveRecord |null
+	 */
+	public function find($condition = '') {
+		$found = $this->findAll($condition);
+		return empty($found) ? null : reset($found);
 	}
 
 	/**
@@ -173,7 +183,7 @@ abstract class AbstractActiveRecord extends AbstractDomainModel implements Array
 	 * @return null|AbstractActiveRecord
 	 */
 	public function findByPk($primary_key) {
-		$found = $this->find($this->getPrimaryKeyCondition($primary_key));
+		$found = $this->findAll($this->getPrimaryKeyCondition($primary_key));
 		return!empty($found) ? current($found) : null;
 	}
 

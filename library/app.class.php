@@ -92,7 +92,7 @@ class App extends AbstractComponent {
 		if ($this->_settings === null) {
 			$this->_settings = array();
 			/* @var $value Setting */
-			foreach (Setting::model()->find() as $value) {
+			foreach (Setting::model()->findAll() as $value) {
 				$this->_settings[$value->name] = $value->value;
 			}
 		}

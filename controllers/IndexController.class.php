@@ -73,8 +73,12 @@ class IndexController extends AbstractFrontController {
 		$register_form = new RegisterForm();
 		if ($this->getParam('do') == 'confirm') {
 			$register_form->setAttributes($_POST);
-			if ($register_form->validate())
-				location ('/index.php?action=signup', 'You have registered a member account.', 'success');
+			if ($register_form->validate()) {
+				$member = new Member();
+				$member->setAttributes($register_form->getAttributes());
+				if ($member->save()) 
+					location ('/index.php?action=register', 'You have registered a member account.', 'success');
+			}
 		}
 		$this->_view->render('register', array('model'=>$register_form));
 	}

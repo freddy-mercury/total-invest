@@ -133,37 +133,36 @@ CREATE TABLE `translines` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `access` tinyint(1) DEFAULT '1',
-  `fullname` varchar(255) DEFAULT NULL,
   `login` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `login_pin` varchar(10) DEFAULT NULL,
   `master_pin` varchar(10) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `payment_system` enum('LR','PM') DEFAULT 'LR',
-  `pm_member_id` varchar(255) DEFAULT NULL,
-  `account` varchar(255) DEFAULT NULL,
-  `reg_date` int(11) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1',
-  `referral` varchar(255) DEFAULT '0',
-  `access_notify` tinyint(1) DEFAULT '0',
-  `change_notify` tinyint(1) DEFAULT '0',
-  `deposit_notify` tinyint(1) DEFAULT '0',
-  `withdrawal_notify` tinyint(1) DEFAULT '0',
-  `withdrawal_limit` float DEFAULT '0',
-  `daily_withdrawal_limit` float DEFAULT '0',
-  `monitor` tinyint(1) DEFAULT '0',
-  `security_question` varchar(255) NOT NULL,
-  `security_answer` varchar(255) NOT NULL,
-  `lang` enum('en','ru') NOT NULL DEFAULT 'en',
-  `hash` varchar(32) NOT NULL,
+  `security_question` varchar(255) DEFAULT NULL,
+  `security_answer` varchar(255) DEFAULT NULL,
+  `security_question2` varchar(255) DEFAULT NULL,
+  `security_answer2` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `country` smallint(3) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `zip` varchar(255) DEFAULT NULL,
+  `address` text,
+  `ecurrency` char(2) DEFAULT 'LR',
+  `ecurrency_purse` varchar(255) DEFAULT NULL,
+  `referral` varchar(255) DEFAULT NULL,
+  `hash` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `login` (`login`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `access`, `fullname`, `login`, `password`, `login_pin`, `master_pin`, `email`, `payment_system`, `pm_member_id`, `account`, `reg_date`, `status`, `referral`, `access_notify`, `change_notify`, `deposit_notify`, `withdrawal_notify`, `withdrawal_limit`, `daily_withdrawal_limit`, `monitor`, `security_question`, `security_answer`, `lang`, `hash`) VALUES
-(1,	2,	'',	'admin',	'admin',	'0',	'0',	'',	'LR',	'',	'',	0,	1,	'0',	0,	0,	0,	0,	0,	0,	0,	'',	'',	'en',	'8765c586dff6de741d2d84161caeadb1');
+INSERT INTO `users` (`id`, `access`, `login`, `password`, `login_pin`, `master_pin`, `email`, `security_question`, `security_answer`, `security_question2`, `security_answer2`, `firstname`, `lastname`, `birthdate`, `country`, `city`, `zip`, `address`, `ecurrency`, `ecurrency_purse`, `referral`, `hash`) VALUES
+(1,	2,	'admin',	'admin',	'0',	'0',	'',	'',	'',	NULL,	NULL,	'',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	'LR',	'',	'0',	'8765c586dff6de741d2d84161caeadb1'),
+(3,	0,	'qweqwe',	'qweqwe',	'88888',	'777',	'tr222ash@55trash.com',	'Mother\'s Maiden Name',	'answer',	'City of Birth',	'answer2',	'Alexander',	'Lemekhov',	'2011-12-28',	2,	'Moscow',	'404132',	'asdasdasdas asd asd sda\r\naskdjnasdasd\r\nasdlkjasd\r\nasdalksjasd',	'LR',	'U1234567',	'',	'f476a00481f31b31cb3ca77295c13487');
 
 DROP TABLE IF EXISTS `visits`;
 CREATE TABLE `visits` (
@@ -178,4 +177,4 @@ CREATE TABLE `visits` (
 INSERT INTO `visits` (`id`, `user_id`, `stamp`, `ip`) VALUES
 (2,	1,	1323460112,	2130706433);
 
--- 2011-12-28 03:58:51
+-- 2011-12-28 18:01:01
