@@ -4,13 +4,16 @@ class View {
 
 	private $_layout;
 	private $_views_path;
+	private $_controller;
 
-	public function __construct() {
+	public function __construct($controller = null) {
+		$this->_controller = $controller;
 		$this->_views_path = DOC_ROOT . '/views';
-		$this->_layout = 'layout';
+		$this->_layout = 'layouts/columns1';
 	}
 
 	function fetchPartial($template, $params = array()) {
+		$params['controller'] = $this->_controller;
 		extract($params);
 		ob_start();
 		require $this->_views_path . '/' . $template . '.php';
@@ -23,7 +26,7 @@ class View {
 
 	function fetch($template, $params = array()) {
 		$content = $this->fetchPartial($template, $params);
-		return $this->fetchPartial($this->_layout, array('content' => $content));
+		return $this->fetchPartial('layouts/layout', array('content' => $this->fetchPartial($this->_layout, array('content' => $content))));
 	}
 
 	function render($template, $params = array()) {

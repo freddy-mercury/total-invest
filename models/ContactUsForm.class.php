@@ -9,11 +9,11 @@ class ContactUsForm extends AbstractForm {
 			return FALSE;
 		}
 		if (empty($this->from))
-			$this->addError ('from', '"From" cannot be blank!');
+			$this->addError ('from', 'Field cannot be blank!');
 		if (empty($this->subject))
-			$this->addError ('subject', '"Subject" cannot be blank!');
+			$this->addError ('subject', 'Field cannot be blank!');
 		if (empty($this->message))
-			$this->addError ('message', '"Message" cannot be blank!');
+			$this->addError ('message', 'Field cannot be blank!');
 		return parent::validate($attributes);
 	}
 }

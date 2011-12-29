@@ -70,13 +70,16 @@ class IndexController extends AbstractFrontController {
 	}
 
 	protected function actionRegister() {
+		if (!App::get()->isGuest) {
+			$this->actionIndex();
+		}
 		$register_form = new RegisterForm();
 		if ($this->getParam('do') == 'confirm') {
 			$register_form->setAttributes($_POST);
 			if ($register_form->validate()) {
 				$member = new Member();
 				$member->setAttributes($register_form->getAttributes());
-				if ($member->save()) 
+				if ($member->save())
 					location ('/index.php?action=register', 'You have registered a member account.', 'success');
 			}
 		}

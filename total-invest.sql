@@ -16,20 +16,58 @@ CREATE TABLE `bad_withdrawals` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `members`;
+CREATE TABLE `members` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `access` tinyint(1) DEFAULT '1',
+  `login` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `login_pin` varchar(10) DEFAULT NULL,
+  `master_pin` varchar(10) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `security_question` varchar(255) DEFAULT NULL,
+  `security_answer` varchar(255) DEFAULT NULL,
+  `security_question2` varchar(255) DEFAULT NULL,
+  `security_answer2` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `country` smallint(3) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `zip` varchar(255) DEFAULT NULL,
+  `address` text,
+  `ecurrency` char(2) DEFAULT 'LR',
+  `ecurrency_purse` varchar(255) DEFAULT NULL,
+  `referral` varchar(255) DEFAULT NULL,
+  `alert_profile` tinyint(1) DEFAULT '1',
+  `alert_login` tinyint(1) DEFAULT '1',
+  `alert_withdrawal` tinyint(1) DEFAULT '1',
+  `date_registered` int(11) DEFAULT NULL,
+  `hash` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `members` (`id`, `access`, `login`, `password`, `login_pin`, `master_pin`, `email`, `security_question`, `security_answer`, `security_question2`, `security_answer2`, `firstname`, `lastname`, `birthdate`, `country`, `city`, `zip`, `address`, `ecurrency`, `ecurrency_purse`, `referral`, `alert_profile`, `alert_login`, `alert_withdrawal`, `date_registered`, `hash`) VALUES
+(1,	2,	'admin',	'admin',	'0',	'0',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00',	0,	'',	'',	'',	'LR',	'',	'0',	1,	1,	1,	0,	'cf425c3cfaa705c9ae26158f277b7497'),
+(3,	0,	'qweqwe',	'password',	'88888',	'777',	'tr222ash@55trash.com',	'Mother\'s Maiden Name',	'answer',	'City of Birth',	'answer2',	'Alexander',	'Lemekhov',	'2011-12-28',	2,	'Moscow',	'404132',	'asdasdasdas asd asd sda\r\naskdjnasdasd\r\nasdlkjasd\r\nasdalksjasd',	'LR',	'U1234567',	'',	1,	1,	1,	0,	'cdd579f1ff819123ee9ca137c9a8e550');
+
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL DEFAULT '0',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `message` text NOT NULL,
-  `readed` tinyint(2) NOT NULL DEFAULT '0',
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `member_id` int(10) NOT NULL DEFAULT '0',
+  `subject` varchar(255) NOT NULL DEFAULT '',
+  `body` text NOT NULL,
+  `readed` tinyint(1) NOT NULL DEFAULT '0',
   `stamp` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `messages` (`id`, `user_id`, `title`, `message`, `readed`, `stamp`) VALUES
+INSERT INTO `messages` (`id`, `member_id`, `subject`, `body`, `readed`, `stamp`) VALUES
 (1,	1,	'Test',	'Test',	1,	1323373784),
-(2,	2,	'Test',	'Test',	1,	1306785164);
+(2,	2,	'Test',	'Test',	1,	1306785164),
+(3,	3,	'asdasdasda',	'sdasdasdasdas\nasd\nas\ndas\nda\nda\nsffwerwerwerwerwew',	0,	0);
 
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
@@ -131,39 +169,6 @@ CREATE TABLE `translines` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `access` tinyint(1) DEFAULT '1',
-  `login` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `login_pin` varchar(10) DEFAULT NULL,
-  `master_pin` varchar(10) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `security_question` varchar(255) DEFAULT NULL,
-  `security_answer` varchar(255) DEFAULT NULL,
-  `security_question2` varchar(255) DEFAULT NULL,
-  `security_answer2` varchar(255) DEFAULT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `birthdate` date DEFAULT NULL,
-  `country` smallint(3) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `zip` varchar(255) DEFAULT NULL,
-  `address` text,
-  `ecurrency` char(2) DEFAULT 'LR',
-  `ecurrency_purse` varchar(255) DEFAULT NULL,
-  `referral` varchar(255) DEFAULT NULL,
-  `hash` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `login` (`login`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO `users` (`id`, `access`, `login`, `password`, `login_pin`, `master_pin`, `email`, `security_question`, `security_answer`, `security_question2`, `security_answer2`, `firstname`, `lastname`, `birthdate`, `country`, `city`, `zip`, `address`, `ecurrency`, `ecurrency_purse`, `referral`, `hash`) VALUES
-(1,	2,	'admin',	'admin',	'0',	'0',	'',	'',	'',	NULL,	NULL,	'',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	'LR',	'',	'0',	'8765c586dff6de741d2d84161caeadb1'),
-(3,	0,	'qweqwe',	'qweqwe',	'88888',	'777',	'tr222ash@55trash.com',	'Mother\'s Maiden Name',	'answer',	'City of Birth',	'answer2',	'Alexander',	'Lemekhov',	'2011-12-28',	2,	'Moscow',	'404132',	'asdasdasdas asd asd sda\r\naskdjnasdasd\r\nasdlkjasd\r\nasdalksjasd',	'LR',	'U1234567',	'',	'f476a00481f31b31cb3ca77295c13487');
-
 DROP TABLE IF EXISTS `visits`;
 CREATE TABLE `visits` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -177,4 +182,4 @@ CREATE TABLE `visits` (
 INSERT INTO `visits` (`id`, `user_id`, `stamp`, `ip`) VALUES
 (2,	1,	1323460112,	2130706433);
 
--- 2011-12-28 18:01:01
+-- 2011-12-29 10:37:04

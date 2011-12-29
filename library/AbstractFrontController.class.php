@@ -7,7 +7,7 @@
  *
  * @author k.komarov
  */
-abstract class AbstractFrontController {
+abstract class AbstractFrontController extends AbstractComponent {
 
 	protected $_parameters;
 	/**
@@ -30,7 +30,7 @@ abstract class AbstractFrontController {
 	 */
 	public function __construct(array $parameters = NULL) {
 		$this->_parameters = is_null($parameters) ? (array) $_REQUEST : (array) $parameters;
-		$this->_view = new View();
+		$this->_view = new View($this);
 		$this->init();
 	}
 

@@ -13,7 +13,7 @@
 			<legend>Security</legend>
 			<div class="row">
 				<label for="login">Login:</label>
-				<?php echo Html::input('text', 'login', $model->login); ?>
+				<?php echo Html::input('text', 'login', $model->login, array('autocomplete' => 'off')); ?>
 				<div class="hint note">Minimum 3 symbols of digits and letters.</div>
 				<span class="error"><?php echo $model->getError('login'); ?></span>
 			</div>
@@ -25,7 +25,7 @@
 			</div>
 			<div class="row">
 				<label for="password_repeat">Repeat password:</label>
-				<?php echo Html::input('password', 'password_repeat', $model->password_repeat); ?>
+				<?php echo Html::input('password', 'password_repeat', $model->password_repeat, array('autocomplete'=>'off')); ?>
 				<span class="error"><?php echo $model->getError('password_repeat'); ?></span>
 			</div>
 			<div class="row">
@@ -114,11 +114,11 @@
 			</div>
 			<div class="row">
 				<label for="address">Address:</label>
-				<?php echo Html::textarea('address', $model->birthdate, array('rows' => 5, 'cols' => 30)); ?>
+				<?php echo Html::textarea('address', $model->address, array('rows' => 5, 'cols' => 30)); ?>
 				<span class="error"><?php echo $model->getError('address'); ?></span>
 			</div>
 		</fieldset>
-		<fieldset>
+		<fieldset style="float:left;">
 			<legend>E-currency</legend>
 			<div class="row">
 				<label for="country">E-currency:</label>
@@ -140,21 +140,22 @@
 				<div class="hint note">Referral login.</div>
 				<span class="error"><?php echo $model->getError('referral'); ?></span>
 			</div>
-			<?php if (CAPTCHA_ENABLED) : ?>
-				<div class="row">
-					<label for="captcha">Enter CAPTCHA:</label>
-					<?php echo Html::captcha() ?>
-					<span class="error"><?php echo $model->getError('captcha'); ?></span>
-				</div>
-			<?php endif; ?>
-			<div class="row">
-				<?php echo Html::input('checkbox', 'terms', '1'); ?>
-				<label for="terms" class="checkbox">Accept terms and conditions</label>
-				<span class="error"><?php echo $model->getError('terms'); ?></span>
-			</div>
-			<div class="row">
-				<?php echo Html::submit('Register'); ?>
-			</div>
 		</fieldset>
+		<br style="clear: both" />
+		<?php if (CAPTCHA_ENABLED) : ?>
+			<div class="row">
+				<label for="captcha">Enter CAPTCHA:</label>
+				<?php echo Html::captcha() ?>
+				<span class="error"><?php echo $model->getError('captcha'); ?></span>
+			</div>
+		<?php endif; ?>
+		<div class="row">
+			<?php echo Html::input('checkbox', 'terms', '1'); ?>
+			<label for="terms" class="checkbox">Accept terms and conditions</label>
+			<span class="error"><?php echo $model->getError('terms'); ?></span>
+		</div>
+		<div class="row">
+			<?php echo Html::submit('Register'); ?>
+		</div>
 	</form>
 </div>

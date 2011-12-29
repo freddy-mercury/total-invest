@@ -19,7 +19,7 @@ function sql_rows($query) {
 	return $rows;
 }
 
-function sql_get($query) {	
+function sql_get($query) {
 	$row = sql_row($query);
 	return $row[0];
 }

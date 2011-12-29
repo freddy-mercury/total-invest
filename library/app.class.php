@@ -6,11 +6,13 @@
  * @property-read array $settings
  * @property-read integer $now
  * @property-read boolean $isGuest
+ * @property-read Member $member
+ * @property-read string $base_url
  */
 class App extends AbstractComponent {
 
 	private static $_instance;
-	private $_member, $_db, $_smarty, $_settings, $_now;
+	private $_db, $_smarty, $_settings, $_now;
 
 	private function __construct() {
 
@@ -36,7 +38,8 @@ class App extends AbstractComponent {
 	 * @return Member
 	 */
 	public function getMember() {
-		return $this->_member;
+		$idenity = new Identity();
+		return $idenity->member;
 	}
 
 	/**
@@ -104,6 +107,10 @@ class App extends AbstractComponent {
 			$this->_now = time();
 		}
 		return $this->_now;
+	}
+
+	public function getBaseUrl() {
+		return 'http'.($_SERVER['HTTPS'] ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
 	}
 }
 

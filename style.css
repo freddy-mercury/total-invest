@@ -1,11 +1,44 @@
-body {
+body, html {
+	margin:0;
+	padding:0;
+	color:#000;
 	background-color: #F5F5F5;
 	font-family: Arial;
 }
 
+#wrapper {
+	width:1000px;
+	margin:0 auto;
+}
+
 #header {
 	border-bottom: 1px solid black;
-	clear: both;
+}
+
+#navigation {
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+#navigation ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#navigation li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+
+#sidebar {
+	float: left;
+	width: 200px;
+}
+
+#content {
+	float: right;
+	width: 100%;
 }
 
 #footer {
@@ -20,11 +53,30 @@ body {
 .success {
 	color: green;
 }
+/** Tables **/
+table {
+	border-spacing: 1px;
+	border-collapse: collapse;
+}
+
+table tr {
+
+}
+
+table tr th {
+	padding: 10px;
+}
+
+table tr td {
+	padding: 10px;
+}
 
 /** Forms **/
 div.form
 {
 	margin-top: 1em;
+	overflow: auto;
+	width: 100%
 }
 
 div.form input,
@@ -40,14 +92,14 @@ div.form fieldset
 	padding: 0;
 	margin: 0 0 10px 0;
     -moz-border-radius:7px;
-	min-width: 250px;
+	min-width: 200px;
 	display: inline-block;
 }
 
 div.form fieldset legend
 {
 	border: 1px solid #CCC;
-	min-width: 257px;
+	min-width: 200px;
 	background: #000;
 	color: #FFF;
 	font-weight: bold;

@@ -13,6 +13,10 @@ class Identity extends AbstractComponent {
 		return self::$_member === null;
 	}
 
+	public function getMember() {
+		return self::$_member;
+	}
+
 	public function authorize() {
 		if (self::$_member === null) {
 			if (isset($_COOKIE['user_in']))
@@ -39,7 +43,7 @@ class Identity extends AbstractComponent {
 		$members = Member::model()->findAll($condition);
 		$member = reset($members);
 		if ($member) {
-			setcookie('user_in', true, null, '/');
+			setcookie('user_in', $member->id, null, '/');
 			if ((bool) $remember)
 				$this->remember($member);
 			self::$_member = $member;

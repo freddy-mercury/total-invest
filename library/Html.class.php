@@ -6,15 +6,24 @@ class Html {
 	}
 
 	public static function input($type, $name, $value, array $attrs = array()) {
+		$html = '';
 		$_attrs = array();
-		$attrs['size'] = $attrs['size'] ?: 38;
+		$attrs['size'] = $attrs['size'] ?: 25;
+		if ($type == 'checkbox') {
+			if ($value) {
+				$attrs['checked'] = 'checked';
+			}
+			$value = 1;
+			$html.= '<input type="hidden" name="' . $name . '" value="0">';
+		}
 		foreach ($attrs as $k => $v) {
 			$_attrs[] = $k . '="' . $v . '"';
 		}
-		
+
 		$value = htmlspecialchars($value);
-		return '<input type="' . $type . '" name="' . $name . '" id="' . $name . '" value="' . $value . '"'
+		$html.= '<input type="' . $type . '" name="' . $name . '" id="' . $name . '" value="' . $value . '"'
 				. ($_attrs ? ' ' . implode(' ', $_attrs) : '') . ' />';
+		return $html;
 	}
 
 	public static function select($name, array $options, $value = '', array $attrs = array()) {
