@@ -51,7 +51,7 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`id`, `access`, `login`, `password`, `login_pin`, `master_pin`, `email`, `security_question`, `security_answer`, `security_question2`, `security_answer2`, `firstname`, `lastname`, `birthdate`, `country`, `city`, `zip`, `address`, `ecurrency`, `ecurrency_purse`, `referral`, `alert_profile`, `alert_login`, `alert_withdrawal`, `date_registered`, `hash`) VALUES
 (1,	2,	'admin',	'admin',	'0',	'0',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00',	0,	'',	'',	'',	'LR',	'',	'0',	1,	1,	1,	0,	'cf425c3cfaa705c9ae26158f277b7497'),
-(3,	0,	'qweqwe',	'password',	'88888',	'777',	'tr222ash@55trash.com',	'Mother\'s Maiden Name',	'answer',	'City of Birth',	'answer2',	'Alexander',	'Lemekhov',	'2011-12-28',	2,	'Moscow',	'404132',	'asdasdasdas asd asd sda\r\naskdjnasdasd\r\nasdlkjasd\r\nasdalksjasd',	'LR',	'U1234567',	'',	1,	1,	1,	0,	'cdd579f1ff819123ee9ca137c9a8e550');
+(3,	0,	'qweqwe',	'password',	'88888',	'777',	'tr222ash@55trash.com',	'Mother\'s Maiden Name',	'answer',	'City of Birth',	'answer2',	'Alexander',	'Lemekhov',	'2011-12-28',	2,	'Moscow',	'404132',	'asdasdasdas asd asd sda\r\naskdjnasdasd\r\nasdlkjasd\r\nasdalksjasd',	'LR',	'U1234567',	'',	1,	1,	1,	0,	'1098e0715328c94d46df726ed580ec7d');
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
@@ -67,7 +67,7 @@ CREATE TABLE `messages` (
 INSERT INTO `messages` (`id`, `member_id`, `subject`, `body`, `readed`, `stamp`) VALUES
 (1,	1,	'Test',	'Test',	1,	1323373784),
 (2,	2,	'Test',	'Test',	1,	1306785164),
-(3,	3,	'asdasdasda',	'sdasdasdasdas\nasd\nas\ndas\nda\nda\nsffwerwerwerwerwew',	0,	0);
+(3,	3,	'asdasdasda',	'sdasdasdasdas\nasd\nas\ndas\nda\nda\nsffwerwerwerwerwew',	1,	1306785164);
 
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
@@ -93,25 +93,25 @@ INSERT INTO `pages` (`id`, `name`, `content`, `lang`) VALUES
 
 DROP TABLE IF EXISTS `plans`;
 CREATE TABLE `plans` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `min` float NOT NULL DEFAULT '0',
-  `max` float NOT NULL DEFAULT '0',
-  `percent` float NOT NULL DEFAULT '0',
-  `percent_per` enum('term','periodicity') NOT NULL DEFAULT 'term',
-  `periodicy` int(11) NOT NULL DEFAULT '0',
-  `periodicy_value` tinyint(3) NOT NULL DEFAULT '0',
-  `term` int(3) NOT NULL DEFAULT '0',
-  `attempts` tinyint(2) NOT NULL DEFAULT '0',
-  `status` enum('0','1') NOT NULL DEFAULT '0',
-  `comment` text NOT NULL,
-  `type` tinyint(1) NOT NULL,
-  `working_days` tinyint(1) NOT NULL DEFAULT '0',
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `min` float NOT NULL,
+  `max` float NOT NULL,
+  `percent` float NOT NULL,
+  `percent_per` tinyint(1) NOT NULL DEFAULT '0',
+  `periodicity` int(10) NOT NULL DEFAULT '1',
+  `periodicity_value` tinyint(3) NOT NULL DEFAULT '1',
+  `term` int(3) NOT NULL DEFAULT '1',
+  `type` tinyint(1) NOT NULL DEFAULT '0',
+  `monfri` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `plans` (`id`, `name`, `min`, `max`, `percent`, `percent_per`, `periodicy`, `periodicy_value`, `term`, `attempts`, `status`, `comment`, `type`, `working_days`) VALUES
-(1,	'11111',	5,	66666,	444,	'term',	3600,	1,	14,	0,	'1',	'',	0,	1);
+INSERT INTO `plans` (`id`, `name`, `description`, `min`, `max`, `percent`, `percent_per`, `periodicity`, `periodicity_value`, `term`, `type`, `monfri`) VALUES
+(1,	'Bronze plan',	'',	1,	100,	110,	0,	1,	1,	1,	0,	1),
+(2,	'Silver plan',	'',	101,	1000,	115,	0,	1,	1,	1,	0,	1),
+(3,	'Gold plan',	'',	1001,	10000,	120,	0,	1,	1,	1,	0,	1);
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
@@ -182,4 +182,4 @@ CREATE TABLE `visits` (
 INSERT INTO `visits` (`id`, `user_id`, `stamp`, `ip`) VALUES
 (2,	1,	1323460112,	2130706433);
 
--- 2011-12-29 10:37:04
+-- 2011-12-29 17:44:01

@@ -1,6 +1,5 @@
 <h3>Profile</h3>
-<?php /* @var $model ProfileForm */ ?>
-<?php echo get_notification() ?>
+<p><?php echo get_notification() ?></p>
 <style>
 	div.form fieldset {
 		margin-right: 2%;

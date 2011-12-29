@@ -1,6 +1,5 @@
-<?php /* @var $model LoginForm */ ?>
 <h3>Authorization</h3>
-<?php echo get_notification(); ?>
+<p><?php echo get_notification(); ?></p>
 <div class="form">
 	<form action="/index.php?action=login" method="POST">
 		<input type="hidden" name="do" value="authorize" />

@@ -1,6 +1,5 @@
-<?php /* @var $model ContactUsForm */ ?>
 <h3>Contact us</h3>
-<?php echo get_notification() ?>
+<p><?php echo get_notification() ?></p>
 <div class="form">
 	<form action="/index.php?action=contactus" method="POST">
 		<input type="hidden" name="do" value="send" />

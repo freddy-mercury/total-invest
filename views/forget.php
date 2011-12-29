@@ -1,6 +1,5 @@
-<?php /* @var $model ForgetPasswordForm */ ?>
 <h3>Remember forgotten password</h3>
-<?php echo get_notification() ?>
+<p><?php echo get_notification() ?></p>
 <div class="form">
 	<form action="/index.php?action=forget" method="POST">
 		<input type="hidden" name="do" value="confirm">

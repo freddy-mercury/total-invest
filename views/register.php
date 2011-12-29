@@ -1,6 +1,5 @@
-<?php /* @var $model RegisterForm */ ?>
 <h3>Registration</h3>
-<?php echo get_notification() ?>
+<p><?php echo get_notification() ?></p>
 <style>
 	div.form fieldset {
 		margin-right: 2%;

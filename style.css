@@ -2,7 +2,7 @@ body, html {
 	margin:0;
 	padding:0;
 	color:#000;
-	background-color: #F5F5F5;
+	background-color: #FFF;
 	font-family: Arial;
 }
 
@@ -64,11 +64,14 @@ table tr {
 }
 
 table tr th {
-	padding: 10px;
+	border:1px solid #000;
+	background: #CCC;
+	padding: 3px;
 }
 
 table tr td {
-	padding: 10px;
+	padding: 3px;
+	border:1px solid #000;
 }
 
 /** Forms **/
@@ -98,10 +101,9 @@ div.form fieldset
 
 div.form fieldset legend
 {
-	border: 1px solid #CCC;
+	border: 1px solid #000;
 	min-width: 200px;
-	background: #000;
-	color: #FFF;
+	background: #CCC;
 	font-weight: bold;
 }
 

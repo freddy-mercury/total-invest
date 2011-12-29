@@ -2,8 +2,6 @@
 
 class Member extends AbstractActiveRecord {
 
-	private $_messages;
-
 	public function tableName() {
 		return 'members';
 	}
@@ -31,13 +29,6 @@ class Member extends AbstractActiveRecord {
 				unset($values['master_pin']);
 		}
 		parent::setAttributes($values, $safeOnly);
-	}
-
-	public function getMessages() {
-		if ($this->_messages === null) {
-			$this->_messages = Message::model()->findAll('member_id='.  q($this->id));
-		}
-		return $this->_messages;
 	}
 
 }
