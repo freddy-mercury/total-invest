@@ -57,7 +57,7 @@ class MemberController extends AbstractFrontController {
 		if ($this->getParam('do') == 'read' && $this->getParam('id')) {
 			$model = Message::model()->find('id='.q($this->getParam('id').' AND member_id='.q($this->_member->id)));
 			if ($model !== null) {
-				$model->readed = 1;
+				$model->readed = true;
 				$model->save();
 				$this->_view->render('member/message', array('model' => $model));
 				exit(0);
@@ -78,6 +78,17 @@ class MemberController extends AbstractFrontController {
 
 	public function actionDeposit() {
 		$deposit_form = new DepositForm();
+		$deposit_form->setAttributes($_POST);
+		if ($this->getParam('do') == 'deposit') {
+			if ($deposit_form->validate()) {
+				if ($deposit_form->source == 'BALANCE') {
+					//making internal transaction
+				}
+				else {
+					//redirecting to merchant
+				}
+			}
+		}
 		$this->_view->render('member/deposit', array('model' => $deposit_form));
 	}
 

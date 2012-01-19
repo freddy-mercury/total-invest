@@ -2,7 +2,8 @@
 <p><?php echo get_notification(); ?></p>
 <div class="form">
 	<form action="/index.php?action=login" method="POST">
-		<input type="hidden" name="do" value="authorize" />
+		<input type="hidden" name="do" value="authorize"/>
+
 		<div class="row">
 			<label for="login">Login:</label>
 			<?php echo Html::input('text', 'login', $model->login, array('size' => 15)); ?>
@@ -13,7 +14,8 @@
 			<?php echo Html::input('password', 'password', '', array('size' => 15)); ?>
 		</div>
 		<div class="row">
-			<input type="checkbox" name="remember" id="remember" value="1" /> <label for="remember" class="checkbox">Remember me</label>
+			<input type="checkbox" name="remember" id="remember" value="1"/>
+			<label for="remember" class="checkbox">Remember me</label>
 		</div>
 		<div class="row">
 			<a href="/index.php?action=forget">Forgot your password?</a>
@@ -33,7 +35,7 @@
 		</div>
 		<?php endif; ?>
 		<div class="row">
-			<input type="submit" value="Enter" />
+			<?php echo Html::submit('Enter'); ?>
 		</div>
 	</form>
 </div>

@@ -1,7 +1,7 @@
 <?php
 
 class Html {
-	public static function submit($label, $name = '', array $attrs = array()) {
+	public static function submit($label, $name = 'submit', array $attrs = array()) {
 		return self::input('submit', $name, $label, $attrs);
 	}
 
