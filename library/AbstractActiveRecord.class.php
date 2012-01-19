@@ -44,6 +44,15 @@ abstract class AbstractActiveRecord extends AbstractDomainModel implements Array
 		return array_keys($this->getMetaData()->columns);
 	}
 
+	final public function getPhpDocProperties() {
+		$phpdoc = '/**' . "\n";
+		foreach ($this->attributeNames() as $attribute_name) {
+			$phpdoc.= ' * @property $' . $attribute_name . "\n";
+		}
+		$phpdoc.= ' */';
+		return '<pre>'.$phpdoc.'</pre>';
+	}
+
 	function __sleep() {
 		return array_keys($this->_attributes);
 	}

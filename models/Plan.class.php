@@ -1,18 +1,19 @@
 <?php
 
 /**
- * @property int $id
- * @property string $name
- * @property string $description
- * @property float $min
- * @property float $max
- * @property float $percent
- * @property string $percent_per
- * @property int $periodicity
- * @property int $term
- * @property bool $compounding
- * @property string $type
- * @property bool $monfri
+ * @property $id
+ * @property $name
+ * @property $description
+ * @property $min
+ * @property $max
+ * @property $percent
+ * @property $percent_per
+ * @property $periodicity
+ * @property $term
+ * @property $compounding
+ * @property $type
+ * @property $monfri
+ * @property $principal_back
  */
 class Plan extends AbstractActiveRecord {
     const TYPE_PUBLIC = 0;

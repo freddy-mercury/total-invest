@@ -15,8 +15,7 @@ function errorHandler($errno, $errmsg, $file, $line) {
 	}
 	else {
 		if (!in_array($errno, array(E_DEPRECATED, E_NOTICE))) {
-			mail('kirill.komarov@gmail.com', 'Error:'. $_SERVER['HTTP_HOST'], $GLOBALS['ERROR_CODES'][$errno]
-					.':'.$errmsg.'|'.$file.' at Line: <b>'.$line.'</b>'.$err_str);
+			mail('kirill.komarov@gmail.com', 'Error:'. $_SERVER['HTTP_HOST'], ':'.$errmsg.'|'.$file.' at Line: <b>'.$line.'</b>'.$err_str);
 			echo '<table height="100%" width="100%">
 			<tr>
 				<td align="center"><h2>Sorry, the site is in the maintainance mode.</h2><br>Please visit us later.</td>

@@ -1,6 +1,6 @@
 <?php
 class LoginForm extends AbstractForm {
-	public $login, $password, $remember, $login_pin, $captcha_challenge, $captcha;
+	public $login, $password, $remember, $login_pin;
 
 	public function validate($attributes = null) {
 		if (CAPTCHA_ENABLED && !$this->validateCaptcha()) {
