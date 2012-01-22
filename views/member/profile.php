@@ -6,7 +6,7 @@
 	}
 </style>
 <div class="form" style="display: table">
-	<form action="/member.php?action=profile" method="POST">
+	<form action="member.php?action=profile" method="POST">
 		<input type="hidden" name="do" value="confirm" />
 		<fieldset style="float: left;">
 			<legend>Personal</legend>

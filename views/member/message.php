@@ -20,5 +20,5 @@
 	</tr>
 </table>
 <p>
-	<a href="/member.php?action=messages">Back to messages</a>
+	<a href="member.php?action=messages">Back to messages</a>
 </p>

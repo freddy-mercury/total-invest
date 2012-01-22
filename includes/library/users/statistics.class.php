@@ -4,10 +4,10 @@ class Statistics {
 	public $select = '*';
 	public $where = '';
 	public $limit = '';
-	
+
 	public $last_deposit;
 	public $last_withdrawal;
-	
+
 	public function __construct($user_id = 0) {
 		if ($user_id) {
 			$this->user_id = $user_id;
@@ -19,7 +19,7 @@ class Statistics {
 		$this->last_withdrawal = $this->getLastWithdrawal();
 	}
 	public function getLines($types = array('e', 'r', 'd', 'w', 'b', 'i'), $status = 1, $stamp_from = 0, $stamp_to = 0) {
-        $types = array_intersect($types, array('e', 'r', 'd', 'w', 'b', 'i'));
+		$types = array_intersect($types, array('e', 'r', 'd', 'w', 'b', 'i'));
 		$where_user = $this->user_id != 0 ? ' and translines.user_id="'.$this->user_id.'"' : '';
 		$where_status = ' and translines.status in'.(is_array($status) ? ' ("'.implode('", "', $status).'")' : ' ("'.$status.'")');
 		$where_stamp_from = $stamp_from > 0 ? ' and translines.stamp>'.$stamp_from : '';
@@ -102,12 +102,12 @@ class Statistics {
 		array_pop($data);
 		$fp = fopen('stats.xml', 'w');
 		$xml = "<chart>
-   		<axis_category orientation='diagonal_up' size='10' step='1' />
-   		<chart_type>
-   			<string>line</string>
-   			<string>line</string>
-   		</chart_type>
-   		<chart_grid_h alpha='10' thickness='1' />
+		<axis_category orientation='diagonal_up' size='10' step='1' />
+		<chart_type>
+			<string>line</string>
+			<string>line</string>
+		</chart_type>
+		<chart_grid_h alpha='10' thickness='1' />
 		<chart_guide horizontal='true' vertical='true' thickness='1' alpha='25' type='dashed' text_h_alpha='0' text_v_alpha='0' />
 		<chart_pref line_thickness='2' point_shape='circle' point_size='7' fill_shape='false' />
 		<series_color>
@@ -161,4 +161,3 @@ class Statistics {
 		return $sums;
 	}
 }
-?>

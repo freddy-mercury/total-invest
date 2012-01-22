@@ -1,7 +1,7 @@
 <h3>Contact us</h3>
 <p><?php echo get_notification() ?></p>
 <div class="form">
-	<form action="/index.php?action=contactus" method="POST">
+	<form action="index.php?action=contactus" method="POST">
 		<input type="hidden" name="do" value="send" />
 		<div class="row">
 			<label for="from">From:</label>

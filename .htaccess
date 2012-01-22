@@ -1,1 +1,1 @@
-php_value auto_prepend_file /home/total-invest/www/ai-config.php
+php_value auto_prepend_file c:/wamp/www/total-invest/ai-config.php

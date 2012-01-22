@@ -7,10 +7,8 @@ class IndexController extends AbstractFrontController {
 		$html_page = Page::model()->findByPk($page_id);
 		if ($html_page === null)
 			$this->_view->render('404');
-		else {
-			$edit_link = Project::getInstance()->getCurUser()->isAdmin() ? '<div style="font-size:9px;color:blue;"><a href="/admin/pages.php?action=edit&id=' . $html_page->id . '" target="blank">(edit page)</a></div>' : '';
+		else
 			$this->_view->render('index', array('page' => $html_page));
-		}
 	}
 
 	protected function actionForget() {
@@ -20,7 +18,7 @@ class IndexController extends AbstractFrontController {
 			if ($forget_password_form->validate()) {
 				$forget_password_form->remind();
 			}
-			location('/index.php?action=forget', 'Check your email for account info.', 'success');
+			location('index.php?action=forget', 'Check your email for account info.', 'success');
 		}
 		$this->_view->render('forget', array('model' => $forget_password_form));
 	}
@@ -43,7 +41,7 @@ class IndexController extends AbstractFrontController {
 			$_POST['captcha'] = $_POST['recaptcha_response_field'];
 			$login_form->setAttributes($_POST);
 			if ($login_form->validate()) {
-				location('/member.php');
+				location('member.php');
 			}
 		}
 		$this->_view->render('login', array('model' => $login_form));
@@ -52,7 +50,7 @@ class IndexController extends AbstractFrontController {
 	protected function actionLogout() {
 		$identity = new Identity;
 		$identity->logout();
-		location('/index.php');
+		location('index.php');
 	}
 
 	protected function actionContactus() {
@@ -63,7 +61,7 @@ class IndexController extends AbstractFrontController {
 			$contact_us_form->setAttributes($_POST);
 			if ($contact_us_form->validate()) {
 				//@todo Реализовать правильную отсылку писем!
-				location('/index.php?action=contactus', 'Thank you for contacting us! You will get response in 24 hours.', 'success');
+				location('index.php?action=contactus', 'Thank you for contacting us! You will get response in 24 hours.', 'success');
 			}
 		}
 		$this->_view->render('contactus', array('model' => $contact_us_form));
@@ -80,11 +78,9 @@ class IndexController extends AbstractFrontController {
 				$member = new Member();
 				$member->setAttributes($register_form->getAttributes());
 				if ($member->save())
-					location ('/index.php?action=register', 'You have registered a member account.', 'success');
+					location ('index.php?action=register', 'You have registered a member account.', 'success');
 			}
 		}
 		$this->_view->render('register', array('model'=>$register_form));
 	}
 }
-
-?>

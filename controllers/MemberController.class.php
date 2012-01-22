@@ -3,7 +3,6 @@
 class MemberController extends AbstractFrontController {
 
 	/**
-	 *
 	 * @var Member
 	 */
 	protected $_member;
@@ -13,14 +12,14 @@ class MemberController extends AbstractFrontController {
 		$this->_view->setLayout('layouts/columns2');
 		$this->_member = App::get()->member;
 		$this->_menu = array(
-			'/member.php' => 'Summary',
-			'/member.php?action=deposit' => 'Make deposit',
-			'/member.php?action=withdrawal' => 'Request withdrawal',
-			'/member.php?action=history' => 'History',
-			'/member.php?action=messages' => 'Messages (' . Message::model()->count('member_id='
+			'member.php' => 'Summary',
+			'member.php?action=deposit' => 'Make deposit',
+			'member.php?action=withdrawal' => 'Request withdrawal',
+			'member.php?action=history' => 'History',
+			'member.php?action=messages' => 'Messages (' . Message::model()->count('member_id='
 				. q($this->_member->id).' AND readed="0"') . ')',
-			'/member.php?action=promote' => 'Promote yourself',
-			'/member.php?action=profile' => 'Profile',
+			'member.php?action=promote' => 'Promote yourself',
+			'member.php?action=profile' => 'Profile',
 		);
 	}
 
@@ -43,7 +42,7 @@ class MemberController extends AbstractFrontController {
 			if ($profile_form->validate()) {
 				$this->_member->setAttributes($profile_form->getAttributes());
 				if ($this->_member->save())
-					location('/member.php?action=profile', 'Profile has been saved!', 'success');
+					location('member.php?action=profile', 'Profile has been saved!', 'success');
 			}
 		}
 		$this->_view->render('member/profile', array('model' => $profile_form));
@@ -62,15 +61,15 @@ class MemberController extends AbstractFrontController {
 				$this->_view->render('member/message', array('model' => $model));
 				exit(0);
 			}
-			location('/member.php?action=messages', 'Message not found!', 'error');
+			location('member.php?action=messages', 'Message not found!', 'error');
 		}
 		elseif($this->getParam('do') == 'delete' && $this->getParam('id')) {
 			$model = Message::model()->find('id='.q($this->getParam('id').' AND member_id='.q($this->_member->id)));
 			if ($model !== null) {
 				$model->delete();
-				location('/member.php?action=messages', 'Message #'.$model->id.' deleted!', 'success');
+				location('member.php?action=messages', 'Message #'.$model->id.' deleted!', 'success');
 			}
-			location('/member.php?action=messages', 'Message not found!', 'error');
+			location('member.php?action=messages', 'Message not found!', 'error');
 		}
 		$messages = Message::model()->findAll('member_id='.  q($this->_member->id).' ORDER BY readed ASC, stamp DESC');
 		$this->_view->render('member/messages', array('messages' => $messages));

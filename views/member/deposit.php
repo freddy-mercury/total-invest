@@ -1,7 +1,7 @@
 <h3>Make deposit</h3>
 <p><?php echo get_notification(); ?></p>
 <div class="form">
-	<form action="/member.php?action=deposit" method="post">
+	<form action="member.php?action=deposit" method="post">
 		<input type="hidden" name="do" value="deposit"/>
 		<?php
 		/* @var $model DepositForm */
@@ -25,7 +25,9 @@
 					?>
 					<tr>
 						<td valign="top"
-						    align="center"><?php echo Html::input('radio', 'plan_id', $plan->id, $key == 0 || $plan->id == $model->plan_id ? array('checked' => 'checked') : array()); ?></td>
+						    align="center"><?php echo Html::input('radio', 'plan_id', $plan->id,
+							$key == 0 || $plan->id == $model->plan_id ? array('checked' => 'checked') : array()); ?>
+						</td>
 						<!-- Description -->
 						<td>
 							<strong><?php echo h($plan->name); ?></strong><br>
@@ -33,7 +35,8 @@
 							<div class="hint">
 								<?php
 								echo '<b>Accurals periodicity:</b> ' . time2str($plan->periodicity) . '<br>';
-								echo '<b>Working days:</b> ' . ($plan->monfri ? 'Monday - Friday' : 'Monday - Sunday') . '<br>';
+								echo '<b>Working days:</b> ' . ($plan->monfri ? 'Monday - Friday' : 'Monday - Sunday')
+									. '<br>';
 								echo '<b>Compounding:</b> ' . ($plan->compounding ? 'yes' : 'no') . '<br>';
 								echo '<b>Principal return:</b> ' . ($plan->principal_back ? 'yes' : 'no');
 								?>
@@ -74,9 +77,8 @@
 			</div>
 			<div class="row">
 				<label for="amount">Amount:</label>
-				<?php echo Html::input('text', 'amount', $model->amount); ?> [<a href="#"
-				                                                                 onclick="$('#calculator').dialog('open')">Calculator</a>
-				]
+				<?php echo Html::input('text', 'amount', $model->amount); ?>
+				[<a href="#" onclick="$('#calculator').dialog('open')">Calculator</a>]
 				<span class="error"><?php echo $model->getError('amount'); ?></span>
 			</div>
 			<div class="row">
@@ -121,7 +123,7 @@
 	</div>
 	Result: <span id="calc_result" class="error">0</span>
 </div>
-<script type="text/javascript" language="JavaScript" src="/js/calculator.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/calculator.js"></script>
 <script type="text/javascript" language="JavaScript">
 	<?php
 	$plans_js = array();

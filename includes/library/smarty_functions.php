@@ -104,16 +104,6 @@ function get_notifications() {
 	return Project::getInstance()->getNotification();
 }
 
-function get_setting($params) {
-	if (is_array($params)) {
-		extract($params);
-	} else {
-		$name = $params;
-	}
-	$settings = App::get()->settings;
-	return isset($settings[$name]) ? $settings[$name] : null;
-}
-
 function get_page_link($params) {
 	extract($params);
 //	if (

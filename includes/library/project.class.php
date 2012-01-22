@@ -56,7 +56,7 @@ class Project {
     }
 
     public function resetCurUser($user_id = 0) {
-        $this->cur_user = new UserOld(!$user_id ? $this->cur_user->id : $user_id);
+        $this->cur_user = new User(!$user_id ? $this->cur_user->id : $user_id);
     }
 
     /**
@@ -66,7 +66,7 @@ class Project {
      */
     public function getCurUser() {
         if (is_null($this->cur_user)) {
-            return new UserOld(0);
+            return new User(0);
         }
         return $this->cur_user;
     }

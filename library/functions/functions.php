@@ -82,3 +82,12 @@ function time2str($timestamp) {
     else
         return $timestamp/86400 . ' day'. ($timestamp/86400 > 1 ? 's' : '');
 }
+function get_setting($params) {
+	if (is_array($params)) {
+		extract($params);
+	} else {
+		$name = $params;
+	}
+	$settings = App::get()->settings;
+	return isset($settings[$name]) ? $settings[$name] : null;
+}

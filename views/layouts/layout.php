@@ -21,13 +21,13 @@
 			<div id="navigation">
 				<ul>
 					<?php if (App::get()->isGuest) { ?>
-					<li><a href="/index.php?action=login">Login</a></li>
-					<li><a href="/index.php?action=register">Register</a></li>
+					<li><a href="index.php?action=login">Login</a></li>
+					<li><a href="index.php?action=register">Register</a></li>
 					<?php } else {?>
-					<li><a href="/index.php?action=logout">Logout</a></li>
-					<li><a href="/member.php">Member area</a></li>
+					<li><a href="index.php?action=logout">Logout</a></li>
+					<li><a href="member.php">Member area</a></li>
 					<?php } ?>
-					<li><a href="/index.php?action=contactus">Contact us</a></li>
+					<li><a href="index.php?action=contactus">Contact us</a></li>
 				</ul>
 
 			</div>

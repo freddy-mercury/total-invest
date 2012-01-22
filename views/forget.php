@@ -1,7 +1,7 @@
 <h3>Remember forgotten password</h3>
 <p><?php echo get_notification() ?></p>
 <div class="form">
-	<form action="/index.php?action=forget" method="POST">
+	<form action="index.php?action=forget" method="POST">
 		<input type="hidden" name="do" value="confirm">
 		<div class="row">
 			<label for="email">Your e-mail:</label>

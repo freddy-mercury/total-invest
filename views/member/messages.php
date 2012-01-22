@@ -17,14 +17,15 @@ if (count($messages)) {
 				<td><?php echo $message->id; ?></td>
 				<td>
 					<?php echo htmlspecialchars($message->subject)
-					. (!$message->readed ? '<img src="/images/new.png" />' : ''); ?></td>
+					. (!$message->readed ? '<img src="images/new.png" />' : ''); ?></td>
 				<td><?php echo date('m/d/Y', $message->stamp); ?></td>
 				<td>
-					<a href="/member.php?action=messages&do=read&id=<?php echo $message->id; ?>">
-						<img src="/images/read.png" />
+					<a href="member.php?action=messages&do=read&id=<?php echo $message->id; ?>">
+						<img src="images/read.png" />
 					</a>
-					<a href="/member.php?action=messages&do=delete&id=<?php echo $message->id; ?>" onclick="return confirm('Delete message #<?php echo $message->id; ?>?')">
-						<img src="/images/delete.png" />
+					<a href="member.php?action=messages&do=delete&id=<?php echo $message->id; ?>"
+					   onclick="return confirm('Delete message #<?php echo $message->id; ?>?')">
+						<img src="images/delete.png" />
 					</a>
 				</td>
 			</tr>

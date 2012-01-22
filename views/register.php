@@ -6,7 +6,7 @@
 	}
 </style>
 <div class="form">
-	<form action="/index.php?action=register" method="POST">
+	<form action="index.php?action=register" method="POST">
 		<input type="hidden" name="do" value="confirm" />
 		<fieldset style="float: left;">
 			<legend>Security</legend>
