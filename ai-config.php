@@ -51,6 +51,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR
 	. DOC_ROOT . '/models/');
 spl_autoload_extensions('.class.php, .interface.php');
 spl_autoload_register();
+function custom_autoload($class_name) {
+	var_dump($class_name);
+	die();
+}
 
 if (isset($_REQUEST['referral'])) $_SESSION['referral'] = $_REQUEST['referral'];
 
