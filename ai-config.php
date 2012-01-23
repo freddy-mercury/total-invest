@@ -50,10 +50,14 @@ set_include_path(get_include_path() . PATH_SEPARATOR
 	. DOC_ROOT . '/library/' . PATH_SEPARATOR
 	. DOC_ROOT . '/models/');
 spl_autoload_extensions('.class.php, .interface.php');
-spl_autoload_register();
+spl_autoload_register('custom_autoload');
 function custom_autoload($class_name) {
-	var_dump($class_name);
-	die();
+	$extensions = explode(',', spl_autoload_extensions());
+	foreach ($extensions as $ext) {
+		if (@include($class_name.$ext)) {
+			return true;
+		}
+	}
 }
 
 if (isset($_REQUEST['referral'])) $_SESSION['referral'] = $_REQUEST['referral'];
