@@ -19,17 +19,22 @@ interface EcurrencyApi {
 	 * @param string       $memo       Memo string.
 	 * @param array        $params     Additional parameters.
 	 *
-	 * @return integer Batch number on success, else 0 (zero).
+	 * @return mixed Batch number on success.
+	 * @throws Exception
 	 */
-	public function makeSpend($to_purse, $amount, $memo, array $params = array());
+	public function makeSpend($to_purse, $amount, $memo = '', array $params = array());
 
 	/**
 	 * Returns balance.
 	 *
 	 * @abstract
 	 *
+	 * @param array $params Additional parameters.
+	 *
+	 * @return float
+	 * @throws Exception
 	 */
-	public function getBalance();
+	public function getBalance(array $params = array());
 
 	/**
 	 * Validates payment.
@@ -38,6 +43,8 @@ interface EcurrencyApi {
 	 *
 	 * @param array $data              Data from $_POST request that came from e-currency server.
 	 * @param array $verification_data Verification data to verify with $data.
+	 *
+	 * @return boolean
 	 */
 	public function validatePayment(array $data, array $verification_data = array());
 
@@ -47,6 +54,8 @@ interface EcurrencyApi {
 	 * @abstract
 	 *
 	 * @param array $params Additional parameters to retrieve history.
+	 *
+	 * @return array
 	 */
 	public function getHistory(array $params = array());
 }

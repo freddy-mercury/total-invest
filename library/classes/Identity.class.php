@@ -75,9 +75,9 @@ class Identity extends AbstractComponent {
 	}
 
 	public function logout() {
-		setcookie('user_in', null, App::get()->now - 3600);
-		setcookie('user_id', null, App::get()->now - 3600);
-		setcookie('user_hash', null, App::get()->now - 3600);
+		setcookie('user_in', null, App::get()->now - 3600, '/');
+		setcookie('user_id', null, App::get()->now - 3600, '/');
+		setcookie('user_hash', null, App::get()->now - 3600, '/');
 		session_destroy();
 	}
 

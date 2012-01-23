@@ -2,6 +2,7 @@
 /**
  * @class   LibertyReserveApi
  * @details Class implements basic API functions for Liberty Reserve payment system.
+ * @see     http://www.libertyreserve.com/en/help/xmlapiguide
  *
  * Usage example:
  * <code>
@@ -51,10 +52,30 @@ class LibertyReserveApi implements EcurrencyApi {
 	 * @return string Authentication token.
 	 */
 	private function _getAuthToken() {
-		$auth_string = $this->_secword . ":" . gmdate("Ymd") . ":" . gmdate("H");
+		$auth_string = $this->_secword . ':' . gmdate('Ymd') . ':' . gmdate('H');
+		return $this->_getHash($auth_string);
+	}
+
+	/**
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	private function _getHash($string = '') {
 		return !extension_loaded('mhash')
-			? strtoupper(hash('sha256', $auth_string))
-			: strtoupper(bin2hex(mhash(MHASH_SHA256, $auth_string)));
+			? strtoupper(hash('sha256', $string))
+			: strtoupper(bin2hex(mhash(MHASH_SHA256, $string)));
+	}
+
+	/**
+	 * @return string
+	 */
+	private function _getXmlAuthTag() {
+		return '<Auth>'
+			. '<AccountId>' . $this->_purse . '</AccountId>'
+			. '<ApiName>' . $this->_api . '</ApiName>'
+			. '<Token>' . $this->_getAuthToken() . '</Token>'
+			. '</Auth>';
 	}
 
 	/**
@@ -78,23 +99,39 @@ class LibertyReserveApi implements EcurrencyApi {
 	}
 
 	/**
-	 * Returns balance.
+	 * @param SimpleXMLElement $xml
 	 *
-	 * @return float
+	 * @throws Exception
 	 */
-	public function getBalance() {
-		$request = '<BalanceRequest id="' . $this->_generateId() . '"><Auth><ApiName>' . $this->_api
-			. '</ApiName><Token>' . $this->_getAuthToken() . '</Token></Auth>'
-			. '<Balance><CurrencyId>LRUSD</CurrencyId><AccountId>' . $this->_purse . '</AccountId>'
-			. '</Balance></BalanceRequest>';
-		$url = 'https://api.libertyreserve.com/xml/balance.aspx?req=' . urlencode($request);
-		$response = $this->_getCurlResponse($url);
-		$xml = simplexml_load_string($response);
-		return $xml !== false ? floatval($xml->Balance->Value) : 0;
+	private function _checkError(SimpleXMLElement $xml) {
+		$error = $xml->Error;
+		if ($error)
+			throw new Exception($error->Text . ': ' . $error->Description, (int)$error->Code);
 	}
 
 	/**
-	 * Makes spend. {@link http://www.libertyreserve.com/en/help/xmlapiguide}
+	 * Returns balance.
+	 *
+	 * @param array $params Additional parameters: CurrencyId (usd, euro, gold)
+	 *
+	 * @return float
+	 */
+	public function getBalance(array $params = array()) {
+		$currency_id = (isset($params['CurrencyId']) && in_array($params['CurrencyId'], array('usd', 'euro', 'gold')))
+			? $params['CurrencyId'] : 'usd';
+		$request = '<BalanceRequest id="' . $this->_generateId() . '">'
+			. $this->_getXmlAuthTag()
+			. '<Balance><CurrencyId>' . $currency_id . '</CurrencyId>'
+			. '</Balance></BalanceRequest>';
+		$url = $this->_api_base_url . '/balance?req=' . urlencode($request);
+		$response = $this->_getCurlResponse($url);
+		$xml = simplexml_load_string($response);
+		$this->_checkError($xml);
+		return floatval($xml->Balance->Value);
+	}
+
+	/**
+	 * Makes spend.
 	 *
 	 * @param string       $to_purse   Payee purse number.
 	 * @param float        $amount     Amount to spend.
@@ -103,43 +140,65 @@ class LibertyReserveApi implements EcurrencyApi {
 	 *
 	 * @return integer Batch number on success, else 0 (zero).
 	 */
-	public function makeSpend($to_purse, $amount, $memo, array $params) {
-		$payment_purpose = isset($params['PaymentPurpose']) && in_array($params['PaymentPurpose'], array('service',
-		                                                                                                'salary'))
-			? $params['PaymentPurpose'] : 'service';
+	public function makeSpend($to_purse, $amount, $memo = '', array $params = array()) {
+		$payment_purpose = 'service';
+		$currency_id = 'usd';
+		$anonymous = 'false';
+		if (isset($params['PaymentPurpose']) && in_array($params['PaymentPurpose'], array('service', 'salary')))
+			$payment_purpose = $params['PaymentPurpose'];
+		if (isset($params['CurrencyId']) && in_array($params['CurrencyId'], array('usd', 'euro', 'gold')))
+			$currency_id = $params['CurrencyId'];
+		if (isset($params['Anonymous']) && in_array($params['Anonymous'], array('true', 'false')))
+			$anonymous = $params['Anonymous'];
 		$request = '<TransferRequest id="' . $this->_generateId() . '">'
-			. '<Auth><AccountId>' . $this->_purse . '</AccountId><ApiName>' . $this->_api
-			. '</ApiName><Token>' . $this->_getAuthToken() . '</Token></Auth>'
-			. '<Transfer>' . (isset($params['TransferId']) ? '<TransferId>' . $params['TransferId']
-			. '</TransferId>' : '')
-			. '<TransferType>transfer</TransferType><PaymentPurpose>' . $payment_purpose . '</PaymentPurpose>'
-			. '<Payee>' . $to_purse . '</Payee><CurrencyId>'
-			. (isset($params['CurrencyId']) ? $params['CurrencyId'] : 'usd') . '</CurrencyId>'
-			. '<Amount>' . floatval($amount) . '</Amount><Memo>' . $memo . '</Memo><Anonymous>anonymous</Anonymous>'
+			. $this->_getXmlAuthTag()
+			. '<Transfer>'
+			. (isset($params['TransferId']) ? '<TransferId>' . $params['TransferId'] . '</TransferId>' : '')
+			. '<TransferType>transfer</TransferType>'
+			. '<PaymentPurpose>' . $payment_purpose . '</PaymentPurpose>'
+			. '<Payee>' . $to_purse . '</Payee>'
+			. '<CurrencyId>' . $currency_id . '</CurrencyId>'
+			. '<Amount>' . floatval($amount) . '</Amount>'
+			. '<Memo>' . $memo . '</Memo>'
+			. '<Anonymous>' . $anonymous . '</Anonymous>'
 			. '</Transfer></TransferRequest>';
-		$url = $this->_api_base_url . '/transfer.aspx?req=' . urlencode($request);
+		$url = $this->_api_base_url . '/transfer?req=' . urlencode($request);
 		$response = $this->_getCurlResponse($url);
 		$xml = simplexml_load_string($response);
-		if (isset($xml->Receipt->ReceiptId)) return $xml->Receipt->ReceiptId; else return 0;
+		$this->_checkError($xml);
+		return $xml->Receipt->ReceiptId;
 	}
 
 	/**
 	 * Validates payment.
 	 *
 	 * @param array $data              Data from $_POST request that came from e-currency server.
-	 * @param array $verification_data Verification data to compare with $data.
+	 * @param array $verification_data Verification data to compare with $data: sci_store, sci_secword.
+	 *
+	 * @return boolean
+	 * @throws Exception
 	 */
-	public function validatePayment(array $data, array $verification_data) {
-		// TODO: Implement validatePayment() method.
+	public function validatePayment(array $data, array $verification_data = array()) {
+		if (!isset($verification_data['sci_store']) || !isset($verification_data['sci_secword']))
+			throw new Exception('Verification error: sci_store or sci_secword not defined!');
+		$string = $data['lr_paidto'] . ':' . $data['lr_paidby'] . ':' . $data['lr_store'] . ':'
+			. $data['lr_amnt'] . ':' . $data['lr_transfer'] . ':' . $data['lr_currency'] . ':'
+			. $verification_data['sci_secword'];
+		return (isset($data['lr_paidto']) && $data['lr_paidto'] == strtoupper($this->_purse)
+			&& isset($data['lr_store']) && $data['lr_store'] == $verification_data['sci_store']
+			&& isset($data['lr_encrypted']) && $data['lr_encrypted'] == $this->_getHash($string)
+		);
 	}
 
 	/**
 	 * Returns history.
 	 *
 	 *
-	 * @param array $params
+	 * @param array $params Additional parameters to retrieve history.
+	 *
+	 * @return array
 	 */
-	public function getHistory(array $params) {
+	public function getHistory(array $params = array()) {
 		// TODO: Implement getHistory() method.
 	}
 }

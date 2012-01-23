@@ -1,4 +1,6 @@
 <?php
+if (php_sapi_name() == 'cli')
+	$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 /** PATHS **/
 /**
  * Путь к public_html проекта
@@ -42,21 +44,21 @@ DEFINE('RECAPTCHA_PUBLIC_KEY', '6LdHKssSAAAAAKwhRCbS3N0SPYCRC45AmUZDHnKy');
 DEFINE('RECAPTCHA_PRIVATE_KEY', '6LdHKssSAAAAAEV--1Xdfrzmun9BOm2uvA1Te4y2');
 
 session_start();
-
-set_include_path(get_include_path() . PATH_SEPARATOR
-	. DOC_ROOT . '/controllers/' . PATH_SEPARATOR
-	. DOC_ROOT . '/library/classes' . PATH_SEPARATOR
-	. DOC_ROOT . '/library/interfaces' . PATH_SEPARATOR
-	. DOC_ROOT . '/library/' . PATH_SEPARATOR
-	. DOC_ROOT . '/models/');
-spl_autoload_extensions('.class.php, .interface.php');
+spl_autoload_extensions('.class.php,.interface.php');
 spl_autoload_register('custom_autoload');
 function custom_autoload($class_name) {
+	$paths = array(
+		DOC_ROOT . '/controllers/',
+		DOC_ROOT . '/library/classes/',
+		DOC_ROOT . '/library/interfaces/',
+		DOC_ROOT . '/library/',
+		DOC_ROOT . '/models/'
+	);
 	$extensions = explode(',', spl_autoload_extensions());
-	foreach ($extensions as $ext) {
-		if (@include($class_name.$ext)) {
-			return true;
-		}
+	foreach ($paths as $path)
+		foreach ($extensions as $ext) {
+			if (file_exists($path.$class_name.$ext))
+				include $path.$class_name.$ext;
 	}
 }
 
